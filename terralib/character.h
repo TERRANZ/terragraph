@@ -1,9 +1,9 @@
 #ifndef CHARACTER_H
 #define CHARACTER_H
 
-#include "glyph.h"
+#include "compositor.h"
 
-class Character
+class Character: public Compositor
 {
 public:
     Character();

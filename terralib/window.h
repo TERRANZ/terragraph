@@ -5,7 +5,7 @@ class Window
 {
 public:
     Window();
-    int pos;
+    virtual void Drawtext(){};
 };
 
 #endif // WINDOW_H

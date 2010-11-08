@@ -1,11 +1,16 @@
 #ifndef ARROW_H
 #define ARROW_H
 
-#include "glyph.h"
+#include "compositor.h"
+#include "point.h"
 
-class Arrow : public Glyph {
+class Arrow : public Compositor
+{
+private:
+    Point brokepoint,start,stop;
 public:
     Arrow();
+    int ArrowType;
 };
 
 #endif // ARROW_H

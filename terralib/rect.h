@@ -4,7 +4,7 @@
 class Rect
 {
 public:
-    Rect();
+    int hx,hy,hw,hh;
 };
 
 #endif // RECT_H

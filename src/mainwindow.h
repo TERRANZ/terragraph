@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "../terralib/windowimpl.h"
+#include "../terralib/windowqt.h"
 
 namespace Ui {
     class MainWindow;

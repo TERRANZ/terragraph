@@ -1,10 +1,12 @@
 #ifndef CIRCLE_H
 #define CIRCLE_H
 
-#include "glyph.h"
+#include "compositor.h"
 
-class Circle : public Glyph
+class Circle : public Compositor
 {
+private:
+    int radius;
 public:
     Circle();
 };

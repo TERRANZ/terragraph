@@ -4,9 +4,19 @@
 #include "window.h"
 #include "rect.h"
 #include "point.h"
+#include <string>
+#include <list>
+using namespace std;
 
 class Glyph
 {
+private:
+    Point pos;
+    wstring text;
+    Glyph *parent;
+    list<Glyph*> childrens;
+    Rect rect;
+
 public:
     virtual void Draw(Window*) {} ;
     virtual void Bounds(Rect&) {} ;
@@ -15,6 +25,8 @@ public:
     virtual void Remove(Glyph*) {} ;
     virtual Glyph* Child(int) {return 0;} ;
     virtual Glyph* Parent() {return 0;} ;
+    virtual void setText(wstring&) {};
+    virtual void setPos(const Point&) {};
 };
 
 #endif // GLYPH_H
