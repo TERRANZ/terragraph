@@ -14,6 +14,8 @@ public:
     virtual void RemoveGlyph(int) {};
     virtual void Bounds(Rect&) {} ;
     virtual bool Intersects(const Point&) {return false;} ;
+    virtual void SetPosition(int ,int ){};
+    virtual Point GetPosition() {};
 };
 
 #endif // GLYPH_H

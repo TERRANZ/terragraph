@@ -16,6 +16,7 @@ public:
     virtual void Remove(Complex*){};
     virtual void Bounds(Rect &) {};
     virtual bool Intersects(const Point &){return false;} ;
+    virtual void SetPosition(int, int) {};
     Geometry geom;
 };
 

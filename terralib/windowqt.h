@@ -8,10 +8,12 @@
 #include <QGraphicsView>
 #include <QGraphicsScene>
 #include <QGraphicsItem>
+#include <QGraphicsSceneMouseEvent>
+#include <cmath>
 #include <string>
 using namespace std;
 
-class WindowQt :public QWidget,public Window
+class WindowQt :public QGraphicsScene,public Window
 {
 Q_OBJECT
 public:
@@ -33,15 +35,19 @@ public:
 private:
     QWidget *Parent;
     QGraphicsView *GrView;
-    QGraphicsScene *Scene;
-    QGraphicsItem *CurrentSelectedItem;
+    //QGraphicsScene *Scene;
     QPen Pen;
     QList <Complex*> Glyphs;
-    QMap <QGraphicsItem*,Complex*> GlyphsMap;
+    QMap <QGraphicsItem*,Glyph*> GlyphsMap;
+    QList <QGraphicsItem*> GraphicsItems;
+    QGraphicsItem *CurrentItem;
 
+protected:
+    void mouseReleaseEvent ( QGraphicsSceneMouseEvent * mouseEvent );
 public slots:
     void PositionChanged(QGraphicsItem *item,QPoint &newpos);
     void Resize(int w,int h);
+    void SelectionChanged();
 };
 
 #endif // WINDOWQT_H
