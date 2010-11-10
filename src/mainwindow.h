@@ -2,8 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "../terralib/windowqt.h"
 #include <QList>
+#include "../terralib/windowqt.h"
 #include "../terralib/processdiagram.h"
 #include "../terralib/vertex.h"
 
