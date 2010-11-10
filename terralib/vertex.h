@@ -2,6 +2,8 @@
 #define VERTEX_H
 
 #include "complex.h"
+#include "character.h"
+#include "circle.h"
 #include <list>
 #include <vector>
 using namespace std;
@@ -10,6 +12,9 @@ class Vertex : public Complex
 {
 private:
     int VertexType;
+    Circle *circle;
+    Character *text;
+    Character *text2;
 
 public:
     Vertex();
