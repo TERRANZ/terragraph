@@ -5,8 +5,11 @@
 
 class Vertex : public Complex
 {
+private:
+    int VertexType;
 public:
     Vertex();
+
 };
 
 #endif // VERTEX_H

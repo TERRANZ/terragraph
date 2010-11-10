@@ -18,7 +18,6 @@ SOURCES += src/main.cpp \
     terralib/visitor.cpp \
     terralib/compositor.cpp \
     terralib/vertex.cpp \
-    terralib/window.cpp \
     terralib/windowqt.cpp \
     terralib/processdiagram.cpp \
     terralib/channeldiagram.cpp \

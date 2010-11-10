@@ -6,10 +6,14 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    procdiagram = new ProcessDiagram();
+    processdiagwnd = new WindowQt(ui->graphicsView);
 }
 
 MainWindow::~MainWindow()
 {
+    delete procdiagram;
+    delete processdiagwnd;
     delete ui;
 }
 
@@ -23,4 +27,10 @@ void MainWindow::changeEvent(QEvent *e)
     default:
         break;
     }
+}
+
+void MainWindow::AddNewV()
+{
+    Vertex *newvert = new Vertex();
+    procdiagram->Insert(newvert);
 }

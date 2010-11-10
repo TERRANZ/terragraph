@@ -3,6 +3,10 @@
 
 #include <QMainWindow>
 #include "../terralib/windowqt.h"
+#include <QList>
+#include "../terralib/processdiagram.h"
+#include "../terralib/vertex.h"
+#include "../terralib/glyph.h"
 
 namespace Ui {
     class MainWindow;
@@ -19,6 +23,11 @@ protected:
 
 private:
     Ui::MainWindow *ui;
+    ProcessDiagram *procdiagram;
+    WindowQt *processdiagwnd;
+
+private slots:
+    void AddNewV();
 };
 
 #endif // MAINWINDOW_H

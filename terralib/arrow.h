@@ -7,7 +7,7 @@
 class Arrow : public Compositor
 {
 private:
-    Point brokepoint,start,stop;
+    Point brakepoint,start,stop;
 public:
     Arrow();
     int ArrowType;
