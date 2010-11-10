@@ -1,9 +1,9 @@
 #ifndef PROCESSDIAGRAM_H
 #define PROCESSDIAGRAM_H
 
-#include "compositor.h"
+#include "glyph.h"
 
-class ProcessDiagram : public Compositor
+class ProcessDiagram : public Glyph
 {
 public:
     ProcessDiagram();

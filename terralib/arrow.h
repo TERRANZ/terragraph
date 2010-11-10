@@ -1,10 +1,10 @@
 #ifndef ARROW_H
 #define ARROW_H
 
-#include "compositor.h"
+#include "glyph.h"
 #include "point.h"
 
-class Arrow : public Compositor
+class Arrow : public Glyph
 {
 private:
     Point brakepoint,start,stop;

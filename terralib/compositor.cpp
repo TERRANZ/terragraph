@@ -1,5 +1,5 @@
 #include "compositor.h"
 
-Compositor::Compositor()
+Glyph::Compositor()
 {
 }

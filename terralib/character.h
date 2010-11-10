@@ -1,11 +1,11 @@
 #ifndef CHARACTER_H
 #define CHARACTER_H
 
-#include "compositor.h"
+#include "glyph.h"
 #include <string>
 using namespace std;
 
-class Character: public Compositor
+class Character: public Glyph
 {
 public:
     Character();

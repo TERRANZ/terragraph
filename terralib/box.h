@@ -1,9 +1,9 @@
 #ifndef BOX_H
 #define BOX_H
 
-#include "compositor.h"
+#include "glyph.h"
 
-class Box : public Compositor
+class Box : public Glyph
 {
 public:
     Box();

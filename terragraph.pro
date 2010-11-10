@@ -31,7 +31,6 @@ HEADERS += src/mainwindow.h \
     terralib/circle.h \
     terralib/command.h \
     terralib/visitor.h \
-    terralib/compositor.h \
     terralib/vertex.h \
     terralib/geometry.h \
     terralib/window.h \
@@ -39,5 +38,6 @@ HEADERS += src/mainwindow.h \
     terralib/processdiagram.h \
     terralib/channeldiagram.h \
     terralib/complex.h \
-    terralib/arc.h
+    terralib/arc.h \
+    terralib/glyph.h
 FORMS += src/mainwindow.ui

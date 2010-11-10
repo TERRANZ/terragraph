@@ -1,9 +1,9 @@
 #ifndef CHANNELDIAGRAM_H
 #define CHANNELDIAGRAM_H
 
-#include "compositor.h"
+#include "glyph.h"
 
-class ChannelDiagram : public Compositor
+class ChannelDiagram : public Glyph
 {
 public:
     ChannelDiagram();

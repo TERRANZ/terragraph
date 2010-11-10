@@ -3,7 +3,7 @@
 Complex::Complex()
 {
 }
-int Complex::Insert(Compositor*)
+int Complex::Insert(Glyph*)
 {
     return 0;
 }
