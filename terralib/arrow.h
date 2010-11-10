@@ -1,10 +1,10 @@
 #ifndef ARROW_H
 #define ARROW_H
 
-#include "glyph.h"
+#include "complex.h"
 #include "point.h"
 
-class Arrow : public Glyph
+class Arrow : public Complex
 {
 private:
     Point brakepoint,start,stop;

@@ -7,10 +7,13 @@ using namespace std;
 
 class Character: public Glyph
 {
+private:
+    wstring text;
 public:
     Character();
     void Draw(Window *wnd);
-    void SetText(wstring &str);
+    void SetText(wstring &str) {text = str;};
+    wstring Text() {return text;};
 };
 
 #endif // CHARACTER_H

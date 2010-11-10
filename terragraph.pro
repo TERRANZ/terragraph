@@ -20,7 +20,6 @@ SOURCES += src/main.cpp \
     terralib/windowqt.cpp \
     terralib/processdiagram.cpp \
     terralib/channeldiagram.cpp \
-    terralib/complex.cpp \
     terralib/arc.cpp
 HEADERS += src/mainwindow.h \
     terralib/point.h \

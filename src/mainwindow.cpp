@@ -7,7 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     procdiagram = new ProcessDiagram();
-    processdiagwnd = new WindowQt(ui->graphicsView);
+    processdiagwnd = new WindowQt(ui->mdiArea);
 }
 
 MainWindow::~MainWindow()
@@ -32,5 +32,11 @@ void MainWindow::changeEvent(QEvent *e)
 void MainWindow::AddNewV()
 {
     Vertex *newvert = new Vertex();
-    procdiagram->Insert(newvert);
+    Character *c = new Character();
+    std::wstring text(L"S");
+    c->SetText(text);
+    newvert->InsertGlyph(c);
+    procdiagram->InsertGlyph(c);
+    processdiagwnd->AddCompl(procdiagram);
+    processdiagwnd->ReDraw();
 }

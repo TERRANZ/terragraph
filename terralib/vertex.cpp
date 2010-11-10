@@ -3,3 +3,8 @@
 Vertex::Vertex()
 {
 }
+
+void Vertex::Draw(Window *w)
+{
+
+}

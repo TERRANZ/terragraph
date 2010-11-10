@@ -1,9 +1,9 @@
 #ifndef CIRCLE_H
 #define CIRCLE_H
 
-#include "glyph.h"
+#include "complex.h"
 
-class Circle : public Glyph
+class Circle : public Complex
 {
 private:
     int radius;

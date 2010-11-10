@@ -2,16 +2,21 @@
 #define COMPLEX_H
 
 #include "glyph.h"
+#include "geometry.h"
+#include <list>
+using namespace std;
 
 class Complex : public Glyph
 {
 public:
-    Complex();
     virtual void Draw(Window*){};
-    int Insert(Glyph*);
-    void Remove(int);
-    void Bounds(Rect &r) ;
-    bool Intersects(const Point &p) ;
+    virtual int InsertGlyph(Glyph*){return 0;};
+    virtual void RemoveGlyph(Glyph*){};
+    virtual int Insert(Complex*){return 0;};
+    virtual void Remove(Complex*){};
+    virtual void Bounds(Rect &) {};
+    virtual bool Intersects(const Point &){return false;} ;
+    Geometry geom;
 };
 
 #endif // COMPLEX_H

@@ -1,9 +1,9 @@
 #ifndef CHANNELDIAGRAM_H
 #define CHANNELDIAGRAM_H
 
-#include "glyph.h"
+#include "complex.h"
 
-class ChannelDiagram : public Glyph
+class ChannelDiagram : public Complex
 {
 public:
     ChannelDiagram();

@@ -6,6 +6,8 @@
 #include "../terralib/windowqt.h"
 #include "../terralib/processdiagram.h"
 #include "../terralib/vertex.h"
+#include "../terralib/glyph.h"
+#include "../terralib/character.h"
 
 namespace Ui {
     class MainWindow;
