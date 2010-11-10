@@ -1,11 +1,10 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
-#include <QGraphicsView>
-
 class Window
 {
 public:
+    virtual void ReDraw(){};
     virtual void Drawtext(){};
     virtual void DrawLine(int /*x1*/,int /*y1*/,int /*x2*/,int /*y2*/) {};
     virtual void DrawPoint(int /*x*/,int /*y*/) {};
@@ -14,9 +13,6 @@ public:
     virtual void SetPenColor(int /*color*/) {};
     virtual void SetPenType(int /*type*/) {};
     virtual void DrawArrow(int /*x1*/,int /*y1*/, int /*x2*/, int /*y2*/) {};
-
-private:
-    QGraphicsView *Parent;
 };
 
 #endif // WINDOW_H

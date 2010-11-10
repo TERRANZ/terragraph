@@ -3,3 +3,8 @@
 Character::Character()
 {
 }
+
+void Character::Draw(Window *wnd)
+{
+
+}

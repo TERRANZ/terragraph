@@ -7,10 +7,11 @@ class Complex : public Compositor
 {
 public:
     Complex();
-    int Insert(Compositor*){return 0;};
-    int InsertGlyph(Glyph*) {return 0;};
-    void RemoveGlyph(int) {};
-    void Remove(int) {};
+    virtual void Draw(Window*){};
+    int Insert(Compositor*);
+    void Remove(int);
+    void Bounds(Rect &r) ;
+    bool Intersects(const Point &p) ;
 };
 
 #endif // COMPLEX_H

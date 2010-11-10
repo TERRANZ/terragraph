@@ -16,7 +16,6 @@ SOURCES += src/main.cpp \
     terralib/circle.cpp \
     terralib/command.cpp \
     terralib/visitor.cpp \
-    terralib/compositor.cpp \
     terralib/vertex.cpp \
     terralib/windowqt.cpp \
     terralib/processdiagram.cpp \
@@ -30,7 +29,6 @@ HEADERS += src/mainwindow.h \
     terralib/rect.h \
     terralib/box.h \
     terralib/circle.h \
-    terralib/glyph.h \
     terralib/command.h \
     terralib/visitor.h \
     terralib/compositor.h \

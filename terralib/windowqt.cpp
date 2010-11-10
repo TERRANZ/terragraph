@@ -27,3 +27,13 @@ void WindowQt::SetPenType(int type)
 void WindowQt::DrawArrow(int x1,int y1, int x2, int y2)
 {
 }
+void WindowQt::PositionChanged(QGraphicsItem *item,QPoint &newpos)
+{
+}
+void WindowQt::ReDraw()
+{
+    foreach (Complex *c,Glyps)
+    {
+        c->Draw(this);
+    }
+}
