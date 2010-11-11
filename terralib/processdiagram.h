@@ -11,7 +11,7 @@ class ProcessDiagram : public Complex
 
 public:
     ProcessDiagram(Window *w = 0);
-    void Draw(Window* w);
+    void Draw(Window* w =0);
     int Insert(Glyph *c);
     void Remove(Glyph *c);
     void Bounds(Rect& r) ;

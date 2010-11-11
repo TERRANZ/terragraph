@@ -4,7 +4,7 @@
 class Geometry
 {
 public:
-    int scale;
+    float scale;
 };
 
 #endif // GEOMETRY_H

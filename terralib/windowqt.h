@@ -35,7 +35,6 @@ public:
 private:
     QWidget *Parent;
     QGraphicsView *GrView;
-    //QGraphicsScene *Scene;
     QPen Pen;
     QList <Complex*> Glyphs;
     QMap <QGraphicsItem*,Glyph*> GlyphsMap;

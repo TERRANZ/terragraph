@@ -9,7 +9,7 @@ class Glyph
 {
 
 public:
-    virtual void Draw(Window*){};
+    virtual void Draw(Window* =0){};
     virtual int Insert(Glyph*){return 0;};
     virtual void Remove(Glyph*) {};
     virtual void Remove(int) {};
