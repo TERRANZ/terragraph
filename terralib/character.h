@@ -9,15 +9,15 @@ using namespace std;
 class Character: public Glyph
 {
 private:
-    wstring text;
+    wstring Text;
     Point pos;
 public:
-    Character(Window *w = 0);
-    void Draw(Window *wnd);
-    void SetText(wstring &str) {text = str;};
-    wstring Text() {return text;};
-    void SetPosition(int x, int y);
-    Point GetPosition() {return pos;};
+    Character(Window *w = 0,wstring txt = 0);
+    void draw(Window *wnd);
+    void setText(wstring &str) {Text = str;};
+    wstring text() {return Text;};
+    void setPosition(int x, int y);
+    Point position() {return pos;};
 };
 
 #endif // CHARACTER_H

@@ -3,20 +3,15 @@
 Circle::Circle(Window *w)
 {
     wnd = w;
+    geom.scale = 1.0;
 }
-
-int Circle::Insert(Glyph *c)
+void Circle::draw(Window *w)
 {
-    GlyphList.push_back(c);
-    return GlyphList.size();
-}
+    w->drawCircle(position().x,position().y,30*geom.scale);
 
-void Circle::Draw(Window *w)
-{
     list<Glyph*>::iterator ci;
-
-    for(ci=GlyphList.begin(); ci != GlyphList.end(); ++ci)
+    for(ci=ChildGlyphList.begin(); ci != ChildGlyphList.end(); ++ci)
     {
-         (*ci)->Draw(w);
+         (*ci)->draw(w);
     }
 }

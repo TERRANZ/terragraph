@@ -1,17 +1,21 @@
 #include "vertex.h"
 
-Vertex::Vertex(Window *w)
+Vertex::Vertex(Window *w,wstring t1, wstring t2)
 {
     wnd = w;
     circle = new Circle(w);
-    text = new Character(w);
-    text2 = new Character(w);
-    circle->Insert(text);
-    circle->Insert(text2);
-    this->Insert(circle);
+    text = new Character(w,t1);
+    circle->insert(text);
+    this->insert(circle);
 }
 
-void Vertex::Draw(Window *w)
+void Vertex::draw(Window *w)
 {
-    circle->Draw(w);
+    circle->draw(w);
 }
+
+void Vertex::setText(wstring txt)
+{
+    text->setText(txt);
+}
+

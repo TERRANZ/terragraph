@@ -17,9 +17,9 @@ private:
     Character *text2;
 
 public:
-    Vertex(Window *w = 0);
-    void Draw(Window *w);
-
+    Vertex(Window *w = 0,wstring t1 = 0, wstring t2 = 0);
+    void draw(Window *w);
+    void setText(wstring txt);
 };
 
 #endif // VERTEX_H

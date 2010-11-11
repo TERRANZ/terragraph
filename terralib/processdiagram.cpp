@@ -4,32 +4,26 @@ ProcessDiagram::ProcessDiagram(Window *w)
 {
     wnd = w;
 }
-void ProcessDiagram::Draw(Window* w)
+void ProcessDiagram::draw(Window* w)
 {
     list<Glyph*>::iterator ci;
 
-    for(ci=GlyphList.begin(); ci != GlyphList.end(); ++ci)
+    for(ci=ChildGlyphList.begin(); ci != ChildGlyphList.end(); ++ci)
     {
-         (*ci)->Draw(w);
+         (*ci)->draw(w);
     }
 }
-void ProcessDiagram::Bounds(Rect& r)
+void ProcessDiagram::bounds(Rect& r)
 {
 
 }
 
-bool ProcessDiagram::Intersects(const Point& p)
+bool ProcessDiagram::intersects(const Point& p)
 {
     return false;
 }
 
-int ProcessDiagram::Insert(Glyph *c)
+void ProcessDiagram::remove(Glyph *c)
 {
-    GlyphList.push_back(c);
-    return GlyphList.size();
-}
-
-void ProcessDiagram::Remove(Glyph *c)
-{
-    GlyphList.remove(c);
+    ChildGlyphList.remove(c);
 }

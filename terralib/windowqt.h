@@ -4,6 +4,7 @@
 #include "window.h"
 #include "point.h"
 #include "complex.h"
+#include "vertex.h"
 #include <QWidget>
 #include <QGraphicsView>
 #include <QGraphicsScene>
@@ -19,18 +20,19 @@ Q_OBJECT
 public:
     WindowQt(QWidget *parent = 0);
     ~WindowQt();
-    void SetPenType(int type =0);
-    void SetPenColor(int r = 255,int g = 255,int b = 255);
-    void Drawtext(wstring &txt);
-    void DrawBox(int x1,int y1,int x2,int y2);
-    void DrawLine(int x1,int y1,int x2,int y2);
-    void DrawPoint(int x,int y);
-    void DrawCircle(int x,int y, int r);
-    void DrawArrow(int x1,int y1, int x2, int y2);
-    void ReDraw();
+    void setPenType(int type =0);
+    void setPenColor(int r = 255,int g = 255,int b = 255);
+    void drawtext(wstring &txt);
+    void drawBox(int x1,int y1,int x2,int y2);
+    void drawLine(int x1,int y1,int x2,int y2);
+    void drawPoint(int x,int y);
+    void drawCircle(int x,int y, float r);
+    void drawArrow(int x1,int y1, int x2, int y2);
+    void reDraw();
     int  AddCompl(Complex *c = 0);
     void RemoveCompl(int n);
     void RemoveCompl(Complex *c);
+    void drawVertex(Vertex *v);
 
 private:
     QWidget *Parent;

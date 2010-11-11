@@ -12,7 +12,18 @@ private:
 
 public:
     Geometry geom;
-    list<Glyph*> GlyphList;
+    list<Glyph*> ChildGlyphList;
+    virtual int insert(Glyph *g)
+    {
+        ChildGlyphList.push_back(g);
+        g->setParent(this);
+        return ChildGlyphList.size();
+    };
+    virtual void remove(Glyph *g)
+    {
+        ChildGlyphList.remove(g);
+    };
+    virtual void remove(int) {};
 };
 
 #endif // COMPLEX_H

@@ -5,7 +5,7 @@ class Command
 {
 public:
     Command();
-    virtual int Execute() {return 0;};
+    virtual int execute() {return 0;};
 };
 
 #endif // COMMAND_H

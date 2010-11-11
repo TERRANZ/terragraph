@@ -9,8 +9,7 @@ private:
     int radius;
 public:
     Circle(Window *w = 0);
-    int Insert(Glyph *c);
-    void Draw(Window *w);
+    void draw(Window *w);
 };
 
 #endif // CIRCLE_H

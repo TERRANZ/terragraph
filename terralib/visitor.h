@@ -5,7 +5,7 @@ class Visitor
 {
 public:
     Visitor();
-    virtual void Visit() {};
+    virtual void visit() {};
 };
 
 #endif // VISITOR_H
