@@ -1,9 +1,11 @@
 #include "arc.h"
 
-ProcArc::ProcArc()
+ProcArc::ProcArc(Window *w)
 {
+    wnd = w;
 }
 
-ChanArc::ChanArc()
+ChanArc::ChanArc(Window *w)
 {
+    wnd = w;
 }

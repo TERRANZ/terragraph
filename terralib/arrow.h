@@ -9,7 +9,7 @@ class Arrow : public Complex
 private:
     Point brakepoint,start,stop;
 public:
-    Arrow();
+    Arrow(Window *w = 0);
     int ArrowType;
 };
 

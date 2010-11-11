@@ -5,14 +5,18 @@
 
 class ProcArc : public Complex
 {
+private:
+
 public:
-    ProcArc();
+    ProcArc(Window *w = 0);
 };
 
 class ChanArc : public Complex
 {
+private:
+
 public:
-    ChanArc();
+    ChanArc(Window *w = 0);
 };
 
 

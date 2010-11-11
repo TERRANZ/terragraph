@@ -8,16 +8,17 @@ using namespace std;
 
 class Complex : public Glyph
 {
+private:
+
 public:
     virtual void Draw(Window*){};
-    virtual int InsertGlyph(Glyph*){return 0;};
-    virtual void RemoveGlyph(Glyph*){};
-    virtual int Insert(Complex*){return 0;};
-    virtual void Remove(Complex*){};
+    virtual int Insert(Glyph*){return 0;};
+    virtual void Remove(Glyph*){};
     virtual void Bounds(Rect &) {};
     virtual bool Intersects(const Point &){return false;} ;
     virtual void SetPosition(int, int) {};
     Geometry geom;
+    list<Glyph*> GlyphList;
 };
 
 #endif // COMPLEX_H

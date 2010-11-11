@@ -3,7 +3,6 @@
 WindowQt::WindowQt(QWidget *parent)
 {
     Pen.setColor(QColor("black"));
-    //Scene = new QGraphicsScene(parent);
     this->setParent(parent);
     GrView = new QGraphicsView(this,parent);
     this->setSceneRect(0,0,500,300);

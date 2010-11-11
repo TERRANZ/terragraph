@@ -1,5 +1,6 @@
 #include "arrow.h"
 
-Arrow::Arrow()
+Arrow::Arrow(Window *w)
 {
+    wnd = w;
 }

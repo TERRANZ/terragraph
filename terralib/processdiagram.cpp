@@ -1,33 +1,17 @@
 #include "processdiagram.h"
 
-ProcessDiagram::ProcessDiagram()
+ProcessDiagram::ProcessDiagram(Window *w)
 {
+    wnd = w;
 }
 void ProcessDiagram::Draw(Window* w)
 {
-    list<Glyph*>::iterator gi;
+    list<Glyph*>::iterator ci;
 
-    for(gi=Glyphs.begin(); gi != Glyphs.end(); ++gi)
-    {
-         (*gi)->Draw(w);
-    }
-
-    list<Complex*>::iterator ci;
-
-    for(ci=Complexes.begin(); ci != Complexes.end(); ++ci)
+    for(ci=GlyphList.begin(); ci != GlyphList.end(); ++ci)
     {
          (*ci)->Draw(w);
     }
-}
-int ProcessDiagram::InsertGlyph(Glyph* g)
-{
-    Glyphs.push_back(g);
-    return Glyphs.size();
-
-}
-void ProcessDiagram::RemoveGlyph(Glyph* g)
-{
-    Glyphs.remove(g);
 }
 void ProcessDiagram::Bounds(Rect& r)
 {
@@ -39,12 +23,13 @@ bool ProcessDiagram::Intersects(const Point& p)
     return false;
 }
 
-int ProcessDiagram::Insert(Complex *c)
+int ProcessDiagram::Insert(Glyph *c)
 {
-    Complexes.push_back(c);
+    GlyphList.push_back(c);
+    return GlyphList.size();
 }
 
-void ProcessDiagram::Remove(Complex *c)
+void ProcessDiagram::Remove(Glyph *c)
 {
-    Complexes.remove(c);
+    GlyphList.remove(c);
 }

@@ -12,7 +12,7 @@ private:
     wstring text;
     Point pos;
 public:
-    Character();
+    Character(Window *w = 0);
     void Draw(Window *wnd);
     void SetText(wstring &str) {text = str;};
     wstring Text() {return text;};

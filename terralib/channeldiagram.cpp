@@ -1,5 +1,6 @@
 #include "channeldiagram.h"
 
-ChannelDiagram::ChannelDiagram()
+ChannelDiagram::ChannelDiagram(Window *w)
 {
+    wnd = w;
 }

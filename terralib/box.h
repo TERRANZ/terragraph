@@ -5,8 +5,10 @@
 
 class Box : public Complex
 {
+private:
+
 public:
-    Box();
+    Box(Window *w = 0);
 };
 
 #endif // BOX_H

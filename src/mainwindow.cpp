@@ -37,6 +37,6 @@ void MainWindow::AddNewV()
     Character *c = new Character();
     std::wstring text(L"S");
     c->SetText(text);
-    procdiagram->InsertGlyph(c);
+    procdiagram->Insert(c);
     processdiagwnd->ReDraw();
 }

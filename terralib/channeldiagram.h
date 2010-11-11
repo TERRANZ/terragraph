@@ -5,8 +5,10 @@
 
 class ChannelDiagram : public Complex
 {
+private:
+
 public:
-    ChannelDiagram();
+    ChannelDiagram(Window *w = 0);
 };
 
 #endif // CHANNELDIAGRAM_H

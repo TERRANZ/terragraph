@@ -17,7 +17,7 @@ private:
     Character *text2;
 
 public:
-    Vertex();
+    Vertex(Window *w = 0);
     void Draw(Window *w);
 
 };

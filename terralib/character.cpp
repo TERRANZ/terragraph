@@ -1,7 +1,8 @@
 #include "character.h"
 
-Character::Character()
+Character::Character(Window *w)
 {
+    wnd = w;
 }
 
 void Character::Draw(Window *wnd)
