@@ -32,13 +32,14 @@ void MainWindow::changeEvent(QEvent *e)
 
 void MainWindow::AddNewV()
 {
-    Vertex *newvert = new Vertex(processdiagwnd,L"S",L"S");
+    Vertex *newvert = new Vertex(processdiagwnd,L"S");
+    newvert->setGId(L"1");
     //newvert->InsertGlyph(c);
     //Character *c = new Character();
     //std::wstring text(L"S");
     //c->setText(text);
-    //procdiagram->insert(newvert);
+    procdiagram->insert(newvert);
 
-    //processdiagwnd->reDraw();
-    processdiagwnd->drawVertex(newvert);
+    processdiagwnd->reDraw();
+   // processdiagwnd->drawVertex(newvert);
 }

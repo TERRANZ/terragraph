@@ -8,6 +8,7 @@ Character::Character(Window *w,wstring txt)
 
 void Character::draw(Window *wnd)
 {
+    wnd->setCurrentGlyphId(getGId());
     wnd->drawtext(Text);
 }
 

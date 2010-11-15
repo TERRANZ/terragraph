@@ -29,19 +29,25 @@ public:
     void drawCircle(int x,int y, float r);
     void drawArrow(int x1,int y1, int x2, int y2);
     void reDraw();
+    void setCurrentGlyphId(wstring &gid);
+    QGraphicsItem *drawSingle(Glyph *s = 0, QGraphicsItem *p = 0);
     int  AddCompl(Complex *c = 0);
     void RemoveCompl(int n);
     void RemoveCompl(Complex *c);
     void drawVertex(Vertex *v);
+
 
 private:
     QWidget *Parent;
     QGraphicsView *GrView;
     QPen Pen;
     QList <Complex*> Glyphs;
-    QMap <QGraphicsItem*,Glyph*> GlyphsMap;
+    QMap <QGraphicsItem*,Glyph*> GlyphsMap; //Graphic -> Glyph
+    QMap <Glyph*,Glyph*> ParentsMap; //Glyph -> Parent
     QList <QGraphicsItem*> GraphicsItems;
     QGraphicsItem *CurrentItem;
+    QGraphicsItem *CurrentParent;
+    Glyph *CurrentGlyph;
 
 protected:
     void mouseReleaseEvent ( QGraphicsSceneMouseEvent * mouseEvent );

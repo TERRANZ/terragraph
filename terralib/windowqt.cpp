@@ -9,10 +9,24 @@ WindowQt::WindowQt(QWidget *parent)
     GrView->show();
     connect(this,SIGNAL(selectionChanged()),this,SLOT(SelectionChanged()));
     CurrentItem = 0;
+    CurrentParent = 0;
 }
 
 WindowQt::~WindowQt()
 {
+}
+
+void WindowQt::setCurrentGlyphId(wstring &gid)
+{
+    foreach (Complex *c,Glyphs)
+    {
+        if (c->getGId() == gid)
+            CurrentGlyph = c;
+        else
+        {
+            CurrentGlyph = c->getGlyphById(gid);
+        }
+    }
 }
 
 void WindowQt::drawtext(wstring &txt)
@@ -22,8 +36,13 @@ void WindowQt::drawtext(wstring &txt)
     QString s(temp.c_str());
     QGraphicsItem *newtxt = this->addText(s);
     GraphicsItems.append(newtxt);
-    newtxt->setFlag(QGraphicsItem::ItemIsMovable);
-    newtxt->setFlag(QGraphicsItem::ItemIsSelectable);
+    GlyphsMap.insert(newtxt,CurrentGlyph);
+    newtxt->setParentItem(CurrentParent);
+    if (CurrentParent == 0)
+    {
+        newtxt->setFlag(QGraphicsItem::ItemIsMovable);
+        newtxt->setFlag(QGraphicsItem::ItemIsSelectable);
+    }
 }
 void WindowQt::drawBox(int x1,int y1,int x2,int y2)
 {
@@ -37,7 +56,12 @@ void WindowQt::drawPoint(int x,int y)
 }
 void WindowQt::drawCircle(int x,int y, float r)
 {
-    this->addEllipse(qreal(x),qreal(y),qreal(r),qreal(r),Pen);
+    QGraphicsItem *newel = this->addEllipse(qreal(x),qreal(y),qreal(r),qreal(r),Pen);
+    newel->setFlag(QGraphicsItem::ItemIsMovable);
+    newel->setFlag(QGraphicsItem::ItemIsSelectable);
+    GraphicsItems.append(newel);
+    GlyphsMap.insert(newel,CurrentGlyph);
+    CurrentParent = newel;
 }
 void WindowQt::setPenColor(int r,int g,int b)
 {
@@ -52,6 +76,7 @@ void WindowQt::drawArrow(int x1,int y1, int x2, int y2)
 }
 void WindowQt::PositionChanged(QGraphicsItem *item,QPoint &newpos)
 {
+    item->setPos(qreal(newpos.x()),qreal(newpos.y()));
 }
 void WindowQt::reDraw()
 {
@@ -66,10 +91,19 @@ void WindowQt::reDraw()
         c->draw(this);
     }
 }
+
+QGraphicsItem *WindowQt::drawSingle(Glyph *s, QGraphicsItem *p)
+{
+    CurrentParent = p;
+    s->draw(this);
+    return 0;
+}
+
 int  WindowQt::AddCompl(Complex *c)
 {
     Glyphs.append(c);
     c->draw(this);
+    ParentsMap.insert(c,c->parent());
     return Glyphs.indexOf(c);
 }
 void WindowQt::RemoveCompl(int n)
@@ -79,6 +113,7 @@ void WindowQt::RemoveCompl(int n)
 void WindowQt::RemoveCompl(Complex *c)
 {
     Glyphs.removeOne(c);
+    ParentsMap.remove(c);
 }
 
 void WindowQt::Resize(int w,int h)
@@ -103,10 +138,10 @@ void WindowQt::mouseReleaseEvent ( QGraphicsSceneMouseEvent * mouseEvent )
 {
     if (CurrentItem != 0 )
     {
-        //GlyphsMap[CurrentItem]->SetPosition(
-        //        ceil(mouseEvent->pos().x()),
-        //        ceil(mouseEvent->pos().y())
-        //                                    );
+        Point newpos;
+        newpos.x = ceil(mouseEvent->pos().x());
+        newpos.y = ceil(mouseEvent->pos().y());
+        GlyphsMap[CurrentItem]->setPosition(newpos);
     }
 }
 

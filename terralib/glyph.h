@@ -9,15 +9,19 @@ class Glyph
 {
 private:
     Glyph* Parent;
+    wstring id;
+    Point pos;
 
 public:
     virtual void draw(Window* =0){};
     virtual void bounds(Rect&) {} ;
     virtual bool intersects(const Point&) {return false;} ;
-    virtual void setPosition(int ,int ){};
-    virtual Point position() {return Point();};
+    virtual void setPosition(const Point& newpos){pos = newpos;};
+    virtual Point position() {return pos;};
     virtual void setParent(Glyph* g = 0) {Parent = g;};
     virtual Glyph* parent() {return Parent;};
+    virtual void setGId(wstring gid) {id = gid;};
+    virtual wstring getGId() {return id;}
     Window *wnd;
 };
 

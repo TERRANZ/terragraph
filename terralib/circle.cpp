@@ -7,6 +7,7 @@ Circle::Circle(Window *w)
 }
 void Circle::draw(Window *w)
 {
+    w->setCurrentGlyphId(getGId());
     w->drawCircle(position().x,position().y,30*geom.scale);
 
     list<Glyph*>::iterator ci;

@@ -17,9 +17,10 @@ private:
     Character *text2;
 
 public:
-    Vertex(Window *w = 0,wstring t1 = 0, wstring t2 = 0);
+    Vertex(Window *w = 0,wstring t1 = 0);
     void draw(Window *w);
     void setText(wstring txt);
+    Glyph* getGlyphById(wstring id);
 };
 
 #endif // VERTEX_H
