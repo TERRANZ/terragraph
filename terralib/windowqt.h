@@ -29,7 +29,7 @@ public:
     void drawCircle(int x,int y, float r);
     void drawArrow(int x1,int y1, int x2, int y2);
     void reDraw();
-    void setCurrentGlyphId(wstring &gid);
+    void setCurrentGlyphId(wstring gid);
     QGraphicsItem *drawSingle(Glyph *s = 0, QGraphicsItem *p = 0);
     int  AddCompl(Complex *c = 0);
     void RemoveCompl(int n);

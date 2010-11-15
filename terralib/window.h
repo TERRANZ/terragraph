@@ -2,7 +2,8 @@
 #define WINDOW_H
 
 #include <string>
-//#include "vertex.h"
+#include "point.h"
+
 using namespace std;
 
 class Window

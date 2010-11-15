@@ -16,7 +16,7 @@ WindowQt::~WindowQt()
 {
 }
 
-void WindowQt::setCurrentGlyphId(wstring &gid)
+void WindowQt::setCurrentGlyphId(wstring gid)
 {
     foreach (Complex *c,Glyphs)
     {
@@ -139,8 +139,8 @@ void WindowQt::mouseReleaseEvent ( QGraphicsSceneMouseEvent * mouseEvent )
     if (CurrentItem != 0 )
     {
         Point newpos;
-        newpos.x = ceil(mouseEvent->pos().x());
-        newpos.y = ceil(mouseEvent->pos().y());
+        newpos.x = (mouseEvent->pos().x());
+        newpos.y = (mouseEvent->pos().y());
         GlyphsMap[CurrentItem]->setPosition(newpos);
     }
 }
