@@ -15,12 +15,15 @@ private:
     Circle *circle;
     Character *text;
     Character *text2;
-
+    int diagType;
+    int vertType;
 public:
-    Vertex(Window *w = 0,wstring t1 = 0);
-    void draw(Window *w);
+    Vertex(Glyph *parent,wstring t1, wstring gid,int diagtype, int type);
+    void draw();
     void setText(wstring txt);
     Glyph* getGlyphById(wstring id);
+    int type() {return vertType;};
+    void setType(int t) {vertType = t;};
 };
 
 #endif // VERTEX_H

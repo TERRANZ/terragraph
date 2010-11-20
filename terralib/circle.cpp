@@ -1,18 +1,19 @@
 #include "circle.h"
 
-Circle::Circle(Window *w)
+Circle::Circle(Glyph *parent)
 {
-    wnd = w;
+    setWindow(parent->window());
+    setParent(parent);
     geom.scale = 1.0;
 }
-void Circle::draw(Window *w)
+void Circle::draw()
 {
-    w->setCurrentGlyphId(getGId());
-    w->drawCircle(position().x,position().y,30*geom.scale);
+    window()->setCurrentGlyphId(getGId());
+    window()->drawCircle(position().x,position().y,30*geom.scale);
 
     list<Glyph*>::iterator ci;
     for(ci=ChildGlyphList.begin(); ci != ChildGlyphList.end(); ++ci)
     {
-         (*ci)->draw(w);
+         (*ci)->draw();
     }
 }

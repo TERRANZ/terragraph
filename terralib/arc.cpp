@@ -1,11 +1,13 @@
 #include "arc.h"
 
-ProcArc::ProcArc(Window *w)
+ProcArc::ProcArc(Glyph *parent)
 {
-    wnd = w;
+    setWindow(parent->window());
+    setParent(parent);
 }
 
-ChanArc::ChanArc(Window *w)
+ChanArc::ChanArc(Glyph *parent)
 {
-    wnd = w;
+    setWindow(parent->window());
+    setParent(parent);
 }

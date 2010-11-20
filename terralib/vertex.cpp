@@ -1,19 +1,21 @@
 #include "vertex.h"
 
-Vertex::Vertex(Window *w,wstring t1)
+Vertex::Vertex(Glyph *parent,wstring t1, wstring gid,int diagtype, int type)
 {
-    wnd = w;
-    circle = new Circle(w);
-    text = new Character(w,t1);
+    setWindow(parent->window());
+    setParent(parent);
+    circle = new Circle(this);
+    text = new Character(this,t1);
     circle->insert(text);
     this->insert(circle);
+    setGId(gid);
     circle->setGId(getGId()+L"-1");
     text->setGId(getGId()+L"-2");
 }
 
-void Vertex::draw(Window *w)
+void Vertex::draw()
 {
-    circle->draw(w);
+    circle->draw();
 }
 
 void Vertex::setText(wstring txt)

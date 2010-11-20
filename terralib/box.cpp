@@ -1,6 +1,7 @@
 #include "box.h"
 
-Box::Box(Window *w)
+Box::Box(Glyph *parent)
 {
-    wnd = w;
+    setWindow(parent->window());
+    setParent(parent);
 }

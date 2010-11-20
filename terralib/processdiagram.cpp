@@ -2,7 +2,7 @@
 
 ProcessDiagram::ProcessDiagram(Window *w)
 {
-    wnd = w;
+    setWindow(w);
 }
 void ProcessDiagram::draw(Window* w)
 {
@@ -10,7 +10,7 @@ void ProcessDiagram::draw(Window* w)
 
     for(ci=ChildGlyphList.begin(); ci != ChildGlyphList.end(); ++ci)
     {
-        (*ci)->draw(w);
+        (*ci)->draw();
     }
 }
 void ProcessDiagram::bounds(Rect& r)

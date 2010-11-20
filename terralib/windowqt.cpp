@@ -9,6 +9,7 @@ WindowQt::WindowQt(QWidget *parent)
     GrView->show();
     connect(this,SIGNAL(selectionChanged()),this,SLOT(SelectionChanged()));
     CurrentItem = 0;
+    CurrentGlyph = 0;
     CurrentParent = 0;
 }
 
@@ -18,6 +19,7 @@ WindowQt::~WindowQt()
 
 void WindowQt::setCurrentGlyphId(wstring gid)
 {
+    CurrentGlyph = 0;
     foreach (Complex *c,Glyphs)
     {
         if (c->getGId() == gid)
@@ -35,6 +37,7 @@ void WindowQt::drawtext(wstring &txt)
     std::copy(txt.begin(), txt.end(), std::back_inserter(temp));
     QString s(temp.c_str());
     QGraphicsItem *newtxt = this->addText(s);
+    newtxt->setPos(CurrentGlyph->position().x,CurrentGlyph->position().y);
     GraphicsItems.append(newtxt);
     GlyphsMap.insert(newtxt,CurrentGlyph);
     newtxt->setParentItem(CurrentParent);
@@ -59,6 +62,7 @@ void WindowQt::drawCircle(int x,int y, float r)
     QGraphicsItem *newel = this->addEllipse(qreal(x),qreal(y),qreal(r),qreal(r),Pen);
     newel->setFlag(QGraphicsItem::ItemIsMovable);
     newel->setFlag(QGraphicsItem::ItemIsSelectable);
+    newel->setPos(CurrentGlyph->position().x,CurrentGlyph->position().y);
     GraphicsItems.append(newel);
     GlyphsMap.insert(newel,CurrentGlyph);
     CurrentParent = newel;
@@ -88,21 +92,21 @@ void WindowQt::reDraw()
 
     foreach (Complex *c,Glyphs)
     {
-        c->draw(this);
+        c->draw();
     }
 }
 
 QGraphicsItem *WindowQt::drawSingle(Glyph *s, QGraphicsItem *p)
 {
     CurrentParent = p;
-    s->draw(this);
+    s->draw();
     return 0;
 }
 
 int  WindowQt::AddCompl(Complex *c)
 {
     Glyphs.append(c);
-    c->draw(this);
+    c->draw();
     ParentsMap.insert(c,c->parent());
     return Glyphs.indexOf(c);
 }
@@ -139,8 +143,8 @@ void WindowQt::mouseReleaseEvent ( QGraphicsSceneMouseEvent * mouseEvent )
     if (CurrentItem != 0 )
     {
         Point newpos;
-        newpos.x = (mouseEvent->pos().x());
-        newpos.y = (mouseEvent->pos().y());
+        newpos.x = (mouseEvent->scenePos().x());
+        newpos.y = (mouseEvent->scenePos().y());
         GlyphsMap[CurrentItem]->setPosition(newpos);
     }
 }

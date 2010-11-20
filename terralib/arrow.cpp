@@ -1,6 +1,7 @@
 #include "arrow.h"
 
-Arrow::Arrow(Window *w)
+Arrow::Arrow(Glyph *parent)
 {
-    wnd = w;
+    setWindow(parent->window());
+    setParent(parent);
 }

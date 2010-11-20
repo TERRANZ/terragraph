@@ -8,7 +8,7 @@ class ProcArc : public Complex
 private:
 
 public:
-    ProcArc(Window *w = 0);
+    ProcArc(Glyph *parent);
 };
 
 class ChanArc : public Complex
@@ -16,7 +16,7 @@ class ChanArc : public Complex
 private:
 
 public:
-    ChanArc(Window *w = 0);
+    ChanArc(Glyph *parent);
 };
 
 

@@ -11,9 +11,10 @@ private:
     Glyph* Parent;
     wstring id;
     Point pos;
+    Window *wnd;
 
 public:
-    virtual void draw(Window* =0){};
+    virtual void draw(){};
     virtual void bounds(Rect&) {} ;
     virtual bool intersects(const Point&) {return false;} ;
     virtual void setPosition(const Point& newpos){pos = newpos;};
@@ -22,7 +23,8 @@ public:
     virtual Glyph* parent() {return Parent;};
     virtual void setGId(wstring gid) {id = gid;};
     virtual wstring getGId() {return id;}
-    Window *wnd;
+    virtual void setWindow(Window *w = 0) {wnd = w;};
+    virtual Window *window() {return wnd;};
 };
 
 #endif // GLYPH_H

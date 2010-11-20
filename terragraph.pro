@@ -20,7 +20,9 @@ SOURCES += src/main.cpp \
     terralib/windowqt.cpp \
     terralib/processdiagram.cpp \
     terralib/channeldiagram.cpp \
-    terralib/arc.cpp
+    terralib/arc.cpp \
+    terralib/settings.cpp \
+    terralib/graphicmanager.cpp
 HEADERS += src/mainwindow.h \
     terralib/point.h \
     terralib/character.h \
@@ -38,5 +40,7 @@ HEADERS += src/mainwindow.h \
     terralib/channeldiagram.h \
     terralib/complex.h \
     terralib/arc.h \
-    terralib/glyph.h
+    terralib/glyph.h \
+    terralib/settings.h \
+    terralib/graphicmanager.h
 FORMS += src/mainwindow.ui

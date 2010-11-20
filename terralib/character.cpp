@@ -1,15 +1,16 @@
 #include "character.h"
 
-Character::Character(Window *w,wstring txt)
+Character::Character(Glyph *parent,wstring txt)
 {
-    wnd = w;
+    setWindow(parent->window());
     setText(txt);
+    setParent(parent);
 }
 
-void Character::draw(Window *wnd)
+void Character::draw()
 {
-    wnd->setCurrentGlyphId(getGId());
-    wnd->drawtext(Text);
+    window()->setCurrentGlyphId(getGId());
+    window()->drawtext(Text);
 }
 
 void Character::setPosition(int x, int y)

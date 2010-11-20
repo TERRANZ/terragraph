@@ -4,10 +4,7 @@
 #include <QMainWindow>
 #include <QList>
 #include "../terralib/windowqt.h"
-#include "../terralib/processdiagram.h"
-#include "../terralib/vertex.h"
-#include "../terralib/glyph.h"
-#include "../terralib/character.h"
+#include "../terralib/graphicmanager.h"
 
 namespace Ui {
     class MainWindow;
@@ -24,7 +21,6 @@ protected:
 
 private:
     Ui::MainWindow *ui;
-    ProcessDiagram *procdiagram;
     WindowQt *processdiagwnd;
 
 private slots:

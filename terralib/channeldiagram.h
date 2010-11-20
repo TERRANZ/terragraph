@@ -8,7 +8,7 @@ class ChannelDiagram : public Complex
 private:
 
 public:
-    ChannelDiagram(Window *w = 0);
+    ChannelDiagram(Window *w);
 };
 
 #endif // CHANNELDIAGRAM_H

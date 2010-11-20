@@ -8,8 +8,8 @@ class Circle : public Complex
 private:
     int radius;
 public:
-    Circle(Window *w = 0);
-    void draw(Window *w);
+    Circle(Glyph *parent);
+    void draw();
 };
 
 #endif // CIRCLE_H

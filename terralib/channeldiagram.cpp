@@ -2,5 +2,5 @@
 
 ChannelDiagram::ChannelDiagram(Window *w)
 {
-    wnd = w;
+    setWindow(w);
 }

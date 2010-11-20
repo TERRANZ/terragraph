@@ -8,7 +8,7 @@ class Box : public Complex
 private:
 
 public:
-    Box(Window *w = 0);
+    Box(Glyph *parent);
 };
 
 #endif // BOX_H
