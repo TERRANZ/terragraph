@@ -16,7 +16,11 @@ void GraphicManager::createChanDiagram()
     chandiag = new ChannelDiagram(wnd);
     chandiag->draw();
 }
-void GraphicManager::addVertToProcDiag(int pvt,wstring txt)
+
+void GraphicManager::addVertToProcDiag(int pvt)
 {
-    Vertex *newvert = new Vertex(procdiag,txt,L"1",0,pvt);
+    Vertex *newvert = new Vertex(procdiag,L"1",0,pvt);
+    procdiag->insert(newvert);
+    procdiag->draw();
+    procObjects.push_back(newvert);
 }

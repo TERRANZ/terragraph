@@ -7,6 +7,9 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);;
     processdiagwnd = new WindowQt(ui->mdiArea);
+    gm = new GraphicManager(processdiagwnd);
+    gm->createProcDiagram();
+    
 }
 
 MainWindow::~MainWindow()
@@ -29,8 +32,6 @@ void MainWindow::changeEvent(QEvent *e)
 
 void MainWindow::AddNewV()
 {
-//    Vertex *newvert = new Vertex(processdiagwnd,L"S",L"1");
-//    procdiagram->insert(newvert);
-//
-//    processdiagwnd->reDraw();
+    gm->addVertToProcDiag(1);
+    processdiagwnd->reDraw();
 }

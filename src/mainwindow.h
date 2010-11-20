@@ -22,6 +22,7 @@ protected:
 private:
     Ui::MainWindow *ui;
     WindowQt *processdiagwnd;
+    GraphicManager *gm;
 
 private slots:
     void AddNewV();

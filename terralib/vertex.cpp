@@ -1,11 +1,32 @@
 #include "vertex.h"
 
-Vertex::Vertex(Glyph *parent,wstring t1, wstring gid,int diagtype, int type)
+Vertex::Vertex(Glyph *parent, wstring gid,int diagtype, int type)
 {
     setWindow(parent->window());
     setParent(parent);
     circle = new Circle(this);
-    text = new Character(this,t1);
+    switch (type)
+    {
+    case 1:
+        {
+            if (diagType == 0)
+            {
+                //процесс
+                text = new Character(this,L"M");
+            }else
+            {
+                //канал
+                text = new Character(this,L"S");
+            }
+        }
+        break;
+    case 2:
+        {
+            text = new Character(this,L"P");
+        }
+        break;
+    }
+
     circle->insert(text);
     this->insert(circle);
     setGId(gid);

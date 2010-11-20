@@ -3,8 +3,9 @@
 ProcessDiagram::ProcessDiagram(Window *w)
 {
     setWindow(w);
+    draw();
 }
-void ProcessDiagram::draw(Window* w)
+void ProcessDiagram::draw()
 {
     list<Glyph*>::iterator ci;
 

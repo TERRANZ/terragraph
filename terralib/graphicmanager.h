@@ -24,12 +24,14 @@ public:
     GraphicManager(Window *w);
     void createProcDiagram();
     void createChanDiagram();
-    void addVertToProcDiag(int pvt,wstring txt);
+    void addVertToProcDiag(int pvt);
 
 private:
     Window *wnd;
     ProcessDiagram *procdiag;
     ChannelDiagram *chandiag;
+    list<Glyph*> procObjects;
+    list<Glyph*> chanObjects;
 };
 
 #endif // GRAPHICMANAGER_H

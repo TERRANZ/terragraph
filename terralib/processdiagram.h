@@ -11,7 +11,7 @@ class ProcessDiagram : public Complex
 
 public:
     ProcessDiagram(Window *w = 0);
-    void draw(Window* w =0);
+    void draw();
     void remove(Glyph *c);
     void bounds(Rect& r) ;
     bool intersects(const Point& p);

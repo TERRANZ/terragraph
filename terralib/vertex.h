@@ -18,7 +18,7 @@ private:
     int diagType;
     int vertType;
 public:
-    Vertex(Glyph *parent,wstring t1, wstring gid,int diagtype, int type);
+    Vertex(Glyph *parent, wstring gid,int diagtype, int type);
     void draw();
     void setText(wstring txt);
     Glyph* getGlyphById(wstring id);
