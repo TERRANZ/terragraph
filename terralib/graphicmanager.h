@@ -27,6 +27,7 @@ public:
     void createChanDiagram();
     void addVertToProcDiag(int pvt);
 
+
 private:
     Window *wnd;
     ProcessDiagram *procdiag;

@@ -25,8 +25,6 @@ public:
         ChildGlyphList.remove(g);
     };
     virtual void remove(int) {};
-    virtual Glyph* getGlyphById(wstring) {return 0;};
-    virtual Glyph* getGlyphFromChildsById(Complex*,wstring) {return 0;};
 };
 
 #endif // COMPLEX_H

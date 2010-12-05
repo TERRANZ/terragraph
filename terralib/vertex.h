@@ -14,14 +14,17 @@ class Vertex : public Complex
 private:
     int VertexType;
     Circle *circle;
-    Character *text;
+    Character *Text;
     int diagType;
     int vertType;
 public:
     Vertex(Glyph *parent);
-    void setText(wstring txt) {text->setText(txt);};
+    void setText(wstring txt) {Text->setText(txt);};
+    wstring text() {return Text->text();};
     int type() {return vertType;};
     void setType(int t) {vertType = t;};
+    Circle *getCircle() {return circle;};
+    Character *getText() {return Text;};
 };
 
 #endif // VERTEX_H

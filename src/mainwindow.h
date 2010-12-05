@@ -3,10 +3,10 @@
 
 #include <QMainWindow>
 #include <QList>
-//#include "../terralib/windowqt.h"
-//#include "../terralib/graphicmanager.h"
-//#include "../terralib/processdiagram.h"
-//#include "../terralib/channeldiagram.h"
+#include "../terralib/windowqt.h"
+#include "../terralib/graphicmanager.h"
+#include "../terralib/processdiagram.h"
+#include "../terralib/channeldiagram.h"
 #include "logger.h"
 
 namespace Ui {
@@ -25,9 +25,9 @@ protected:
 private:
     Ui::MainWindow *ui;
     Logger *logger;
-//    WindowQt *processdiagwnd;
-//    GraphicManager *gm;
-//    ProcessDiagram *procdiag;
+    WindowQt *processdiagwnd;
+    GraphicManager *gm;
+    ProcessDiagram *procdiag;
 
 private slots:
     void AddNewV();

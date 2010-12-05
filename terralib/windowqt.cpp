@@ -2,56 +2,57 @@
 
 WindowQt::WindowQt(QWidget *parent)
 {
-//    Pen.setColor(QColor("black"));
-//    this->setParent(parent);
-//    GrView = new QGraphicsView(this,parent);
-//    this->setSceneRect(0,0,500,300);
-//    GrView->show();
-//    connect(this,SIGNAL(selectionChanged()),this,SLOT(SelectionChanged()));
-//    CurrentItem = 0;
-//    CurrentGlyph = 0;
-//    CurrentParent = 0;
+    Pen.setColor(QColor("black"));
+    this->setParent(parent);
+    GrView = new QGraphicsView(this,parent);
+    this->setSceneRect(0,0,500,300);
+    GrView->show();
+    connect(this,SIGNAL(selectionChanged()),this,SLOT(SelectionChanged()));
+    CurrentItem = 0;
 }
 
 WindowQt::~WindowQt()
 {
 }
 
-void WindowQt::drawtext(Glyph * g,wstring &txt)
+void WindowQt::drawtext(Glyph * g,Glyph *p,wstring txt)
 {
-//    std::string temp;
-//    std::copy(txt.begin(), txt.end(), std::back_inserter(temp));
-//    QString s(temp.c_str());
-//    QGraphicsItem *newtxt = this->addText(s);
-//    newtxt->setPos(CurrentGlyph->position().x,CurrentGlyph->position().y);
-//    GraphicsItems.append(newtxt);
-//    GlyphsMap.insert(newtxt,CurrentGlyph);
-//    newtxt->setParentItem(CurrentParent);
-//    if (CurrentParent == 0)
-//    {
-//        newtxt->setFlag(QGraphicsItem::ItemIsMovable);
-//        newtxt->setFlag(QGraphicsItem::ItemIsSelectable);
-//    }
+    std::string temp;
+    std::copy(txt.begin(), txt.end(), std::back_inserter(temp));
+    QString s(temp.c_str());
+    QGraphicsItem *newtxt = this->addText(s);
+    newtxt->setPos(g->position().x,g->position().y);
+    GraphicsItems.append(newtxt);
+    GlyphsMap.insert(newtxt,g);
+    if (p == 0)
+    {
+        newtxt->setFlag(QGraphicsItem::ItemIsMovable);
+        newtxt->setFlag(QGraphicsItem::ItemIsSelectable);
+    }else
+        newtxt->setParentItem(GlyphsMap.key(p));
 }
-void WindowQt::drawBox(Glyph * g,int x1,int y1,int x2,int y2)
+void WindowQt::drawBox(Glyph * g,Glyph *p,int x1,int y1,int x2,int y2)
 {
 }
-void WindowQt::drawLine(Glyph * g,int x1,int y1,int x2,int y2)
+void WindowQt::drawLine(Glyph * g,Glyph *p,int x1,int y1,int x2,int y2)
 {
     this->addLine(qreal(x1),qreal(y1),qreal(x2),qreal(y2),Pen);
 }
-void WindowQt::drawPoint(Glyph * g,int x,int y)
+void WindowQt::drawPoint(Glyph * g,Glyph *p,int x,int y)
 {
 }
-void WindowQt::drawCircle(Glyph * g,int x,int y, float r)
+void WindowQt::drawCircle(Glyph * g,Glyph *p,int x,int y, float r)
 {
-//    QGraphicsItem *newel = this->addEllipse(qreal(x),qreal(y),qreal(r),qreal(r),Pen);
-//    newel->setFlag(QGraphicsItem::ItemIsMovable);
-//    newel->setFlag(QGraphicsItem::ItemIsSelectable);
-//    newel->setPos(CurrentGlyph->position().x,CurrentGlyph->position().y);
-//    GraphicsItems.append(newel);
-//    GlyphsMap.insert(newel,CurrentGlyph);
-//    CurrentParent = newel;
+    QGraphicsItem *newel = this->addEllipse(qreal(x),qreal(y),qreal(r),qreal(r),Pen);
+    newel->setPos(g->position().x,g->position().y);
+    GraphicsItems.append(newel);
+    GlyphsMap.insert(newel,g);
+    //if (p == 0)
+    //{
+        newel->setFlag(QGraphicsItem::ItemIsMovable);
+        newel->setFlag(QGraphicsItem::ItemIsSelectable);
+    //}else
+        //newel->setParentItem(GlyphsMap.key(p));;
 }
 void WindowQt::setPenColor(int r,int g,int b)
 {
@@ -60,9 +61,9 @@ void WindowQt::setPenColor(int r,int g,int b)
 void WindowQt::setPenType(int type)
 {
 }
-void WindowQt::drawArrow(Glyph * g,int x1,int y1, int x2, int y2)
+void WindowQt::drawArrow(Glyph * g,Glyph *p,int x1,int y1, int x2, int y2)
 {
-    drawLine(g,x1,y1,x2,y2);
+    drawLine(g,p,x1,y1,x2,y2);
 }
 void WindowQt::PositionChanged(QGraphicsItem *item,QPoint &newpos)
 {
@@ -70,16 +71,16 @@ void WindowQt::PositionChanged(QGraphicsItem *item,QPoint &newpos)
 }
 void WindowQt::reDraw()
 {
-//    foreach (QGraphicsItem *itm, GraphicsItems)
-//    {
-//        this->removeItem(itm);
-//        GraphicsItems.removeOne(itm);
-//    }
-//
-//    foreach (Complex *c,Glyphs)
-//    {
-//        c->draw();
-//    }
+    //    foreach (QGraphicsItem *itm, GraphicsItems)
+    //    {
+    //        this->removeItem(itm);
+    //        GraphicsItems.removeOne(itm);
+    //    }
+    //
+    //    foreach (Complex *c,Glyphs)
+    //    {
+    //        c->draw();
+    //    }
 }
 
 QGraphicsItem *WindowQt::drawSingle(Glyph *s, QGraphicsItem *p)
@@ -91,19 +92,19 @@ QGraphicsItem *WindowQt::drawSingle(Glyph *s, QGraphicsItem *p)
 
 int  WindowQt::AddCompl(Complex *c)
 {
-//    Glyphs.append(c);
-//    c->draw();
-//    ParentsMap.insert(c,c->parent());
-//    return Glyphs.indexOf(c);
+    //    Glyphs.append(c);
+    //    c->draw();
+    //    ParentsMap.insert(c,c->parent());
+    //    return Glyphs.indexOf(c);
 }
 void WindowQt::RemoveCompl(int n)
 {
-//    Glyphs.removeAt(n);
+    //    Glyphs.removeAt(n);
 }
 void WindowQt::RemoveCompl(Complex *c)
 {
-//    Glyphs.removeOne(c);
-//    ParentsMap.remove(c);
+    //    Glyphs.removeOne(c);
+    //    ParentsMap.remove(c);
 }
 
 void WindowQt::Resize(int w,int h)
@@ -126,28 +127,22 @@ void WindowQt::SelectionChanged()
 
 void WindowQt::mouseReleaseEvent ( QGraphicsSceneMouseEvent * mouseEvent )
 {
-//    if (CurrentItem != 0 )
-//    {
-//        //Point newpos;
-//        //newpos.x = (mouseEvent->scenePos().x());
-//        //newpos.y = (mouseEvent->scenePos().y());
-//        //GlyphsMap[CurrentItem]->setPosition(newpos);
-//
-//
-//       Point newpos;
-//       newpos.x = (100);
-//       newpos.y = (100);
-//       GlyphsMap[CurrentItem]->setPosition(newpos);
-//    }
+    if (CurrentItem != 0 )
+    {
+        Point newpos;
+        newpos.x = (mouseEvent->scenePos().x());
+        newpos.y = (mouseEvent->scenePos().y());
+        GlyphsMap[CurrentItem]->setPosition(newpos);
+    }
 }
 
 void WindowQt::drawVertex(Vertex *v)
 {
-//    QGraphicsItem *circle = this->addEllipse(0,0,30,30,Pen);
-//    QGraphicsItem *text = this->addText("S");
-//    text->setParentItem(circle);
-//    text->setPos(7,7);
-//    circle->setFlag(QGraphicsItem::ItemIsMovable);
-//    circle->setFlag(QGraphicsItem::ItemIsSelectable);
+    //    QGraphicsItem *circle = this->addEllipse(0,0,30,30,Pen);
+    //    QGraphicsItem *text = this->addText("S");
+    //    text->setParentItem(circle);
+    //    text->setPos(7,7);
+    //    circle->setFlag(QGraphicsItem::ItemIsMovable);
+    //    circle->setFlag(QGraphicsItem::ItemIsSelectable);
 }
 
