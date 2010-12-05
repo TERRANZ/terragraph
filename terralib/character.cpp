@@ -9,7 +9,7 @@ Character::Character(Glyph *parent,wstring txt)
 
 void Character::draw()
 {
-    window()->setCurrentGlyphId(getGId());
+    window()->setCurrentGlyphId(gId());
     window()->drawtext(Text);
 }
 

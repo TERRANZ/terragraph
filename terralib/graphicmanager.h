@@ -15,6 +15,7 @@
 #include "processdiagram.h"
 #include "channeldiagram.h"
 #include "list"
+#include <sstream>
 using namespace std;
 
 class GraphicManager
@@ -22,7 +23,7 @@ class GraphicManager
 public:
 
     GraphicManager(Window *w);
-    void createProcDiagram();
+    ProcessDiagram * createProcDiagram();
     void createChanDiagram();
     void addVertToProcDiag(int pvt);
 

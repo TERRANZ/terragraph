@@ -11,6 +11,7 @@ void ProcessDiagram::draw()
 
     for(ci=ChildGlyphList.begin(); ci != ChildGlyphList.end(); ++ci)
     {
+        window()->setCurrentGlyphId((*ci)->gId());
         (*ci)->draw();
     }
 }
@@ -35,7 +36,7 @@ Glyph *ProcessDiagram::getGlyphById(wstring id)
 
     for(ci=ChildGlyphList.begin(); ci != ChildGlyphList.end(); ++ci)
     {
-        if ((*ci)->getGId() == id)
+        if ((*ci)->gId() == id)
             return (*ci);
         if (static_cast<Complex*>(*ci))
         {
@@ -51,7 +52,7 @@ Glyph *ProcessDiagram::getGlyphFromChildsById(Complex *c, wstring id)
 
     for (ci=c->ChildGlyphList.begin(); ci != c->ChildGlyphList.end(); ++ci)
     {
-        if ((*ci)->getGId() == id)
+        if ((*ci)->gId() == id)
             return (*ci);
         if (static_cast<Complex*>(*ci))
         {

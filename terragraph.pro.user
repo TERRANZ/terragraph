@@ -76,7 +76,7 @@
   <valuemap type="QVariantMap">
    <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString">Debug</value>
    <valuelist key="abstractProcess.Environment" type="QVariantList">
-    <value type="QString">DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-9FTc3gkNn9,guid=438f16c93bc3d59308ed80ff00000041</value>
+    <value type="QString">DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-7iX8vcV4FN,guid=2775e8ae2b515a81f46655f700000045</value>
     <value type="QString">DESKTOP_SESSION=kde</value>
     <value type="QString">DISPLAY=:0.0</value>
     <value type="QString">DM_CONTROL=/var/run/xdmctl</value>
@@ -96,16 +96,16 @@
     <value type="QString">PWD=/home/terranz/Документы</value>
     <value type="QString">QTDIR=/usr/share/qt4</value>
     <value type="QString">QT_PLUGIN_PATH=/home/terranz/.kde/lib/kde4/plugins/:/usr/lib/kde4/plugins/</value>
-    <value type="QString">SESSION_MANAGER=local/terralenovo:@/tmp/.ICE-unix/2762,unix/terralenovo:/tmp/.ICE-unix/2762</value>
+    <value type="QString">SESSION_MANAGER=local/terralenovo:@/tmp/.ICE-unix/2887,unix/terralenovo:/tmp/.ICE-unix/2887</value>
     <value type="QString">SHELL=/bin/bash</value>
     <value type="QString">SHLVL=0</value>
-    <value type="QString">SSH_AGENT_PID=2679</value>
-    <value type="QString">SSH_AUTH_SOCK=/tmp/ssh-uAdgNL2638/agent.2638</value>
+    <value type="QString">SSH_AGENT_PID=2803</value>
+    <value type="QString">SSH_AUTH_SOCK=/tmp/ssh-eWQErY2762/agent.2762</value>
     <value type="QString">USER=terranz</value>
     <value type="QString">WINDOWPATH=7</value>
     <value type="QString">XCURSOR_THEME=Nyah</value>
     <value type="QString">XDG_DATA_DIRS=/usr/share:/usr/share:/usr/local/share</value>
-    <value type="QString">XDG_SESSION_COOKIE=a1f5eb0346244f41c7fef6db00002990-1289592421.615835-5719607</value>
+    <value type="QString">XDG_SESSION_COOKIE=a1f5eb0346244f41c7fef6db00002990-1291305002.248180-402570748</value>
     <value type="QString">XDM_MANAGED=method=classic</value>
    </valuelist>
    <valuelist key="abstractProcess.arguments" type="QVariantList">
@@ -116,7 +116,7 @@
     <value type="QString">CONFIG+=debug</value>
    </valuelist>
    <value key="abstractProcess.command" type="QString">/usr/bin/qmake-qt4</value>
-   <value key="abstractProcess.enabled" type="bool">false</value>
+   <value key="abstractProcess.enabled" type="bool">true</value>
    <value key="abstractProcess.workingDirectory" type="QString">/media/dosfs/Diplom/program/terragraph</value>
   </valuemap>
  </data>
@@ -125,7 +125,7 @@
   <valuemap type="QVariantMap">
    <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString">Debug</value>
    <valuelist key="abstractProcess.Environment" type="QVariantList">
-    <value type="QString">DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-9FTc3gkNn9,guid=438f16c93bc3d59308ed80ff00000041</value>
+    <value type="QString">DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-7iX8vcV4FN,guid=2775e8ae2b515a81f46655f700000045</value>
     <value type="QString">DESKTOP_SESSION=kde</value>
     <value type="QString">DISPLAY=:0.0</value>
     <value type="QString">DM_CONTROL=/var/run/xdmctl</value>
@@ -145,16 +145,16 @@
     <value type="QString">PWD=/home/terranz/Документы</value>
     <value type="QString">QTDIR=/usr/share/qt4</value>
     <value type="QString">QT_PLUGIN_PATH=/home/terranz/.kde/lib/kde4/plugins/:/usr/lib/kde4/plugins/</value>
-    <value type="QString">SESSION_MANAGER=local/terralenovo:@/tmp/.ICE-unix/2762,unix/terralenovo:/tmp/.ICE-unix/2762</value>
+    <value type="QString">SESSION_MANAGER=local/terralenovo:@/tmp/.ICE-unix/2887,unix/terralenovo:/tmp/.ICE-unix/2887</value>
     <value type="QString">SHELL=/bin/bash</value>
     <value type="QString">SHLVL=0</value>
-    <value type="QString">SSH_AGENT_PID=2679</value>
-    <value type="QString">SSH_AUTH_SOCK=/tmp/ssh-uAdgNL2638/agent.2638</value>
+    <value type="QString">SSH_AGENT_PID=2803</value>
+    <value type="QString">SSH_AUTH_SOCK=/tmp/ssh-eWQErY2762/agent.2762</value>
     <value type="QString">USER=terranz</value>
     <value type="QString">WINDOWPATH=7</value>
     <value type="QString">XCURSOR_THEME=Nyah</value>
     <value type="QString">XDG_DATA_DIRS=/usr/share:/usr/share:/usr/local/share</value>
-    <value type="QString">XDG_SESSION_COOKIE=a1f5eb0346244f41c7fef6db00002990-1289592421.615835-5719607</value>
+    <value type="QString">XDG_SESSION_COOKIE=a1f5eb0346244f41c7fef6db00002990-1291305002.248180-402570748</value>
     <value type="QString">XDM_MANAGED=method=classic</value>
    </valuelist>
    <value key="abstractProcess.IgnoreReturnValue" type="bool">false</value>
@@ -171,7 +171,7 @@
   <valuemap type="QVariantMap">
    <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString">Debug</value>
    <valuelist key="abstractProcess.Environment" type="QVariantList">
-    <value type="QString">DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-qQlI1jkJwn,guid=fdc320cc1d22303fc7f4222c00000047</value>
+    <value type="QString">DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-7iX8vcV4FN,guid=2775e8ae2b515a81f46655f700000045</value>
     <value type="QString">DESKTOP_SESSION=kde</value>
     <value type="QString">DISPLAY=:0.0</value>
     <value type="QString">DM_CONTROL=/var/run/xdmctl</value>
@@ -191,16 +191,16 @@
     <value type="QString">PWD=/home/terranz/Документы</value>
     <value type="QString">QTDIR=/usr/share/qt4</value>
     <value type="QString">QT_PLUGIN_PATH=/home/terranz/.kde/lib/kde4/plugins/:/usr/lib/kde4/plugins/</value>
-    <value type="QString">SESSION_MANAGER=local/terralenovo:@/tmp/.ICE-unix/2733,unix/terralenovo:/tmp/.ICE-unix/2733</value>
+    <value type="QString">SESSION_MANAGER=local/terralenovo:@/tmp/.ICE-unix/2887,unix/terralenovo:/tmp/.ICE-unix/2887</value>
     <value type="QString">SHELL=/bin/bash</value>
     <value type="QString">SHLVL=0</value>
-    <value type="QString">SSH_AGENT_PID=2650</value>
-    <value type="QString">SSH_AUTH_SOCK=/tmp/ssh-CMrAqx2609/agent.2609</value>
+    <value type="QString">SSH_AGENT_PID=2803</value>
+    <value type="QString">SSH_AUTH_SOCK=/tmp/ssh-eWQErY2762/agent.2762</value>
     <value type="QString">USER=terranz</value>
     <value type="QString">WINDOWPATH=7</value>
     <value type="QString">XCURSOR_THEME=Nyah</value>
     <value type="QString">XDG_DATA_DIRS=/usr/share:/usr/share:/usr/local/share</value>
-    <value type="QString">XDG_SESSION_COOKIE=a1f5eb0346244f41c7fef6db00002990-1289233867.418423-1837314547</value>
+    <value type="QString">XDG_SESSION_COOKIE=a1f5eb0346244f41c7fef6db00002990-1291305002.248180-402570748</value>
     <value type="QString">XDM_MANAGED=method=classic</value>
    </valuelist>
    <value key="abstractProcess.IgnoreReturnValue" type="bool">true</value>

@@ -1,6 +1,6 @@
 #include "vertex.h"
 
-Vertex::Vertex(Glyph *parent, wstring gid,int diagtype, int type)
+Vertex::Vertex(Complex *parent, wstring gid,int diagtype, int type)
 {
     setWindow(parent->window());
     setParent(parent);
@@ -29,9 +29,11 @@ Vertex::Vertex(Glyph *parent, wstring gid,int diagtype, int type)
 
     circle->insert(text);
     this->insert(circle);
-    setGId(gid);
-    circle->setGId(getGId()+L"-1");
-    text->setGId(getGId()+L"-2");
+    wstringstream StrStream;
+    StrStream << parent->ChildGlyphList.size()+1;
+    setGId(parent->gId()+L"-"+StrStream.str());
+    circle->setGId(gId()+L"-1");
+    text->setGId(gId()+L"-2");
 }
 
 void Vertex::draw()
@@ -46,9 +48,9 @@ void Vertex::setText(wstring txt)
 
 Glyph* Vertex::getGlyphById(wstring id)
 {
-    if (circle->getGId() == id)
+    if (circle->gId() == id)
         return circle;
-    if (text->getGId() == id)
+    if (text->gId() == id)
         return text;
     return 0;
 }

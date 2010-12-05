@@ -22,7 +22,7 @@ void WindowQt::setCurrentGlyphId(wstring gid)
     CurrentGlyph = 0;
     foreach (Complex *c,Glyphs)
     {
-        if (c->getGId() == gid)
+        if (c->gId() == gid)
             CurrentGlyph = c;
         else
         {
@@ -142,10 +142,16 @@ void WindowQt::mouseReleaseEvent ( QGraphicsSceneMouseEvent * mouseEvent )
 {
     if (CurrentItem != 0 )
     {
-        Point newpos;
-        newpos.x = (mouseEvent->scenePos().x());
-        newpos.y = (mouseEvent->scenePos().y());
-        GlyphsMap[CurrentItem]->setPosition(newpos);
+        //Point newpos;
+        //newpos.x = (mouseEvent->scenePos().x());
+        //newpos.y = (mouseEvent->scenePos().y());
+        //GlyphsMap[CurrentItem]->setPosition(newpos);
+
+
+       Point newpos;
+       newpos.x = (100);
+       newpos.y = (100);
+       GlyphsMap[CurrentItem]->setPosition(newpos);
     }
 }
 

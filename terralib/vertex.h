@@ -6,6 +6,7 @@
 #include "circle.h"
 #include <list>
 #include <vector>
+#include <sstream>
 using namespace std;
 
 class Vertex : public Complex
@@ -18,7 +19,7 @@ private:
     int diagType;
     int vertType;
 public:
-    Vertex(Glyph *parent, wstring gid,int diagtype, int type);
+    Vertex(Complex *parent, wstring gid,int diagtype, int type);
     void draw();
     void setText(wstring txt);
     Glyph* getGlyphById(wstring id);

@@ -22,7 +22,7 @@ public:
     virtual void setParent(Glyph* g = 0) {Parent = g;};
     virtual Glyph* parent() {return Parent;};
     virtual void setGId(wstring gid) {id = gid;};
-    virtual wstring getGId() {return id;}
+    virtual wstring gId() {return id;}
     virtual void setWindow(Window *w = 0) {wnd = w;};
     virtual Window *window() {return wnd;};
 };

@@ -5,6 +5,8 @@
 #include <QList>
 #include "../terralib/windowqt.h"
 #include "../terralib/graphicmanager.h"
+#include "../terralib/processdiagram.h"
+#include "../terralib/channeldiagram.h"
 
 namespace Ui {
     class MainWindow;
@@ -23,6 +25,7 @@ private:
     Ui::MainWindow *ui;
     WindowQt *processdiagwnd;
     GraphicManager *gm;
+    ProcessDiagram *procdiag;
 
 private slots:
     void AddNewV();

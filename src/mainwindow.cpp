@@ -8,8 +8,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);;
     processdiagwnd = new WindowQt(ui->mdiArea);
     gm = new GraphicManager(processdiagwnd);
-    gm->createProcDiagram();
-    
+    procdiag  = gm->createProcDiagram();
+    processdiagwnd->AddCompl(procdiag);
 }
 
 MainWindow::~MainWindow()

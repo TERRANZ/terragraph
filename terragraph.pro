@@ -22,7 +22,13 @@ SOURCES += src/main.cpp \
     terralib/channeldiagram.cpp \
     terralib/arc.cpp \
     terralib/settings.cpp \
-    terralib/graphicmanager.cpp
+    terralib/graphicmanager.cpp \
+    terraqt/processentity.cpp \
+    terraqt/moduleentity.cpp \
+    terraqt/logger.cpp \
+    terraqt/graphprimentity.cpp \
+    terraqt/assembleentity.cpp \
+    terraqt/arrowentity.cpp
 HEADERS += src/mainwindow.h \
     terralib/point.h \
     terralib/character.h \
@@ -42,5 +48,11 @@ HEADERS += src/mainwindow.h \
     terralib/arc.h \
     terralib/glyph.h \
     terralib/settings.h \
-    terralib/graphicmanager.h
+    terralib/graphicmanager.h \
+    terraqt/processentity.h \
+    terraqt/moduleentity.h \
+    terraqt/logger.h \
+    terraqt/graphprimentity.h \
+    terraqt/assembleentity.h \
+    terraqt/arrowentity.h
 FORMS += src/mainwindow.ui
