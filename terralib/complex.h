@@ -4,6 +4,7 @@
 #include "glyph.h"
 #include "geometry.h"
 #include <list>
+#include <string>
 using namespace std;
 
 class Complex : public Glyph

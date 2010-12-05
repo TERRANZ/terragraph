@@ -1,6 +1,6 @@
 #include "channeldiagram.h"
 
-ChannelDiagram::ChannelDiagram(Window *w)
+ChannelDiagram::ChannelDiagram(Glyph *parent)
 {
-    setWindow(w);
+    setParent(parent);
 }

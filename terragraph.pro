@@ -10,26 +10,22 @@ TARGET = terragraph
 TEMPLATE = app
 SOURCES += src/main.cpp \
     src/mainwindow.cpp \
+    src/logger.cpp \
     terralib/character.cpp \
     terralib/arrow.cpp \
     terralib/box.cpp \
     terralib/circle.cpp \
     terralib/command.cpp \
     terralib/visitor.cpp \
-    terralib/vertex.cpp \
     terralib/windowqt.cpp \
     terralib/processdiagram.cpp \
     terralib/channeldiagram.cpp \
     terralib/arc.cpp \
     terralib/settings.cpp \
     terralib/graphicmanager.cpp \
-    terraqt/processentity.cpp \
-    terraqt/moduleentity.cpp \
-    terraqt/logger.cpp \
-    terraqt/graphprimentity.cpp \
-    terraqt/assembleentity.cpp \
-    terraqt/arrowentity.cpp
+    terralib/vertex.cpp
 HEADERS += src/mainwindow.h \
+    src/logger.h \
     terralib/point.h \
     terralib/character.h \
     terralib/arrow.h \
@@ -48,11 +44,5 @@ HEADERS += src/mainwindow.h \
     terralib/arc.h \
     terralib/glyph.h \
     terralib/settings.h \
-    terralib/graphicmanager.h \
-    terraqt/processentity.h \
-    terraqt/moduleentity.h \
-    terraqt/logger.h \
-    terraqt/graphprimentity.h \
-    terraqt/assembleentity.h \
-    terraqt/arrowentity.h
+    terralib/graphicmanager.h
 FORMS += src/mainwindow.ui

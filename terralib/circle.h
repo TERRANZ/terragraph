@@ -9,7 +9,6 @@ private:
     int radius;
 public:
     Circle(Glyph *parent);
-    void draw();
 };
 
 #endif // CIRCLE_H

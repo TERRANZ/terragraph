@@ -10,13 +10,10 @@ class ProcessDiagram : public Complex
 {
 
 public:
-    ProcessDiagram(Window *w = 0);
-    void draw();
+    ProcessDiagram(Glyph *parent);
     void remove(Glyph *c);
     void bounds(Rect& r) ;
     bool intersects(const Point& p);
-    Glyph *getGlyphById(wstring id);
-    Glyph *getGlyphFromChildsById(Complex *c, wstring id);
 };
 
 #endif // PROCESSDIAGRAM_H

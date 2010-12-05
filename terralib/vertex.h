@@ -15,14 +15,11 @@ private:
     int VertexType;
     Circle *circle;
     Character *text;
-    Character *text2;
     int diagType;
     int vertType;
 public:
-    Vertex(Complex *parent, wstring gid,int diagtype, int type);
-    void draw();
-    void setText(wstring txt);
-    Glyph* getGlyphById(wstring id);
+    Vertex(Glyph *parent);
+    void setText(wstring txt) {text->setText(txt);};
     int type() {return vertType;};
     void setType(int t) {vertType = t;};
 };
