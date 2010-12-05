@@ -12,7 +12,6 @@ SOURCES += src/main.cpp \
     src/mainwindow.cpp \
     src/logger.cpp \
     terralib/character.cpp \
-    terralib/arrow.cpp \
     terralib/box.cpp \
     terralib/circle.cpp \
     terralib/command.cpp \
@@ -23,7 +22,9 @@ SOURCES += src/main.cpp \
     terralib/arc.cpp \
     terralib/settings.cpp \
     terralib/graphicmanager.cpp \
-    terralib/vertex.cpp
+    terralib/vertex.cpp \
+    terralib/settingsmanager.cpp \
+    terralib/arrowqt.cpp
 HEADERS += src/mainwindow.h \
     src/logger.h \
     terralib/point.h \
@@ -44,5 +45,7 @@ HEADERS += src/mainwindow.h \
     terralib/arc.h \
     terralib/glyph.h \
     terralib/settings.h \
-    terralib/graphicmanager.h
+    terralib/graphicmanager.h \
+    terralib/settingsmanager.h \
+    terralib/arrowqt.h
 FORMS += src/mainwindow.ui

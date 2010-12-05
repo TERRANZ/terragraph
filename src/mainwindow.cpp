@@ -6,16 +6,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);;
-    processdiagwnd = new WindowQt(ui->mdiArea);
-    gm = new GraphicManager(processdiagwnd);
-    procdiag  = gm->createProcDiagram();
-    processdiagwnd->AddCompl(procdiag);
+    gm = new GraphicManager(ui->mdiArea);
+    gm->createProcDiagram();
     logger = new Logger();
 }
 
 MainWindow::~MainWindow()
 {
-    delete processdiagwnd;
     delete logger;
     delete ui;
 }
@@ -36,4 +33,8 @@ void MainWindow::AddNewV()
 {
     gm->addVertToProcDiag(1);
     logger->addToLog("MainWindow::AddNewV()");
+}
+void MainWindow::AddNewArrow()
+{
+    gm->addArrow();
 }

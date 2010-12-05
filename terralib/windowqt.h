@@ -5,6 +5,7 @@
 #include "point.h"
 #include "complex.h"
 #include "vertex.h"
+#include "arrowqt.h"
 #include <QWidget>
 #include <QGraphicsView>
 #include <QGraphicsScene>
@@ -27,15 +28,10 @@ public:
     void drawLine(Glyph *g,Glyph *p,int x1,int y1,int x2,int y2);
     void drawPoint(Glyph *g,Glyph *p,int x,int y);
     void drawCircle(Glyph *g,Glyph *p,int x,int y, float r);
-    void drawArrow(Glyph *g,Glyph *p,int x1,int y1, int x2, int y2);
+    void drawArrow(ArrowQt *a,Glyph *p,int x1,int y1, int x2, int y2);
     void reDraw();
-    void setCurrentGlyphId(wstring gid);
-    QGraphicsItem *drawSingle(Glyph *s = 0, QGraphicsItem *p = 0);
-    int  AddCompl(Complex *c = 0);
-    void RemoveCompl(int n);
-    void RemoveCompl(Complex *c);
-    void drawVertex(Vertex *v);
-
+    QGraphicsItem *currentItem() {return CurrentItem;};
+    QGraphicsItem *lastItem() {return LastItem;};
 
 private:
     QWidget *Parent;
@@ -46,6 +42,7 @@ private:
     QMap <Glyph*,Glyph*> ParentsMap; //Glyph -> Parent
     QList <QGraphicsItem*> GraphicsItems;
     QGraphicsItem *CurrentItem;
+    QGraphicsItem *LastItem;
 
 protected:
     void mouseReleaseEvent ( QGraphicsSceneMouseEvent * mouseEvent );

@@ -1,8 +1,9 @@
 #include "graphicmanager.h"
 
-GraphicManager::GraphicManager(Window *w)
+GraphicManager::GraphicManager(QWidget *parent)
 {
-    wnd = w;
+    wnd = new WindowQt(parent);
+
 }
 
 ProcessDiagram *GraphicManager::createProcDiagram()
@@ -23,4 +24,10 @@ void GraphicManager::addVertToProcDiag(int pvt)
     wnd->drawCircle(newver->getCircle(),newver->parent(),0,0,30);
     newver->setText(L"M");
     wnd->drawtext(newver->getText(),newver->getCircle(),newver->text());
+}
+
+void GraphicManager::addArrow()
+{
+    ArrowQt *newarr = new ArrowQt(wnd->lastItem(),wnd->currentItem(),wnd->lastItem(),wnd);
+    wnd->drawArrow(newarr,0,0,0,0,0);
 }

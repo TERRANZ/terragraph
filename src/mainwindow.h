@@ -25,12 +25,11 @@ protected:
 private:
     Ui::MainWindow *ui;
     Logger *logger;
-    WindowQt *processdiagwnd;
     GraphicManager *gm;
-    ProcessDiagram *procdiag;
 
 private slots:
     void AddNewV();
+    void AddNewArrow();
 };
 
 #endif // MAINWINDOW_H

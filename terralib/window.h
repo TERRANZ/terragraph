@@ -4,6 +4,7 @@
 #include <string>
 #include "glyph.h"
 #include "point.h"
+#include "arrow.h"
 
 using namespace std;
 
@@ -18,7 +19,7 @@ public:
     virtual void drawBox(Glyph * /*g*/,Glyph * /*p*/,int /*x1*/, int /*y1*/, int /*x2*/, int /*y2*/) {};
     virtual void setPenColor(int /*r*/,int /*g*/,int /*b*/) {};
     virtual void setPenType(int /*type*/) {};
-    virtual void drawArrow(int /*x1*/,int /*y1*/, int /*x2*/, int /*y2*/) {};
+    virtual void drawArrow(Arrow *, Glyph *,int /*x1*/,int /*y1*/, int /*x2*/, int /*y2*/) {};
 };
 
 #endif // WINDOW_H

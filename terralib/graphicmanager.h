@@ -1,12 +1,12 @@
 #ifndef GRAPHICMANAGER_H
 #define GRAPHICMANAGER_H
 
-#include "window.h"
+#include "windowqt.h"
 #include "character.h"
 #include "vertex.h"
 #include "circle.h"
 #include "arc.h"
-#include "arrow.h"
+#include "arrowqt.h"
 #include "box.h"
 #include "geometry.h"
 #include "point.h"
@@ -14,6 +14,7 @@
 #include "settings.h"
 #include "processdiagram.h"
 #include "channeldiagram.h"
+#include <QGraphicsItem>
 #include "list"
 #include <sstream>
 using namespace std;
@@ -22,14 +23,15 @@ class GraphicManager
 {
 public:
 
-    GraphicManager(Window *w);
+    GraphicManager(QWidget *parent);
     ProcessDiagram * createProcDiagram();
     void createChanDiagram();
     void addVertToProcDiag(int pvt);
-
+    void addArrow();
+    QGraphicsScene *getScene() {return wnd;};
 
 private:
-    Window *wnd;
+    WindowQt *wnd;
     ProcessDiagram *procdiag;
     ChannelDiagram *chandiag;
     list<Glyph*> procObjects;

@@ -61,9 +61,9 @@ void WindowQt::setPenColor(int r,int g,int b)
 void WindowQt::setPenType(int type)
 {
 }
-void WindowQt::drawArrow(Glyph * g,Glyph *p,int x1,int y1, int x2, int y2)
+void WindowQt::drawArrow(ArrowQt *a,Glyph *p,int x1,int y1, int x2, int y2)
 {
-    drawLine(g,p,x1,y1,x2,y2);
+    this->addLine(a->startitem()->pos().x(),a->startitem()->pos().y(),a->stopitem()->pos().x(),a->stopitem()->pos().y());
 }
 void WindowQt::PositionChanged(QGraphicsItem *item,QPoint &newpos)
 {
@@ -83,30 +83,6 @@ void WindowQt::reDraw()
     //    }
 }
 
-QGraphicsItem *WindowQt::drawSingle(Glyph *s, QGraphicsItem *p)
-{/*
-    CurrentParent = p;
-    s->draw();
-    return 0;*/
-}
-
-int  WindowQt::AddCompl(Complex *c)
-{
-    //    Glyphs.append(c);
-    //    c->draw();
-    //    ParentsMap.insert(c,c->parent());
-    //    return Glyphs.indexOf(c);
-}
-void WindowQt::RemoveCompl(int n)
-{
-    //    Glyphs.removeAt(n);
-}
-void WindowQt::RemoveCompl(Complex *c)
-{
-    //    Glyphs.removeOne(c);
-    //    ParentsMap.remove(c);
-}
-
 void WindowQt::Resize(int w,int h)
 {
     this->setSceneRect(0,0,qreal(w),qreal(h));
@@ -114,6 +90,7 @@ void WindowQt::Resize(int w,int h)
 
 void WindowQt::SelectionChanged()
 {
+    LastItem = CurrentItem;
     if (this->selectedItems().count() == 0)
     {
         //Ничего не выделено
@@ -134,15 +111,7 @@ void WindowQt::mouseReleaseEvent ( QGraphicsSceneMouseEvent * mouseEvent )
         newpos.y = (mouseEvent->scenePos().y());
         GlyphsMap[CurrentItem]->setPosition(newpos);
     }
+    QGraphicsScene::mouseReleaseEvent(mouseEvent);
 }
 
-void WindowQt::drawVertex(Vertex *v)
-{
-    //    QGraphicsItem *circle = this->addEllipse(0,0,30,30,Pen);
-    //    QGraphicsItem *text = this->addText("S");
-    //    text->setParentItem(circle);
-    //    text->setPos(7,7);
-    //    circle->setFlag(QGraphicsItem::ItemIsMovable);
-    //    circle->setFlag(QGraphicsItem::ItemIsSelectable);
-}
 
