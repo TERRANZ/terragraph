@@ -10,7 +10,7 @@ ArrowQt::ArrowQt(QGraphicsItem *startItem, QGraphicsItem *endItem,
     myEndItem = endItem;
     setFlag(QGraphicsItem::ItemIsSelectable);
     myColor = Qt::black;
-    setPen(QPen(myColor, 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+    setPen(QPen(myColor, 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));   
 }
 
 QRectF ArrowQt::boundingRect() const
@@ -48,9 +48,17 @@ void ArrowQt::paint(QPainter *painter, const QStyleOptionGraphicsItem *,
     painter->setPen(myPen);
     painter->setBrush(myColor);
 
-    QLineF centerLine(myStartItem->pos(), myEndItem->pos());
-    QPointF p1 = myEndItem->pos();
-//    QPointF p2;
+    //QLineF centerLine(myStartItem->pos(), myEndItem->pos());
+    QPointF p1 = myStartItem->pos();
+    QPointF p2 = myEndItem->pos();
+    qreal startdiff = myStartItem->boundingRect().width() / 2;
+    qreal enddiff = myEndItem->boundingRect().width() / 2;
+
+    p1.setX(p1.x()+startdiff);
+    p1.setY(p1.y()+startdiff);
+    p2.setX(p2.x()+enddiff);
+    p2.setY(p2.y()+enddiff);
+
 //    QPointF intersectPoint;
 //    QLineF polyLine;
 //    for (int i = 1; i < endPolygon.count(); ++i) {
@@ -64,8 +72,7 @@ void ArrowQt::paint(QPainter *painter, const QStyleOptionGraphicsItem *,
 //    }
 
 
-
-    setLine(QLineF(myStartItem->pos(),p1));
+    setLine(QLineF(p1,p2));
 
     double angle = ::acos(line().dx() / line().length());
     if (line().dy() >= 0)

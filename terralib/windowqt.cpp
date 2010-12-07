@@ -67,6 +67,7 @@ void WindowQt::drawArrow(ArrowQt *a,Glyph *p,int x1,int y1, int x2, int y2)
     this->addItem(a);
     GraphicsItems.append(a);
     GlyphsMap.insert(a,a);
+    a->setZValue(a->zValue()-0.1);
 }
 void WindowQt::PositionChanged(QGraphicsItem *item,QPoint &newpos)
 {
