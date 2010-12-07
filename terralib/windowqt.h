@@ -32,6 +32,7 @@ public:
     void reDraw();
     QGraphicsItem *currentItem() {return CurrentItem;};
     QGraphicsItem *lastItem() {return LastItem;};
+    Glyph *getGlyphByGraphic(QGraphicsItem *item) {return GlyphsMap[item];};
 
 private:
     QWidget *Parent;

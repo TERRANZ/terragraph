@@ -6,4 +6,3 @@ Vertex::Vertex(Glyph *parent)
     circle = new Circle(parent);
     Text = new Character(circle,L"");
 }
-

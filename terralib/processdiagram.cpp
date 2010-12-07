@@ -14,8 +14,3 @@ bool ProcessDiagram::intersects(const Point& p)
     return false;
 }
 
-void ProcessDiagram::remove(Glyph *c)
-{
-    ChildGlyphList.remove(c);
-}
-

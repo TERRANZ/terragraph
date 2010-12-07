@@ -27,12 +27,11 @@ public:
     QPainterPath shape() const;
     QGraphicsItem *startitem() {return myStartItem;};
     QGraphicsItem *stopitem() {return myEndItem;};
+    void processPosUpdate(const Point &newpos);
 
 protected:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
                QWidget *widget = 0);
-public slots:
-    void updatePosition();
 
 private:
     QGraphicsItem *myStartItem;

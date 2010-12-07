@@ -63,7 +63,10 @@ void WindowQt::setPenType(int type)
 }
 void WindowQt::drawArrow(ArrowQt *a,Glyph *p,int x1,int y1, int x2, int y2)
 {
-    this->addLine(a->startitem()->pos().x(),a->startitem()->pos().y(),a->stopitem()->pos().x(),a->stopitem()->pos().y());
+    //this->addLine(a->startitem()->pos().x(),a->startitem()->pos().y(),a->stopitem()->pos().x(),a->stopitem()->pos().y());
+    this->addItem(a);
+    GraphicsItems.append(a);
+    GlyphsMap.insert(a,a);
 }
 void WindowQt::PositionChanged(QGraphicsItem *item,QPoint &newpos)
 {
@@ -110,6 +113,7 @@ void WindowQt::mouseReleaseEvent ( QGraphicsSceneMouseEvent * mouseEvent )
         newpos.x = (mouseEvent->scenePos().x());
         newpos.y = (mouseEvent->scenePos().y());
         GlyphsMap[CurrentItem]->setPosition(newpos);
+        GlyphsMap[CurrentItem]->posUpdate(newpos);
     }
     QGraphicsScene::mouseReleaseEvent(mouseEvent);
 }

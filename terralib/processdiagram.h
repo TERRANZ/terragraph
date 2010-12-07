@@ -11,7 +11,6 @@ class ProcessDiagram : public Complex
 
 public:
     ProcessDiagram(Glyph *parent);
-    void remove(Glyph *c);
     void bounds(Rect& r) ;
     bool intersects(const Point& p);
 };

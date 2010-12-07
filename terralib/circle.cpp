@@ -3,5 +3,6 @@
 Circle::Circle(Glyph *parent)
 {
     setParent(parent);
-    geom.scale = 1.0;
+    setts = new Settings();
+
 }

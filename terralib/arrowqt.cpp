@@ -30,7 +30,7 @@ QPainterPath ArrowQt::shape() const
     return path;
 }
 
-void ArrowQt::updatePosition()
+void ArrowQt::processPosUpdate(const Point &newpos)
 {
     QLineF line(mapFromItem(myStartItem, 0, 0), mapFromItem(myEndItem, 0, 0));
     setLine(line);

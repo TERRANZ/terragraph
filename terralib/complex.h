@@ -2,7 +2,7 @@
 #define COMPLEX_H
 
 #include "glyph.h"
-#include "geometry.h"
+#include "settings.h"
 #include <list>
 #include <string>
 using namespace std;
@@ -10,21 +10,24 @@ using namespace std;
 class Complex : public Glyph
 {
 private:
+    list<Glyph*> ChildGlyphList;
 
 public:
-    Geometry geom;
-    list<Glyph*> ChildGlyphList;
-    virtual int insert(Glyph *g)
+    Settings *setts;
+
+    virtual void insertChild(Glyph *g)
     {
         ChildGlyphList.push_back(g);
         g->setParent(this);
-        return ChildGlyphList.size();
     };
-    virtual void remove(Glyph *g)
+
+    virtual void removeChild(Glyph *g)
     {
         ChildGlyphList.remove(g);
     };
-    virtual void remove(int) {};
+
+    Settings *settings() {return setts;};
+    void setSettings(Settings *set) {setts = set;};
 };
 
 #endif // COMPLEX_H
