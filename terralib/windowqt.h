@@ -33,6 +33,8 @@ public:
     QGraphicsItem *currentItem() {return CurrentItem;};
     QGraphicsItem *lastItem() {return LastItem;};
     Glyph *getGlyphByGraphic(QGraphicsItem *item) {return GlyphsMap[item];};
+    int setMode(int mode = 0);
+    int mode() {return myMode;}
 
 private:
     QWidget *Parent;
@@ -44,13 +46,19 @@ private:
     QList <QGraphicsItem*> GraphicsItems;
     QGraphicsItem *CurrentItem;
     QGraphicsItem *LastItem;
+    int myMode;
+    int myLastMode;
 
 protected:
     void mouseReleaseEvent ( QGraphicsSceneMouseEvent * mouseEvent );
+
 public slots:
     void PositionChanged(QGraphicsItem *item,QPoint &newpos);
     void Resize(int w,int h);
     void SelectionChanged();
+
+signals:
+    void itemSelected(QGraphicsItem *last,QGraphicsItem *curr);
 };
 
 #endif // WINDOWQT_H

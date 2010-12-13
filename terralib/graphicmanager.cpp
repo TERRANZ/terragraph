@@ -3,6 +3,13 @@
 GraphicManager::GraphicManager(QWidget *parent)
 {
     wnd = new WindowQt(parent);
+    connect(wnd,SIGNAL(itemSelected(QGraphicsItem*,QGraphicsItem*)),this,SLOT(itemSelected(QGraphicsItem*,QGraphicsItem*)));
+    last = NULL;
+    curr = NULL;
+}
+
+GraphicManager::~GraphicManager()
+{
 
 }
 
@@ -29,10 +36,64 @@ void GraphicManager::addVertToProcDiag(int pvt)
 
 void GraphicManager::addArrow()
 {
-    if (wnd->lastItem() != 0 && wnd->currentItem() != 0) {
-        ArrowQt *newarr = new ArrowQt(wnd->lastItem(),wnd->currentItem(),wnd->lastItem(),wnd);
-        wnd->drawArrow(newarr,0,0,0,0,0);
-        wnd->getGlyphByGraphic(wnd->lastItem())->insertArrow(newarr);
-        wnd->getGlyphByGraphic(wnd->currentItem())->insertArrow(newarr);
+    wnd->setMode(Window::WModeAddArrowP1);
+}
+
+void GraphicManager::itemSelected(QGraphicsItem *last,QGraphicsItem *curr)
+{
+    this->last = last;
+    this->curr = curr;
+    switch (wnd->mode())
+    {
+    case Window::WModeNone:
+        {
+
+        }
+        break;
+    case Window::WModeAddArrowP1:
+        {
+            if (curr != NULL)
+            {
+                wnd->setMode(Window::WModeAddArrowP2);
+                curr->setOpacity(0.5);
+            }
+        }
+        break;
+    case Window::WModeAddArrowP2:
+        {
+            if (curr != NULL && last != NULL)
+            {
+                wnd->setMode(Window::WModeNone);
+                ArrowQt *newarr = new ArrowQt(curr,last,curr,wnd);
+                wnd->drawArrow(newarr,0,0,0,0,0);
+                wnd->getGlyphByGraphic(wnd->lastItem())->insertArrow(newarr);
+                wnd->getGlyphByGraphic(wnd->currentItem())->insertArrow(newarr);
+                curr->setOpacity(1);
+                last->setOpacity(1);
+            }
+        }
+        break;
+    case Window::WModeDelArrow:
+        {
+
+        }
+        break;
+    case Window::WModeAddVer:
+        {
+
+        }
+        break;
+    case Window::WModeDelVert:
+        {
+
+        }
+        break;
+    default:
+        break;
     }
+}
+
+void GraphicManager::reset()
+{
+    wnd->setMode(Window::WModeNone);
 }

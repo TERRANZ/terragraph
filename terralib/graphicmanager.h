@@ -19,16 +19,18 @@
 #include <sstream>
 using namespace std;
 
-class GraphicManager
+class GraphicManager: public QObject
 {
+    Q_OBJECT
 public:
-
     GraphicManager(QWidget *parent);
+    ~GraphicManager();
     ProcessDiagram * createProcDiagram();
     void createChanDiagram();
     void addVertToProcDiag(int pvt);
     void addArrow();
     QGraphicsScene *getScene() {return wnd;};
+    void reset();
 
 private:
     WindowQt *wnd;
@@ -36,6 +38,10 @@ private:
     ChannelDiagram *chandiag;
     list<Glyph*> procObjects;
     list<Glyph*> chanObjects;
+    QGraphicsItem *last,*curr;
+
+private slots:
+    void itemSelected(QGraphicsItem *last,QGraphicsItem *curr);
 };
 
 #endif // GRAPHICMANAGER_H

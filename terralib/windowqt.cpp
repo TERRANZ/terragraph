@@ -9,6 +9,8 @@ WindowQt::WindowQt(QWidget *parent)
     GrView->show();
     connect(this,SIGNAL(selectionChanged()),this,SLOT(SelectionChanged()));
     CurrentItem = 0;
+    myMode = 0;
+    myLastMode = 0;
 }
 
 WindowQt::~WindowQt()
@@ -104,6 +106,7 @@ void WindowQt::SelectionChanged()
         //Выделены элементы
         CurrentItem =  this->selectedItems().first();
     }
+    emit itemSelected(LastItem,CurrentItem);
 }
 
 void WindowQt::mouseReleaseEvent ( QGraphicsSceneMouseEvent * mouseEvent )
@@ -119,4 +122,10 @@ void WindowQt::mouseReleaseEvent ( QGraphicsSceneMouseEvent * mouseEvent )
     QGraphicsScene::mouseReleaseEvent(mouseEvent);
 }
 
+int WindowQt::setMode(int mode)
+{
+    int lastmode = myMode;
+    myMode = mode;
+    return lastmode;
+}
 
