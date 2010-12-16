@@ -36,10 +36,18 @@ void WindowQt::drawtext(Glyph * g,Glyph *p,wstring txt)
 }
 void WindowQt::drawBox(Glyph * g,Glyph *p,int x1,int y1,int x2,int y2)
 {
+    QGraphicsItem *newbox = this->addRect(x1,y1,x2-x1,y2-y1);
+    if (p == 0)
+    {
+        newbox->setFlag(QGraphicsItem::ItemIsMovable);
+        newbox->setFlag(QGraphicsItem::ItemIsSelectable);
+    }else
+        newbox->setParentItem(GlyphsMap.key(p));
 }
 void WindowQt::drawLine(Glyph * g,Glyph *p,int x1,int y1,int x2,int y2)
 {
     this->addLine(qreal(x1),qreal(y1),qreal(x2),qreal(y2),Pen);
+    
 }
 void WindowQt::drawPoint(Glyph * g,Glyph *p,int x,int y)
 {
