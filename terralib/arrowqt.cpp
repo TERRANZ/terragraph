@@ -59,24 +59,26 @@ void ArrowQt::paint(QPainter *painter, const QStyleOptionGraphicsItem *,
     p2.setX(p2.x()+enddiff);
     p2.setY(p2.y()+enddiff);
 
-//    QPointF intersectPoint;
-//    QLineF polyLine;
-//    for (int i = 1; i < endPolygon.count(); ++i) {
-//        p2 = endPolygon.at(i) + myEndItem->pos();
-//        polyLine = QLineF(p1, p2);
-//        QLineF::IntersectType intersectType =
-//                polyLine.intersect(centerLine, &intersectPoint);
-//        if (intersectType == QLineF::BoundedIntersection)
-//            break;
-//        p1 = p2;
-//    }
+    QLineF centerLine(p1, p2);
 
+    QPointF intersectPoint;
 
-    setLine(QLineF(p1,p2));
+    double ydiff = 1;
+    if (p1.y() > p2.y())
+        ydiff = -1;
 
     double angle = ::acos(line().dx() / line().length());
     if (line().dy() >= 0)
         angle = (Pi * 2) - angle;
+
+    QLineF Line;
+    QPointF p3,p4;
+    p3 = p2 + (p1-p2)*enddiff/centerLine.length();
+    p4 = p1 + (p2-p1)*startdiff/centerLine.length();
+    Line.setPoints(p4,p3);
+
+    setLine(Line);
+
 
     QPointF arrowP1 = line().p1() + QPointF(sin(angle + Pi / 3) * arrowSize,
                                             cos(angle + Pi / 3) * arrowSize);

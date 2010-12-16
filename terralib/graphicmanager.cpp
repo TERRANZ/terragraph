@@ -55,6 +55,7 @@ void GraphicManager::itemSelected(QGraphicsItem *last,QGraphicsItem *curr)
             if (curr != NULL)
             {
                 wnd->setMode(Window::WModeAddArrowP2);
+                curr->setZValue(2);
                 curr->setOpacity(0.5);
             }
         }
@@ -69,7 +70,9 @@ void GraphicManager::itemSelected(QGraphicsItem *last,QGraphicsItem *curr)
                 wnd->getGlyphByGraphic(wnd->lastItem())->insertArrow(newarr);
                 wnd->getGlyphByGraphic(wnd->currentItem())->insertArrow(newarr);
                 curr->setOpacity(1);
+                curr->setZValue(2);
                 last->setOpacity(1);
+                newarr->setZValue(-1);
             }
         }
         break;
