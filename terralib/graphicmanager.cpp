@@ -65,7 +65,7 @@ void GraphicManager::itemSelected(QGraphicsItem *last,QGraphicsItem *curr)
             {
                 wnd->setMode(Window::WModeNone);
                 ArrowQt *newarr = new ArrowQt(curr,last,curr,wnd);
-                wnd->drawArrow(newarr,0,0,0,0,0);
+                wnd->drawArrow(newarr,NULL);
                 wnd->getGlyphByGraphic(wnd->lastItem())->insertArrow(newarr);
                 wnd->getGlyphByGraphic(wnd->currentItem())->insertArrow(newarr);
                 curr->setOpacity(1);

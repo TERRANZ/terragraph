@@ -20,11 +20,11 @@ SOURCES += src/main.cpp \
     terralib/processdiagram.cpp \
     terralib/channeldiagram.cpp \
     terralib/arc.cpp \
-    terralib/settings.cpp \
     terralib/graphicmanager.cpp \
     terralib/vertex.cpp \
     terralib/settingsmanager.cpp \
-    terralib/arrowqt.cpp
+    terralib/arrowqt.cpp \
+    terralib/facade.cpp
 HEADERS += src/mainwindow.h \
     src/logger.h \
     terralib/point.h \
@@ -44,8 +44,8 @@ HEADERS += src/mainwindow.h \
     terralib/complex.h \
     terralib/arc.h \
     terralib/glyph.h \
-    terralib/settings.h \
     terralib/graphicmanager.h \
     terralib/settingsmanager.h \
-    terralib/arrowqt.h
+    terralib/arrowqt.h \
+    terralib/facade.h
 FORMS += src/mainwindow.ui

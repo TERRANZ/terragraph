@@ -6,6 +6,7 @@
 #include "complex.h"
 #include "vertex.h"
 #include "arrowqt.h"
+#include "settingsmanager.h"
 #include <QWidget>
 #include <QGraphicsView>
 #include <QGraphicsScene>
@@ -28,13 +29,15 @@ public:
     void drawLine(Glyph *g,Glyph *p,int x1,int y1,int x2,int y2);
     void drawPoint(Glyph *g,Glyph *p,int x,int y);
     void drawCircle(Glyph *g,Glyph *p,int x,int y, float r);
-    void drawArrow(ArrowQt *a,Glyph *p,int x1,int y1, int x2, int y2);
+    void drawArrow(ArrowQt *a,Glyph *p);
     void reDraw();
     QGraphicsItem *currentItem() {return CurrentItem;};
     QGraphicsItem *lastItem() {return LastItem;};
     Glyph *getGlyphByGraphic(QGraphicsItem *item) {return GlyphsMap[item];};
     int setMode(int mode = 0);
     int mode() {return myMode;}
+    SettingsManager* sman () {return Sman;};
+    void setSettings(SettingsManager *sman);
 
 private:
     QWidget *Parent;
@@ -48,6 +51,7 @@ private:
     QGraphicsItem *LastItem;
     int myMode;
     int myLastMode;
+    SettingsManager *Sman;
 
 protected:
     void mouseReleaseEvent ( QGraphicsSceneMouseEvent * mouseEvent );

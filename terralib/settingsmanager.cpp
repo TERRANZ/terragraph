@@ -2,4 +2,5 @@
 
 SettingsManager::SettingsManager()
 {
+    geometry = new Geometry();
 }

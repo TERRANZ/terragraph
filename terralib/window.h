@@ -27,7 +27,7 @@ public:
     virtual void drawBox(Glyph * /*g*/,Glyph * /*p*/,int /*x1*/, int /*y1*/, int /*x2*/, int /*y2*/) {};
     virtual void setPenColor(int /*r*/,int /*g*/,int /*b*/) {};
     virtual void setPenType(int /*type*/) {};
-    virtual void drawArrow(Arrow *, Glyph *,int /*x1*/,int /*y1*/, int /*x2*/, int /*y2*/) {};
+    virtual void drawArrow(Arrow *, Glyph *) {};
     virtual int  setMode(int = 0) {return 0;};
     virtual int  mode() {return 0;};
 };

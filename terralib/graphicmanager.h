@@ -11,7 +11,6 @@
 #include "geometry.h"
 #include "point.h"
 #include "rect.h"
-#include "settings.h"
 #include "processdiagram.h"
 #include "channeldiagram.h"
 #include <QGraphicsItem>

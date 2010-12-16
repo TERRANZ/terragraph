@@ -11,6 +11,7 @@ WindowQt::WindowQt(QWidget *parent)
     CurrentItem = 0;
     myMode = 0;
     myLastMode = 0;
+    Sman = new SettingsManager();
 }
 
 WindowQt::~WindowQt()
@@ -63,9 +64,8 @@ void WindowQt::setPenColor(int r,int g,int b)
 void WindowQt::setPenType(int type)
 {
 }
-void WindowQt::drawArrow(ArrowQt *a,Glyph *p,int x1,int y1, int x2, int y2)
+void WindowQt::drawArrow(ArrowQt *a,Glyph *p)
 {
-    //this->addLine(a->startitem()->pos().x(),a->startitem()->pos().y(),a->stopitem()->pos().x(),a->stopitem()->pos().y());
     this->addItem(a);
     GraphicsItems.append(a);
     GlyphsMap.insert(a,a);
@@ -77,16 +77,7 @@ void WindowQt::PositionChanged(QGraphicsItem *item,QPoint &newpos)
 }
 void WindowQt::reDraw()
 {
-    //    foreach (QGraphicsItem *itm, GraphicsItems)
-    //    {
-    //        this->removeItem(itm);
-    //        GraphicsItems.removeOne(itm);
-    //    }
-    //
-    //    foreach (Complex *c,Glyphs)
-    //    {
-    //        c->draw();
-    //    }
+
 }
 
 void WindowQt::Resize(int w,int h)
@@ -128,4 +119,11 @@ int WindowQt::setMode(int mode)
     myMode = mode;
     return lastmode;
 }
+
+void WindowQt::setSettings(SettingsManager *sman)
+{
+    Sman = sman;
+    reDraw();
+}
+
 
