@@ -10,6 +10,7 @@ class FacadeWidget : public QWidget
     Q_OBJECT
 public:
     FacadeWidget(QWidget *parent);
+    ~FacadeWidget();
     void createProcDiag();
     void addNewV();
     void addArrow();

@@ -4,7 +4,12 @@ FacadeWidget::FacadeWidget(QWidget *parent)
 {
     this->setParent(parent);
     gm = new GraphicManager(this);
-    fc = new Facade(gm->wnd());
+    //fc = new Facade(gm->wnd());
+}
+
+FacadeWidget::~FacadeWidget()
+{
+    delete gm;
 }
 
 void FacadeWidget::addNewV()
