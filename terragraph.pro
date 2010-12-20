@@ -24,7 +24,8 @@ SOURCES += src/main.cpp \
     terralib/vertex.cpp \
     terralib/settingsmanager.cpp \
     terralib/arrowqt.cpp \
-    terralib/facade.cpp
+    terralib/facade.cpp \
+    terralib/facadewidget.cpp
 HEADERS += src/mainwindow.h \
     src/logger.h \
     terralib/point.h \
@@ -47,5 +48,6 @@ HEADERS += src/mainwindow.h \
     terralib/graphicmanager.h \
     terralib/settingsmanager.h \
     terralib/arrowqt.h \
-    terralib/facade.h
+    terralib/facade.h \
+    terralib/facadewidget.h
 FORMS += src/mainwindow.ui

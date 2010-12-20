@@ -28,11 +28,12 @@ public:
     void createChanDiagram();
     void addVertToProcDiag(int pvt);
     void addArrow();
-    QGraphicsScene *getScene() {return wnd;};
+    QGraphicsScene *getScene() {return WndQt;};
     void reset();
+    WindowQt* wnd() {return WndQt;};
 
 private:
-    WindowQt *wnd;
+    WindowQt *WndQt;
     ProcessDiagram *procdiag;
     ChannelDiagram *chandiag;
     list<Glyph*> procObjects;

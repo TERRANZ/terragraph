@@ -5,10 +5,10 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    ui->setupUi(this);;
-    gm = new GraphicManager(ui->mdiArea);
-    gm->createProcDiagram();
+    ui->setupUi(this);
     logger = new Logger();
+    facade = new FacadeWidget(ui->mdiArea);
+    facade->createProcDiag();
 }
 
 MainWindow::~MainWindow()
@@ -31,10 +31,10 @@ void MainWindow::changeEvent(QEvent *e)
 
 void MainWindow::AddNewV()
 {
-    gm->addVertToProcDiag(1);
+    facade->addNewV();
     logger->addToLog("MainWindow::AddNewV()");
 }
 void MainWindow::AddNewArrow()
 {
-    gm->addArrow();
+    facade->addArrow();
 }

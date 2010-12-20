@@ -3,10 +3,7 @@
 
 #include <QMainWindow>
 #include <QList>
-#include "../terralib/windowqt.h"
-#include "../terralib/graphicmanager.h"
-#include "../terralib/processdiagram.h"
-#include "../terralib/channeldiagram.h"
+#include "../terralib/facadewidget.h"
 #include "logger.h"
 
 namespace Ui {
@@ -25,7 +22,7 @@ protected:
 private:
     Ui::MainWindow *ui;
     Logger *logger;
-    GraphicManager *gm;
+    FacadeWidget *facade;
 
 private slots:
     void AddNewV();
