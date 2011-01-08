@@ -8,6 +8,7 @@ GraphicManager::GraphicManager(QWidget *parent)
     connect(wndQt,SIGNAL(contextMenuReq(QPoint)),this,SLOT(contextMenuReq(QPoint)));
     last = NULL;
     curr = NULL;
+
     arrowMenu = new QMenu(parent);
     vertMenu = new QMenu(parent);
     boxMenu = new QMenu(parent);
@@ -18,7 +19,7 @@ GraphicManager::GraphicManager(QWidget *parent)
     arrowMenu->addAction(actDelete);
     vertMenu->addAction(actDelete);
     boxMenu->addAction(actDelete);
-    actInfo = new QAction(QIcon(":/icons/info.png"),trUtf8("&Информация..."),this);
+    actInfo = new QAction(QIcon(":/icons/icon-info.png"),trUtf8("&Информация..."),this);
     actInfo->setStatusTip(trUtf8("Информация"));
     connect(actInfo,SIGNAL(triggered()),this,SLOT(actionInfo()));
     arrowMenu->addAction(actInfo);

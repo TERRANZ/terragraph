@@ -127,7 +127,6 @@ void WindowQt::mouseReleaseEvent ( QGraphicsSceneMouseEvent * mouseEvent )
 
 void WindowQt::customContextMenu(QPoint p)
 {
-//    QMessageBox::information(GrView,"Info","mousebutton clicked",QMessageBox::Ok);
     if (CurrentItem != 0)
     {
         emit contextMenuReq(GrView->mapToGlobal(p));
