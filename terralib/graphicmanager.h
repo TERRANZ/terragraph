@@ -14,6 +14,8 @@
 #include "processdiagram.h"
 #include "channeldiagram.h"
 #include <QGraphicsItem>
+#include <QMenu>
+#include <QAction>
 #include "list"
 #include <sstream>
 using namespace std;
@@ -24,24 +26,39 @@ class GraphicManager: public QObject
 public:
     GraphicManager(QWidget *parent);
     ~GraphicManager();
-    ProcessDiagram * createProcDiagram();
-    void createChanDiagram();
+
+
+    ChannelDiagram *createChanDiagram();
+    void addVertToChanDiag(int cvt);
+    void addArrowToChanDiag();
+    void addBoxToChanDiag();
+
+    ProcessDiagram *createProcDiagram();
     void addVertToProcDiag(int pvt);
-    void addArrow();
-    QGraphicsScene *getScene() {return WndQt;};
+    void addArrowToProcDiag();
+    void addBoxToProcDiag();
+
+    QGraphicsScene *getScene() {return wndQt;};
     void reset();
-    WindowQt* wnd() {return WndQt;};
+    WindowQt* wnd() {return wndQt;};
 
 private:
-    WindowQt *WndQt;
+    WindowQt *wndQt;
+    QWidget *Parent;
     ProcessDiagram *procdiag;
     ChannelDiagram *chandiag;
     list<Glyph*> procObjects;
     list<Glyph*> chanObjects;
     QGraphicsItem *last,*curr;
+    QMenu *arrowMenu, *boxMenu, *vertMenu;
+    QAction *actInfo, *actDelete, *actText;
 
 private slots:
     void itemSelected(QGraphicsItem *last,QGraphicsItem *curr);
+    void actionDelete();
+    void actionInfo();
+    void actionText();
+    void contextMenuReq(QPoint p);
 };
 
 #endif // GRAPHICMANAGER_H

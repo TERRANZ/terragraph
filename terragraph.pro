@@ -51,3 +51,4 @@ HEADERS += src/mainwindow.h \
     terralib/facade.h \
     terralib/facadewidget.h
 FORMS += src/mainwindow.ui
+RESOURCES += icons.qrc

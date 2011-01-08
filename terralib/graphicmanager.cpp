@@ -2,10 +2,34 @@
 
 GraphicManager::GraphicManager(QWidget *parent)
 {
-    WndQt = new WindowQt(parent);
-    connect(WndQt,SIGNAL(itemSelected(QGraphicsItem*,QGraphicsItem*)),this,SLOT(itemSelected(QGraphicsItem*,QGraphicsItem*)));
+    wndQt = new WindowQt(parent);
+    Parent = parent;
+    connect(wndQt,SIGNAL(itemSelected(QGraphicsItem*,QGraphicsItem*)),this,SLOT(itemSelected(QGraphicsItem*,QGraphicsItem*)));
+    connect(wndQt,SIGNAL(contextMenuReq(QPoint)),this,SLOT(contextMenuReq(QPoint)));
     last = NULL;
     curr = NULL;
+    arrowMenu = new QMenu(parent);
+    vertMenu = new QMenu(parent);
+    boxMenu = new QMenu(parent);
+    actDelete = new QAction(QIcon(":/icons/delete.png"),trUtf8("&Удалить"),this);
+    actDelete->setShortcuts(QKeySequence::Delete);
+    actDelete->setStatusTip(trUtf8("Удалить этот объект"));
+    connect(actDelete,SIGNAL(triggered()),this,SLOT(actionDelete()));
+    arrowMenu->addAction(actDelete);
+    vertMenu->addAction(actDelete);
+    boxMenu->addAction(actDelete);
+    actInfo = new QAction(QIcon(":/icons/info.png"),trUtf8("&Информация..."),this);
+    actInfo->setStatusTip(trUtf8("Информация"));
+    connect(actInfo,SIGNAL(triggered()),this,SLOT(actionInfo()));
+    arrowMenu->addAction(actInfo);
+    vertMenu->addAction(actInfo);
+    boxMenu->addAction(actInfo);
+    actText = new QAction(QIcon(":/icons/text.png"),trUtf8("&Редактирование текста..."),this);
+    actText->setStatusTip(trUtf8("Редактирование текста"));
+    connect(actText,SIGNAL(triggered()),this,SLOT(actionText()));
+    arrowMenu->addAction(actText);
+    vertMenu->addAction(actText);
+    boxMenu->addAction(actText);
 }
 
 GraphicManager::~GraphicManager()
@@ -19,7 +43,7 @@ ProcessDiagram *GraphicManager::createProcDiagram()
     return procdiag;
 }
 
-void GraphicManager::createChanDiagram()
+ChannelDiagram *GraphicManager::createChanDiagram()
 {
 
 }
@@ -29,21 +53,21 @@ void GraphicManager::addVertToProcDiag(int pvt/*,ProcessDiagram *pd*/)
     Vertex *newver = new Vertex(procdiag);
     procObjects.push_back(newver);
     procdiag->insertChild(newver);
-    WndQt->drawCircle(newver->getCircle(),newver->parent(),0,0,30);
+    wndQt->drawCircle(newver->getCircle(),newver->parent(),0,0,30);
     newver->setText(L"M");
-    WndQt->drawtext(newver->getText(),newver->getCircle(),newver->text());
+    wndQt->drawtext(newver->getText(),newver->getCircle(),newver->text());
 }
 
-void GraphicManager::addArrow()
+void GraphicManager::addArrowToProcDiag()
 {
-    WndQt->setMode(Window::WModeAddArrowP1);
+    wndQt->setMode(Window::WModeAddArrowP1);
 }
 
 void GraphicManager::itemSelected(QGraphicsItem *last,QGraphicsItem *curr)
 {
     this->last = last;
     this->curr = curr;
-    switch (WndQt->mode())
+    switch (wndQt->mode())
     {
     case Window::WModeNone:
         {
@@ -54,7 +78,7 @@ void GraphicManager::itemSelected(QGraphicsItem *last,QGraphicsItem *curr)
         {
             if (curr != NULL)
             {
-                WndQt->setMode(Window::WModeAddArrowP2);
+                wndQt->setMode(Window::WModeAddArrowP2);
                 curr->setZValue(2);
                 curr->setOpacity(0.5);
             }
@@ -64,11 +88,11 @@ void GraphicManager::itemSelected(QGraphicsItem *last,QGraphicsItem *curr)
         {
             if (curr != NULL && last != NULL)
             {
-                WndQt->setMode(Window::WModeNone);
-                ArrowQt *newarr = new ArrowQt(curr,last,curr,WndQt);
-                WndQt->drawArrow(newarr,NULL);
-                WndQt->getGlyphByGraphic(WndQt->lastItem())->insertArrow(newarr);
-                WndQt->getGlyphByGraphic(WndQt->currentItem())->insertArrow(newarr);
+                wndQt->setMode(Window::WModeNone);
+                ArrowQt *newarr = new ArrowQt(curr,last,curr,wndQt);
+                wndQt->drawArrow(newarr,NULL);
+                wndQt->getGlyphByGraphic(wndQt->lastItem())->insertArrow(newarr);
+                wndQt->getGlyphByGraphic(wndQt->currentItem())->insertArrow(newarr);
                 curr->setOpacity(1);
                 curr->setZValue(2);
                 last->setOpacity(1);
@@ -98,5 +122,23 @@ void GraphicManager::itemSelected(QGraphicsItem *last,QGraphicsItem *curr)
 
 void GraphicManager::reset()
 {
-    WndQt->setMode(Window::WModeNone);
+    wndQt->setMode(Window::WModeNone);
+}
+
+void GraphicManager::actionInfo()
+{
+    QMessageBox::information(Parent,"Info","actionInfo",QMessageBox::Ok);
+}
+void GraphicManager::actionText()
+{
+    QMessageBox::information(Parent,"Info","actionText",QMessageBox::Ok);
+}
+void GraphicManager::actionDelete()
+{
+    QMessageBox::information(Parent,"Info","actionDelete",QMessageBox::Ok);
+}
+
+void GraphicManager::contextMenuReq(QPoint p)
+{
+    vertMenu->exec(p);
 }

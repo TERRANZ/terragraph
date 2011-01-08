@@ -21,11 +21,11 @@ public:
          };
     virtual void reDraw(){};
     virtual void drawtext(Glyph * /*g*/,Glyph * /*p*/,wstring /*txt*/){};
-    virtual void drawLine(Glyph * /*g*/,Glyph * /*p*/,int /*x1*/,int /*y1*/,int /*x2*/,int /*y2*/) {};
-    virtual void drawPoint(Glyph * /*g*/,Glyph * /*p*/,int /*x*/,int /*y*/) {};
-    virtual void drawCircle(Glyph * /*g*/,Glyph * /*p*/,int /*x*/,int /*y*/, float /*r*/) {};
-    virtual void drawBox(Glyph * /*g*/,Glyph * /*p*/,int /*x1*/, int /*y1*/, int /*x2*/, int /*y2*/) {};
-    virtual void setPenColor(int /*r*/,int /*g*/,int /*b*/) {};
+    virtual void drawLine(Glyph * /*g*/,Glyph * /*p*/,float /*x1*/,float /*y1*/,float /*x2*/,float /*y2*/) {};
+    virtual void drawPoint(Glyph * /*g*/,Glyph * /*p*/,float /*x*/,float /*y*/) {};
+    virtual void drawCircle(Glyph * /*g*/,Glyph * /*p*/,float /*x*/,float /*y*/, float /*r*/) {};
+    virtual void drawBox(Glyph * /*g*/,Glyph * /*p*/,float /*x1*/, float /*y1*/, float /*w*/, float /*h*/) {};
+    virtual void setPenColor(float /*r*/,float /*g*/,float /*b*/) {};
     virtual void setPenType(int /*type*/) {};
     virtual void drawArrow(Arrow *, Glyph *) {};
     virtual int  setMode(int = 0) {return 0;};

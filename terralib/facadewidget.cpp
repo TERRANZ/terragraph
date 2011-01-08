@@ -19,7 +19,7 @@ void FacadeWidget::addNewV()
 
 void FacadeWidget::addArrow()
 {
-    gm->addArrow();
+    gm->addArrowToProcDiag();
 }
 
 void FacadeWidget::createProcDiag()
