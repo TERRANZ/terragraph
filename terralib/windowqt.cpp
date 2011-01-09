@@ -7,6 +7,7 @@ WindowQt::WindowQt(QWidget *parent)
     this->setParent(parent);
     //this->setSceneRect(parent->geometry());
     GrView = new QGraphicsView(this,parent);
+    GrView->setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
     GrView->setContextMenuPolicy(Qt::CustomContextMenu);
     //this->setSceneRect(0,0,500,300);
     GrView->show();

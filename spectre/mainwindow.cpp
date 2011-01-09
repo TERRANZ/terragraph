@@ -285,6 +285,7 @@ void MainWindow::createWidgets()
     m_TemplateOpenDialog = new QFileDialog(this);
     m_XmlView = new XmlView();
     m_GraphicView = new FacadeWidget(ui->stackedWidget);
+    m_GraphicView->createProcDiag();
 
     m_OpenDialog->setAcceptMode(QFileDialog::AcceptOpen);
     m_OpenDialog->setWindowTitle(tr("Открыть"));
@@ -502,12 +503,14 @@ void MainWindow::selectToolCreateNode()
 {
     m_CurrentTool = ToolCreateNode;
     m_XmlView->setTool(XmlView::ToolAddNode);
+    m_GraphicView->addNewV();
 }
 
 void MainWindow::selectToolCreateArc()
 {
     m_CurrentTool = ToolCreateArc;
     m_XmlView->setTool(XmlView::ToolAddArc);
+    m_GraphicView->addArrow();
 }
 
 void MainWindow::selectToolDeleteObject()
