@@ -136,3 +136,8 @@ void GraphicManager::contextMenuReq(QPoint p)
 {
     vertMenu->exec(p);
 }
+
+void GraphicManager::onResize()
+{
+    emit wndQt->Resize();
+}

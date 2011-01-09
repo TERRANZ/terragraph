@@ -15,9 +15,12 @@ public:
     void addNewV();
     void addArrow();
 
+public slots:
+    void onResize();
 private:
     Facade *fc;
     GraphicManager *gm;
+    QWidget *Parent;
 };
 
 #endif // FACADEWIDGET_H

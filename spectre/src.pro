@@ -1,16 +1,13 @@
-#-------------------------------------------------
-#
+# -------------------------------------------------
 # Project created by QtCreator 2010-11-08T06:09:32
-#
-#-------------------------------------------------
-
-QT       += core gui xml webkit
-
+# -------------------------------------------------
+QT += core \
+    gui \
+    xml \
+    webkit
 TARGET = diplom
 TEMPLATE = app
-
-SOURCES += \
-    dom/domnode.cpp \
+SOURCES += dom/domnode.cpp \
     dom/domelement.cpp \
     dom/domdocument.cpp \
     data/base.cpp \
@@ -55,7 +52,7 @@ SOURCES += \
     editforms/paramlistmodel.cpp \
     editforms/includelistmodel.cpp \
     editforms/includelistdialog.cpp \
-    main.cpp\
+    main.cpp \
     mainwindow.cpp \
     arcdialog.cpp \
     nodepropertiesdialog.cpp \
@@ -66,9 +63,22 @@ SOURCES += \
     qfiledialogex.cpp \
     data/commands/editattributecommand.cpp \
     data/commands/addelementcommand.cpp \
-
-HEADERS  += \
-    dom/domnode.h \
+    ../terralib/facadewidget.cpp \
+    ../terralib/windowqt.cpp \
+    ../terralib/visitor.cpp \
+    ../terralib/vertex.cpp \
+    ../terralib/settingsmanager.cpp \
+    ../terralib/processdiagram.cpp \
+    ../terralib/graphicmanager.cpp \
+    ../terralib/facade.cpp \
+    ../terralib/command.cpp \
+    ../terralib/circle.cpp \
+    ../terralib/character.cpp \
+    ../terralib/channeldiagram.cpp \
+    ../terralib/box.cpp \
+    ../terralib/arrowqt.cpp \
+    ../terralib/arc.cpp
+HEADERS += dom/domnode.h \
     dom/domdocument.h \
     dom/domelement.h \
     data/base.h \
@@ -123,9 +133,29 @@ HEADERS  += \
     qfiledialogex.h \
     data/commands/editattributecommand.h \
     data/commands/addelementcommand.h \
-
-FORMS    += \
-    editforms/moduledialog.ui \
+    ../terralib/facadewidget.h \
+    ../terralib/windowqt.h \
+    ../terralib/window.h \
+    ../terralib/visitor.h \
+    ../terralib/vertex.h \
+    ../terralib/settingsmanager.h \
+    ../terralib/rect.h \
+    ../terralib/processdiagram.h \
+    ../terralib/point.h \
+    ../terralib/graphicmanager.h \
+    ../terralib/glyph.h \
+    ../terralib/geometry.h \
+    ../terralib/facade.h \
+    ../terralib/complex.h \
+    ../terralib/command.h \
+    ../terralib/circle.h \
+    ../terralib/character.h \
+    ../terralib/channeldiagram.h \
+    ../terralib/box.h \
+    ../terralib/arrowqt.h \
+    ../terralib/arrow.h \
+    ../terralib/arc.h
+FORMS += editforms/moduledialog.ui \
     editforms/objectdialog.ui \
     editforms/objectlistdialog.ui \
     editforms/valuelistdialog.ui \
@@ -133,9 +163,5 @@ FORMS    += \
     nodepropertiesdialog.ui \
     generatordialog.ui \
     arcdialog.ui
-
-OTHER_FILES += \
-    data/readme.txt
-
-RESOURCES += \
-    resources.qrc
+OTHER_FILES += data/readme.txt
+RESOURCES += resources.qrc

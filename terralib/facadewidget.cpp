@@ -3,8 +3,8 @@
 FacadeWidget::FacadeWidget(QWidget *parent)
 {
     this->setParent(parent);
+    Parent = parent;
     gm = new GraphicManager(this);
-    //fc = new Facade(gm->wnd());
 }
 
 FacadeWidget::~FacadeWidget()
@@ -25,4 +25,10 @@ void FacadeWidget::addArrow()
 void FacadeWidget::createProcDiag()
 {
     gm->createProcDiagram();
+}
+
+void FacadeWidget::onResize()
+{
+    setGeometry(Parent->geometry());
+    emit gm->onResize();
 }

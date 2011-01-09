@@ -60,7 +60,7 @@ protected:
 
 public slots:
     void PositionChanged(QGraphicsItem *item,QPoint &newpos);
-    void Resize(int w,int h);
+    void Resize();
     void SelectionChanged();
     void customContextMenu(QPoint p);
 

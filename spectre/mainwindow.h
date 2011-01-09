@@ -165,6 +165,8 @@ private:
 
     static const qreal ZoomFactorStep;
     GraphicMode m_mode;
+protected:
+    void resizeEvent(QResizeEvent *e);
 };
 
 #endif // MAINWINDOW_H

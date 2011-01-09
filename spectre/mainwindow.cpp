@@ -597,3 +597,8 @@ void MainWindow::updateData()
     m_CommandListModel->setList(m_Data->commandList()->commandStringList());
     ui->log->scrollToBottom();
 }
+
+void MainWindow::resizeEvent(QResizeEvent *e)
+{
+    emit m_GraphicView->onResize();
+}

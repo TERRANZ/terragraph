@@ -59,6 +59,8 @@ private slots:
     void actionInfo();
     void actionText();
     void contextMenuReq(QPoint p);
+public slots:
+    void onResize();
 };
 
 #endif // GRAPHICMANAGER_H

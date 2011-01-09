@@ -5,9 +5,10 @@ WindowQt::WindowQt(QWidget *parent)
     Pen.setColor(QColor("black"));
     Parent = parent;
     this->setParent(parent);
+    //this->setSceneRect(parent->geometry());
     GrView = new QGraphicsView(this,parent);
     GrView->setContextMenuPolicy(Qt::CustomContextMenu);
-    this->setSceneRect(0,0,500,300);
+    //this->setSceneRect(0,0,500,300);
     GrView->show();
     connect(this,SIGNAL(selectionChanged()),this,SLOT(SelectionChanged()));
     connect(GrView,SIGNAL( customContextMenuRequested(QPoint) ),this,SLOT(customContextMenu(QPoint)));
@@ -92,9 +93,10 @@ void WindowQt::reDraw()
 
 }
 
-void WindowQt::Resize(int w,int h)
+void WindowQt::Resize()
 {
-    this->setSceneRect(0,0,qreal(w),qreal(h));
+    this->setSceneRect(Parent->geometry());
+    GrView->setGeometry(Parent->geometry());
 }
 
 void WindowQt::SelectionChanged()
