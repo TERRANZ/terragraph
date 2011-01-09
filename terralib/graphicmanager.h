@@ -50,7 +50,7 @@ private:
     list<Glyph*> procObjects;
     list<Glyph*> chanObjects;
     QGraphicsItem *last,*curr;
-    QMenu *arrowMenu, *boxMenu, *vertMenu;
+    QMenu *vertMenu;
     QAction *actInfo, *actDelete, *actText;
 
 private slots:

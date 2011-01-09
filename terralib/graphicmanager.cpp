@@ -9,28 +9,20 @@ GraphicManager::GraphicManager(QWidget *parent)
     last = NULL;
     curr = NULL;
 
-    arrowMenu = new QMenu(parent);
     vertMenu = new QMenu(parent);
-    boxMenu = new QMenu(parent);
     actDelete = new QAction(QIcon(":/icons/delete.png"),trUtf8("&Удалить"),this);
     actDelete->setShortcuts(QKeySequence::Delete);
     actDelete->setStatusTip(trUtf8("Удалить этот объект"));
     connect(actDelete,SIGNAL(triggered()),this,SLOT(actionDelete()));
-    arrowMenu->addAction(actDelete);
     vertMenu->addAction(actDelete);
-    boxMenu->addAction(actDelete);
     actInfo = new QAction(QIcon(":/icons/icon-info.png"),trUtf8("&Информация..."),this);
     actInfo->setStatusTip(trUtf8("Информация"));
     connect(actInfo,SIGNAL(triggered()),this,SLOT(actionInfo()));
-    arrowMenu->addAction(actInfo);
     vertMenu->addAction(actInfo);
-    boxMenu->addAction(actInfo);
     actText = new QAction(QIcon(":/icons/text.png"),trUtf8("&Редактирование текста..."),this);
     actText->setStatusTip(trUtf8("Редактирование текста"));
     connect(actText,SIGNAL(triggered()),this,SLOT(actionText()));
-    arrowMenu->addAction(actText);
     vertMenu->addAction(actText);
-    boxMenu->addAction(actText);
 }
 
 GraphicManager::~GraphicManager()
@@ -57,6 +49,7 @@ void GraphicManager::addVertToProcDiag(int pvt/*,ProcessDiagram *pd*/)
     wndQt->drawCircle(newver->getCircle(),newver->parent(),0,0,30);
     newver->setText(L"M");
     wndQt->drawtext(newver->getText(),newver->getCircle(),newver->text());
+    wndQt->drawtext(newver->getComment(),newver->getCircle(),newver->comment());
 }
 
 void GraphicManager::addArrowToProcDiag()
