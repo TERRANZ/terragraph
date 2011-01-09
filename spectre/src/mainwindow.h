@@ -29,7 +29,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-    void creatActions();
+    void createActions();
     void createToolBars();
     void createMenu();
     void createWidgets();
@@ -50,6 +50,7 @@ private slots:
     void zoomIn();
     void zoomOriginal();
     void zoomOut();
+    void showGraphic();
 
     void showAttributesModules();
     void newChannel();
@@ -97,6 +98,7 @@ private:
     QAction *m_ZoomInAction;
     QAction *m_ZoomOriginalAction;
     QAction *m_ZoomOutAction;
+    QAction *m_ShowGraphic;
 
     QAction *m_AttributesModuleAction;
     QAction *m_NewChannelAction;

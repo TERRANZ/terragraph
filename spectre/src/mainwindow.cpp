@@ -21,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
     m_Data = new XmlData();
     m_Data->create();
 
-    creatActions();
+    createActions();
     createToolBars();
     createMenu();
     createWidgets();
@@ -45,7 +45,7 @@ MainWindow::~MainWindow()
     delete m_Data;
 }
 
-void MainWindow::creatActions()
+void MainWindow::createActions()
 {
     m_CreateAction = new QAction(this);
     m_OpenAction = new QAction(this);
@@ -110,6 +110,7 @@ void MainWindow::creatActions()
     m_ZoomOriginalAction->setIcon(QIcon(":/images/zoom-original"));
     m_ZoomOutAction->setText(tr("Отдалить"));
     m_ZoomOutAction->setIcon(QIcon(":/images/zoom-out"));
+    m_ShowGraphic->setText(tr("Графический режим"));
 
     m_AttributesModuleAction->setText(tr("Атрибуты модуля..."));
     m_NewChannelAction->setText(tr("Новый Канал..."));
@@ -428,6 +429,12 @@ void MainWindow::zoomOriginal()
 void MainWindow::zoomOut()
 {
     m_XmlView->setZoomFactor(m_XmlView->zoomFactor() - ZoomFactorStep);
+}
+
+void MainWindow::showGraphic()
+{
+    //ui->stackedWidget->addWidget(m_XmlView);
+    ui->stackedWidget->removeWidget(m_XmlView);
 }
 
 void MainWindow::showAttributesModules()
