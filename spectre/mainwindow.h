@@ -6,6 +6,15 @@
 #include "xmlview/xmlview.h"
 #include "generator.h"
 #include "xmlview/stdstringlistmodel.h"
+#include "editforms/moduledialog.h"
+#include "editforms/channeldialog.h"
+#include "editforms/processdialog.h"
+#include "editforms/assembledialog.h"
+#include "editforms/channellistdialog.h"
+#include "editforms/processlistdialog.h"
+#include "editforms/assemblelistdialog.h"
+#include "generatordialog.h"
+#include "../terralib/facadewidget.h"
 
 namespace Ui {
     class MainWindow;
@@ -23,6 +32,12 @@ public:
         ToolDeleteObject,
         ToolSelectMove,
         Properties
+    };
+
+    enum GraphicMode
+    {
+        GMText,
+        GMGraph
     };
 
 public:
@@ -141,6 +156,7 @@ private:
     QString m_CurrentFileName;
     XmlView *m_XmlView;
     XmlData *m_Data;
+    FacadeWidget *m_GraphicView;
 
     Generator *m_Generator;
     Tool m_CurrentTool;
@@ -148,6 +164,7 @@ private:
     StdStringListModel *m_CommandListModel;
 
     static const qreal ZoomFactorStep;
+    GraphicMode m_mode;
 };
 
 #endif // MAINWINDOW_H

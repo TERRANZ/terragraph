@@ -1,15 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include "editforms/moduledialog.h"
-#include "editforms/channeldialog.h"
-#include "editforms/processdialog.h"
-#include "editforms/assembledialog.h"
-#include "editforms/channellistdialog.h"
-#include "editforms/processlistdialog.h"
-#include "editforms/assemblelistdialog.h"
-#include "generatordialog.h"
-
 const qreal MainWindow::ZoomFactorStep = 0.1;
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -37,6 +28,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(m_Generator, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(generatorFinished(int,QProcess::ExitStatus)));
     connect(m_Generator, SIGNAL(writeResult(QString)), this, SLOT(generatorConsole(QString)));
+    m_mode = GMText;
 }
 
 MainWindow::~MainWindow()
@@ -61,6 +53,7 @@ void MainWindow::createActions()
     m_ZoomInAction = new QAction(this);
     m_ZoomOriginalAction = new QAction(this);
     m_ZoomOutAction = new QAction(this);
+    m_ShowGraphic = new QAction(this);
 
     m_AttributesModuleAction = new QAction(this);
     m_NewChannelAction = new QAction(this);
@@ -173,6 +166,7 @@ void MainWindow::createActions()
     connect(m_ZoomInAction, SIGNAL(triggered()), this, SLOT(zoomIn()));
     connect(m_ZoomOriginalAction, SIGNAL(triggered()), this, SLOT(zoomOriginal()));
     connect(m_ZoomOutAction, SIGNAL(triggered()), this, SLOT(zoomOut()));
+    connect(m_ShowGraphic, SIGNAL(triggered()), this, SLOT(showGraphic()));
 
     connect(m_AttributesModuleAction, SIGNAL(triggered()), this, SLOT(showAttributesModules()));
     connect(m_NewChannelAction, SIGNAL(triggered()), this, SLOT(newChannel()));
@@ -240,6 +234,7 @@ void MainWindow::createMenu()
     menu->addAction(m_RedoAction);
 
     m_ViewMenu = menuBar()->addMenu(tr("Вид"));
+    m_ViewMenu->addAction(m_ShowGraphic);
     menu = m_ViewMenu->addMenu("Масштаб");
     menu->addAction(m_ZoomInAction);
     menu->addAction(m_ZoomOriginalAction);
@@ -289,6 +284,7 @@ void MainWindow::createWidgets()
     m_SaveDialog = new QFileDialog(this);
     m_TemplateOpenDialog = new QFileDialog(this);
     m_XmlView = new XmlView();
+    m_GraphicView = new FacadeWidget(ui->stackedWidget);
 
     m_OpenDialog->setAcceptMode(QFileDialog::AcceptOpen);
     m_OpenDialog->setWindowTitle(tr("Открыть"));
@@ -433,8 +429,17 @@ void MainWindow::zoomOut()
 
 void MainWindow::showGraphic()
 {
-    //ui->stackedWidget->addWidget(m_XmlView);
-    ui->stackedWidget->removeWidget(m_XmlView);
+    if (m_mode == GMText)
+    {
+        m_mode = GMGraph;
+        ui->stackedWidget->removeWidget(m_XmlView);
+        ui->stackedWidget->addWidget(m_GraphicView);
+    }else
+    {
+        m_mode = GMText;
+        ui->stackedWidget->removeWidget(m_GraphicView);
+        ui->stackedWidget->addWidget(m_XmlView);
+    }
 }
 
 void MainWindow::showAttributesModules()
