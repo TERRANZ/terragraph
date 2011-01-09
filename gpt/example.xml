@@ -1,0 +1,44 @@
+<module rem="Пример простой" id="Sample" ver="1">
+    <include module="mod" file="another_module_file"/>
+    <param value="gprt.h" id="rtl"/>
+    <channel rem="Sample channel 'Chan' declaration" id="Chan" entry="entry" templet="">
+        <param value="Parameter for given templet can be used" id="par"/>
+        <state x="0" y="0" rem="Channel 'Chan' 'entry' state" type="cli" id="1">
+            <message x="0" y="0" rem="Message from 'entry' to 'end' state" id="8" state="end"/>
+        </state>
+        <state x="0" y="0" rem="Channel 'Chan' terminal state" type="srv" id="2"/>
+    </channel>
+    <process rem="Sample process 'Proc' declaration" id="Proc" entry="3" templet="">
+        <param value="add" id="par"/>
+        <port x="0" y="0" rem="Client side port with type 'Chan'" channel="Chan" type="cli" id="4" module="">
+            <receive x="0" y="0" method="3" rem="Reseiving message from 'port' to '3'" id="message"/>
+        </port>
+        <method x="0" y="0" rem="Method '3' awaiting 2 messages" count="2" id="3">
+            <condition x="0" y="0" method="5" rem="Condition 'cond'" id="6"/>
+            <send port="4" x="0" y="0" rem="Sending 'message' back to 'port'" id="7"/>
+            <activate x="0" y="0" method="3" rem="Sending activation message to oneself"/>
+            <activate x="0" y="0" method="" rem=""/>
+            <activate x="0" y="0" method="" rem=""/>
+            <activate x="0" y="0" method="" rem=""/>
+            <activate x="0" y="0" method="" rem=""/>
+            <send port="" x="0" y="0" rem="" id=""/>
+            <condition x="0" y="0" method="" rem="" id=""/>
+            <send port="" x="0" y="0" rem="" id=""/>
+            <activate x="0" y="0" method="" rem=""/>
+        </method>
+        <method x="0" y="0" rem="Method 'method2' awaiting 1 message" count="1" id="5"/>
+    </process>
+    <assemble rem="Sample assemble 'Asm' declaration" id="Asm" templet="">
+        <param value="Parameter for given templet can be used" id="par"/>
+        <process id="Proc" module=""/>
+        <channel id="Chan" module=""/>
+    </assemble>
+    <include module="2" file="1"/>
+    <include module="2" file="1"/>
+    <include module="2" file="1"/>
+    <include module="2" file="1"/>
+    <param value="33" id="222"/>
+    <param value="33" id="222"/>
+    <param value="33" id="222"/>
+    <param value="33" id="222"/>
+</module>

@@ -1,0 +1,19 @@
+<RCC>
+    <qresource prefix="/images">
+        <file alias="exit">resources/images/exit.png</file>
+        <file alias="new">resources/images/new.png</file>
+        <file alias="open">resources/images/open.png</file>
+        <file alias="save">resources/images/save.png</file>
+        <file alias="zoom-in">resources/images/zoom-in.png</file>
+        <file alias="zoom-original">resources/images/zoom-original.png</file>
+        <file alias="zoom-out">resources/images/zoom-out.png</file>
+        <file alias="select">resources/images/select.png</file>
+        <file alias="addarc">resources/images/addarc.png</file>
+        <file alias="addnode">resources/images/addnode.png</file>
+        <file alias="delete">resources/images/delete.png</file>
+        <file alias="edit">resources/images/edit.png</file>
+        <file alias="generate-start">resources/images/generate-start.png</file>
+        <file alias="generate-stop">resources/images/generate-stop.png</file>
+        <file alias="generate-options">resources/images/generate-options.png</file>
+    </qresource>
+</RCC>
