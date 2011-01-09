@@ -1,1 +1,0 @@
-gpt.exe -m example.xml

@@ -1,8 +1,0 @@
-<module rem="" id="" ver="">
-    <include module="" file=""/>
-    <include module="123" file="123"/>
-    <include module="123" file="123"/>
-    <include module="123" file="123"/>
-    <include module="123" file="123"/>
-    <include module="666666" file="123"/>
-</module>
