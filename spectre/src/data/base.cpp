@@ -15,8 +15,8 @@
 #include "state.h"
 #include "message.h"
 #include "assemble.h"
-#include "assembleProcess.h"
-#include "assembleChannel.h"
+#include "assembleprocess.h"
+#include "assemblechannel.h"
 
 #include "dom/domdocument.h"
 
