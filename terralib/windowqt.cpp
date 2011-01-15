@@ -9,7 +9,7 @@ WindowQt::WindowQt(QWidget *parent)
     m_grView = new QGraphicsView(this,parent);
     m_grView->setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
     m_grView->setContextMenuPolicy(Qt::CustomContextMenu);
-    //this->setSceneRect(0,0,500,300);
+    this->setSceneRect(0,0,500,300);
     m_grView->show();
     connect(this,SIGNAL(selectionChanged()),this,SLOT(SelectionChanged()));
     connect(m_grView,SIGNAL( customContextMenuRequested(QPoint) ),this,SLOT(customContextMenu(QPoint)));
