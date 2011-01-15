@@ -32,6 +32,7 @@ public:
     void drawCircle(Glyph *g,Glyph *p,float x,float y, float r);
     void drawArrow(ArrowQt *a,Glyph *p);
     void reDraw();
+    void deleteGlyph(Glyph *g);
     QGraphicsItem *currentItem() {return m_currentItem;};
     QGraphicsItem *lastItem() {return m_lastItem;};
     Glyph *getGlyphByGraphic(QGraphicsItem *item) {return l_glyphsMap[item];};

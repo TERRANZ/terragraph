@@ -27,7 +27,6 @@ public:
     GraphicManager(QWidget *parent);
     ~GraphicManager();
 
-
     int createChanDiagram();
     void addVertToChanDiag(int cvt);
     void addArrowToChanDiag();
@@ -43,6 +42,7 @@ public:
     WindowQt* wnd() {return m_wndQt;};
     QList<ProcessDiagram*> const procDiags() {return l_procDiags;};
     QList<ChannelDiagram*> const chanDiags() {return l_chanDiags;};
+    void deleteCurrent();
 
 private:
     WindowQt *m_wndQt;

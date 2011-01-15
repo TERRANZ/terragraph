@@ -28,6 +28,7 @@ public:
     virtual void drawArrow(Arrow *, Glyph *) {};
     virtual int  setMode(int = 0) {return 0;};
     virtual int  mode() {return 0;};
+    virtual void deleteGlyph(Glyph */*g*/) {};
 };
 
 #endif // WINDOW_H

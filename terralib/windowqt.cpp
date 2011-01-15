@@ -146,4 +146,10 @@ void WindowQt::setSettings(SettingsManager *sman)
     reDraw();
 }
 
-
+void WindowQt::deleteGlyph(Glyph *g)
+{
+    QGraphicsItem *item = l_glyphsMap.key(g);
+    this->removeItem(item);
+    //l_glyphs.removeOne(Complex((*g)));
+    //delete g;
+}

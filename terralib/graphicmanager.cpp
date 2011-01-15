@@ -156,3 +156,8 @@ void GraphicManager::vertAttrOk(int ntype,QString id, QString comment, int type,
     }
     curr->setId(id);
 }
+
+void GraphicManager::deleteCurrent()
+{
+    m_wndQt->deleteGlyph(m_wndQt->getGlyphByGraphic(m_curr));
+}

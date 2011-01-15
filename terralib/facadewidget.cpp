@@ -41,3 +41,8 @@ void FacadeWidget::onResize()
     setGeometry(m_parent->geometry());
     emit m_gm->onResize();
 }
+
+void FacadeWidget::deleteCurrentSelected()
+{
+    m_gm->deleteCurrent();
+}

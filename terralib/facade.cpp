@@ -12,5 +12,4 @@ Complex* Facade::getRootGlyph()
 
 QList<Complex*> Facade::getAllGlyphs()
 {
-
 }

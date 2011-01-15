@@ -19,6 +19,7 @@ public:
     int currentChanDiag() {return m_currentChanDiag;};
     void setCurrentProcDiag(int cpd) {m_currentProcDiag = cpd;};
     void setCurrentChanDiag(int ccd) {m_currentChanDiag = ccd;};
+    void deleteCurrentSelected();
 
 public slots:
     void onResize();
