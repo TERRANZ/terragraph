@@ -13,13 +13,12 @@
 #include "rect.h"
 #include "processdiagram.h"
 #include "channeldiagram.h"
+#include "forms/vertattrsdialog.h"
 #include <QGraphicsItem>
 #include <QMenu>
 #include <QAction>
 #include <QList>
-#include "list"
 #include <sstream>
-using namespace std;
 
 class GraphicManager: public QObject
 {
@@ -47,14 +46,13 @@ public:
 
 private:
     WindowQt *m_wndQt;
-    QWidget *m_Parent;
+    QWidget *m_parent;
     QList<ProcessDiagram*> l_procDiags;
     QList<ChannelDiagram*> l_chanDiags;
-//    QList<Glyph*> l_procObjects;
-//    QList<Glyph*> l_chanObjects;
     QGraphicsItem *m_last,*m_curr;
     QMenu *m_vertMenu;
     QAction *m_actInfo, *m_actDelete, *m_actText;
+    VertAttrsDialog *vertattrsdlg;
 
 private slots:
     void itemSelected(QGraphicsItem *last,QGraphicsItem *curr);
@@ -62,6 +60,7 @@ private slots:
     void actionInfo();
     void actionText();
     void contextMenuReq(QPoint p);
+    void vertAttrOk(int ntype,QString id, QString comment, int type,QString chan, QString method, int count);
 public slots:
     void onResize();
 };

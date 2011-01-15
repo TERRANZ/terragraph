@@ -23,12 +23,9 @@ WindowQt::~WindowQt()
 {
 }
 
-void WindowQt::drawtext(Glyph * g,Glyph *p,wstring txt)
+void WindowQt::drawtext(Glyph * g,Glyph *p,QString txt)
 {
-    std::string temp;
-    std::copy(txt.begin(), txt.end(), std::back_inserter(temp));
-    QString s(temp.c_str());
-    QGraphicsItem *newtxt = this->addText(s);
+    QGraphicsItem *newtxt = this->addText(txt);
     newtxt->setPos(g->position().x,g->position().y);
     l_graphicsItems.append(newtxt);
     l_glyphsMap.insert(newtxt,g);

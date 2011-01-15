@@ -3,18 +3,16 @@
 
 #include "glyph.h"
 #include "point.h"
-#include <string>
-using namespace std;
 
 class Character: public Glyph
 {
 private:
-    wstring m_text;
+    QString m_text;
 
 public:
-    Character(Glyph *parent,wstring txt);
-    void setText(wstring &str) {m_text = str;};
-    wstring text() {return m_text;};
+    Character(Glyph *parent,QString txt);
+    void setText(QString &str) {m_text = str;};
+    QString text() {return m_text;};
 };
 
 #endif // CHARACTER_H

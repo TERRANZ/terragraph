@@ -3,7 +3,7 @@
 GraphicManager::GraphicManager(QWidget *parent)
 {
     m_wndQt = new WindowQt(parent);
-    m_Parent = parent;
+    m_parent = parent;
     connect(m_wndQt,SIGNAL(itemSelected(QGraphicsItem*,QGraphicsItem*)),this,SLOT(itemSelected(QGraphicsItem*,QGraphicsItem*)));
     connect(m_wndQt,SIGNAL(contextMenuReq(QPoint)),this,SLOT(contextMenuReq(QPoint)));
     m_last = NULL;
@@ -48,7 +48,7 @@ void GraphicManager::addVertToProcDiag(int pvt,ProcessDiagram *pd)
     Vertex *newver = new Vertex(pd);
     pd->insertChild(newver);
     m_wndQt->drawCircle(newver->circle(),newver->parent(),0,0,30);
-    newver->setText(L"M");
+    newver->setText("M");
     m_wndQt->drawtext(newver->text(),newver->circle(),newver->text()->text());
     m_wndQt->drawtext(newver->comment(),newver->circle(),newver->comment()->text());
 }
@@ -122,15 +122,19 @@ void GraphicManager::reset()
 
 void GraphicManager::actionInfo()
 {
-    QMessageBox::information(m_Parent,"Info","actionInfo",QMessageBox::Ok);
+    QMessageBox::information(m_parent,"Info","actionInfo",QMessageBox::Ok);
 }
 void GraphicManager::actionText()
 {
-    QMessageBox::information(m_Parent,"Info","actionText",QMessageBox::Ok);
+    //QMessageBox::information(m_Parent,"Info","actionText",QMessageBox::Ok);
+    vertattrsdlg = new VertAttrsDialog(m_parent);
+    connect(vertattrsdlg,SIGNAL(signalOk(int,QString,QString,int,QString,QString,int)),
+            this,SLOT(vertAttrOk(int,QString,QString,int,QString,QString,int)));
+    vertattrsdlg->show();
 }
 void GraphicManager::actionDelete()
 {
-    QMessageBox::information(m_Parent,"Info","actionDelete",QMessageBox::Ok);
+    QMessageBox::information(m_parent,"Info","actionDelete",QMessageBox::Ok);
 }
 
 void GraphicManager::contextMenuReq(QPoint p)
@@ -141,4 +145,14 @@ void GraphicManager::contextMenuReq(QPoint p)
 void GraphicManager::onResize()
 {
     emit m_wndQt->Resize();
+}
+
+
+void GraphicManager::vertAttrOk(int ntype,QString id, QString comment, int type,QString chan, QString method, int count)
+{
+    Glyph *curr = m_wndQt->getGlyphByGraphic(m_curr);
+    if (!curr) {
+        QMessageBox::information(m_parent,"Info",tr("Не найден глиф"),QMessageBox::Ok);
+    }
+    curr->setId(id);
 }

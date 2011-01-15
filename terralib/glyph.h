@@ -3,17 +3,16 @@
 
 #include "point.h"
 #include "rect.h"
-#include <list>
-#include <string>
-using namespace std;
+#include <QList>
+#include <QString>
 
 class Glyph
 {
 private:
     Glyph* m_parent;
     Point m_pos;
-    list<Glyph*> l_arrows;
-    wstring m_id,m_type,m_rem,m_entry,m_templet,m_channel,m_module;
+    QList<Glyph*> l_arrows;
+    QString m_id,m_type,m_rem,m_entry,m_templet,m_channel,m_module;
 
 public:
     virtual void bounds(Rect&) {} ;
@@ -24,69 +23,68 @@ public:
     virtual Glyph* parent() {return m_parent;};
     virtual void insertArrow(Glyph *a)
     {
-        l_arrows.push_back(a);
+        l_arrows.append(a);
         a->setParent(this);
     }
     virtual void removeArrow(Glyph *a)
     {
-        l_arrows.remove(a);
+        l_arrows.removeOne(a);
     };
     virtual void posUpdate(const Point &newpos)
     {
-        list<Glyph*>::iterator iarrow;
-        for(iarrow=l_arrows.begin(); iarrow!=l_arrows.end(); iarrow++)
+        foreach (Glyph *a,l_arrows)
         {
-            (*iarrow)->processPosUpdate(newpos);
+            a->processPosUpdate(newpos);
         }
     }
     virtual void processPosUpdate(const Point&) {};
 
-    wstring id() const {
+    QString id() const {
         return m_id;
     }
 
-    void setId(wstring id) {
+    void setId(QString id) {
         this->m_id = id;
     }
 
-    wstring rem() const {
+    QString rem() const {
         return m_rem;
     }
 
-    void setRem(wstring rem) {
+    void setRem(QString rem) {
         this->m_rem = rem;
     }
 
-    wstring type() const {
+    QString type() const {
         return m_type;
     }
 
-    void setType(wstring type) {
+    void setType(QString type) {
         this->m_type = type;
     }
 
-    wstring channel() const {
+    QString channel() const {
         return m_channel;
     }
 
-    void setChannel(wstring channel) {
+    void setChannel(QString channel) {
         this->m_channel = channel;
     }
 
-    wstring templet() const {
+    QString templet() const {
         return m_templet;
     }
 
-    void setTemplet(wstring Templet) {
+    void setTemplet(QString Templet) {
         this->m_templet = Templet;
     }
 
 
-    wstring module() const {
+    QString module() const {
         return m_module;
     }
 
-    void setModule(wstring module) {
+    void setModule(QString module) {
         this->m_module = module;
     }
 

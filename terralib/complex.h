@@ -2,25 +2,23 @@
 #define COMPLEX_H
 
 #include "glyph.h"
-#include <list>
-#include <string>
-using namespace std;
+#include <QList>
 
 class Complex : public Glyph
 {
 private:
-    list<Glyph*> l_childGlyphList;
+    QList<Glyph*> l_childGlyphList;
 
 public:
     virtual void insertChild(Glyph *g)
     {
-        l_childGlyphList.push_back(g);
+        l_childGlyphList.append(g);
         g->setParent(this);
     };
 
     virtual void removeChild(Glyph *g)
     {
-        l_childGlyphList.remove(g);
+        l_childGlyphList.removeOne(g);
     };
 };
 

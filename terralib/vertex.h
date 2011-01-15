@@ -4,10 +4,7 @@
 #include "complex.h"
 #include "character.h"
 #include "circle.h"
-#include <list>
-#include <vector>
 #include <sstream>
-using namespace std;
 
 class Vertex : public Complex
 {
@@ -19,15 +16,13 @@ private:
     int m_vertType;
 public:
     Vertex(Glyph *parent);
-    void setText(wstring txt) {m_text->setText(txt);};
-    //wstring text() {return m_text->text();};
+    void setText(QString txt) {m_text->setText(txt);};
     int type() {return m_vertType;};
     void setType(int t) {m_vertType = t;};
     Circle *circle() {return m_circle;};
     Character *text() {return m_text;};
-    void setComment(wstring c) {m_comment->setText(c);};
+    void setComment(QString c) {m_comment->setText(c);};
     Character *comment() {return m_comment;};
-    //wstring comment() {return m_comment->text();};
 };
 
 #endif // VERTEX_H

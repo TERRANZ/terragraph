@@ -25,7 +25,7 @@ public:
     ~WindowQt();
     void setPenType(int type =0);
     void setPenColor(float r = 255,float g = 255,float b = 255);
-    void drawtext(Glyph *g,Glyph *p,wstring txt);
+    void drawtext(Glyph *g,Glyph *p,QString txt);
     void drawBox(Glyph *g,Glyph *p,float x1,float y1,float x2,float y2);
     void drawLine(Glyph *g,Glyph *p,float x,float y,float w,float h);
     void drawPoint(Glyph *g,Glyph *p,float x,float y);

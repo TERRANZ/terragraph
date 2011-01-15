@@ -17,6 +17,7 @@ public:
 
 private:
     Ui::NodePropertiesDialog *ui;
+
 };
 
 #endif // NODEPROPERTIESDIALOG_H

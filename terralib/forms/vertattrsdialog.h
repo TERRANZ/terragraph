@@ -18,6 +18,12 @@ protected:
 
 private:
     Ui::vertattrsdialog *ui;
+
+signals:
+    void signalOk(int ntype,QString id, QString comment, int type,QString chan, QString method, int count);
+
+private slots:
+    void on_save_2_clicked();
 };
 
 #endif // VERTATTRSDIALOG_H

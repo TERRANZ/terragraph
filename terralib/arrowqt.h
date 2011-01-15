@@ -2,7 +2,6 @@
 #define ARROWQT_H
 
 #include <QGraphicsLineItem>
-//#include "glyph.h"
 #include "arrow.h"
 #include <QGraphicsPolygonItem>
 #include <QGraphicsLineItem>

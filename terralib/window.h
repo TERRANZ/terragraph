@@ -1,12 +1,10 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
-#include <string>
 #include "glyph.h"
 #include "point.h"
 #include "arrow.h"
 
-using namespace std;
 
 class Window
 {
@@ -20,7 +18,7 @@ public:
         WModeDelVert = 5 //Удаляем вершину при следующем выделении
          };
     virtual void reDraw(){};
-    virtual void drawtext(Glyph * /*g*/,Glyph * /*p*/,wstring /*txt*/){};
+    virtual void drawtext(Glyph * /*g*/,Glyph * /*p*/,QString /*txt*/){};
     virtual void drawLine(Glyph * /*g*/,Glyph * /*p*/,float /*x1*/,float /*y1*/,float /*x2*/,float /*y2*/) {};
     virtual void drawPoint(Glyph * /*g*/,Glyph * /*p*/,float /*x*/,float /*y*/) {};
     virtual void drawCircle(Glyph * /*g*/,Glyph * /*p*/,float /*x*/,float /*y*/, float /*r*/) {};
