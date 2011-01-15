@@ -77,7 +77,8 @@ SOURCES += dom/domnode.cpp \
     ../terralib/channeldiagram.cpp \
     ../terralib/box.cpp \
     ../terralib/arrowqt.cpp \
-    ../terralib/arc.cpp
+    ../terralib/arc.cpp \
+    ../terralib/forms/vertattrsdialog.cpp
 HEADERS += dom/domnode.h \
     dom/domdocument.h \
     dom/domelement.h \
@@ -154,7 +155,8 @@ HEADERS += dom/domnode.h \
     ../terralib/box.h \
     ../terralib/arrowqt.h \
     ../terralib/arrow.h \
-    ../terralib/arc.h
+    ../terralib/arc.h \
+    ../terralib/forms/vertattrsdialog.h
 FORMS += editforms/moduledialog.ui \
     editforms/objectdialog.ui \
     editforms/objectlistdialog.ui \
@@ -162,6 +164,7 @@ FORMS += editforms/moduledialog.ui \
     mainwindow.ui \
     nodepropertiesdialog.ui \
     generatordialog.ui \
-    arcdialog.ui
+    arcdialog.ui \
+    ../terralib/forms/vertattrsdialog.ui
 OTHER_FILES += data/readme.txt
 RESOURCES += resources.qrc

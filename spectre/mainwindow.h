@@ -156,7 +156,7 @@ private:
     QString m_CurrentFileName;
     XmlView *m_XmlView;
     XmlData *m_Data;
-    FacadeWidget *m_GraphicView;
+    FacadeWidget *m_GraphicFacade;
 
     Generator *m_Generator;
     Tool m_CurrentTool;

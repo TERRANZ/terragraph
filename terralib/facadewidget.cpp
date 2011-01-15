@@ -3,32 +3,41 @@
 FacadeWidget::FacadeWidget(QWidget *parent)
 {
     this->setParent(parent);
-    Parent = parent;
-    gm = new GraphicManager(this);
+    m_parent = parent;
+    m_gm = new GraphicManager(this);
+    m_currentChanDiag = 0;
+    m_currentProcDiag = 0;
 }
 
 FacadeWidget::~FacadeWidget()
 {
-    delete gm;
+    delete m_gm;
 }
 
-void FacadeWidget::addNewV()
+void FacadeWidget::addNewVertexToProc(int pd)
 {
-    gm->addVertToProcDiag(0);
+    m_gm->addVertToProcDiag(0,m_gm->procDiags().at(m_currentProcDiag));
 }
 
 void FacadeWidget::addArrow()
 {
-    gm->addArrowToProcDiag();
+    m_gm->addArrowToProcDiag();
 }
 
-void FacadeWidget::createProcDiag()
+int FacadeWidget::createProcDiag()
 {
-    gm->createProcDiagram();
+    m_currentProcDiag = m_gm->createProcDiagram();
+    return m_currentProcDiag;
+}
+
+int FacadeWidget::createChanDiag()
+{
+    m_currentChanDiag = m_gm->createChanDiagram();
+    return m_currentChanDiag;
 }
 
 void FacadeWidget::onResize()
 {
-    setGeometry(Parent->geometry());
-    emit gm->onResize();
+    setGeometry(m_parent->geometry());
+    emit m_gm->onResize();
 }

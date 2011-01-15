@@ -25,8 +25,8 @@ public:
             QGraphicsItem *parent = 0, QGraphicsScene *scene = 0);
     QRectF boundingRect() const;
     QPainterPath shape() const;
-    QGraphicsItem *startitem() {return myStartItem;};
-    QGraphicsItem *stopitem() {return myEndItem;};
+    QGraphicsItem *startitem() {return m_startItem;};
+    QGraphicsItem *stopitem() {return m_endItem;};
     void processPosUpdate(const Point &newpos);
 
 protected:
@@ -34,10 +34,10 @@ protected:
                QWidget *widget = 0);
 
 private:
-    QGraphicsItem *myStartItem;
-    QGraphicsItem *myEndItem;
-    QColor myColor;
-    QPolygonF arrowHead;
+    QGraphicsItem *m_startItem;
+    QGraphicsItem *m_endItem;
+    QColor m_colour;
+    QPolygonF m_arrowHead;
 };
 
 #endif // ARROWQT_H

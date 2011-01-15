@@ -2,21 +2,21 @@
 
 WindowQt::WindowQt(QWidget *parent)
 {
-    Pen.setColor(QColor("black"));
-    Parent = parent;
+    m_pen.setColor(QColor("black"));
+    m_parent = parent;
     this->setParent(parent);
-    //this->setSceneRect(parent->geometry());
-    GrView = new QGraphicsView(this,parent);
-    GrView->setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
-    GrView->setContextMenuPolicy(Qt::CustomContextMenu);
+    this->setSceneRect(parent->geometry());
+    m_grView = new QGraphicsView(this,parent);
+    m_grView->setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
+    m_grView->setContextMenuPolicy(Qt::CustomContextMenu);
     //this->setSceneRect(0,0,500,300);
-    GrView->show();
+    m_grView->show();
     connect(this,SIGNAL(selectionChanged()),this,SLOT(SelectionChanged()));
-    connect(GrView,SIGNAL( customContextMenuRequested(QPoint) ),this,SLOT(customContextMenu(QPoint)));
-    CurrentItem = 0;
-    myMode = 0;
-    myLastMode = 0;
-    Sman = new SettingsManager();
+    connect(m_grView,SIGNAL( customContextMenuRequested(QPoint) ),this,SLOT(customContextMenu(QPoint)));
+    m_currentItem = 0;
+    m_mode = 0;
+    m_lastMode = 0;
+    m_sman = new SettingsManager();
 }
 
 WindowQt::~WindowQt()
@@ -30,14 +30,14 @@ void WindowQt::drawtext(Glyph * g,Glyph *p,wstring txt)
     QString s(temp.c_str());
     QGraphicsItem *newtxt = this->addText(s);
     newtxt->setPos(g->position().x,g->position().y);
-    GraphicsItems.append(newtxt);
-    GlyphsMap.insert(newtxt,g);
+    l_graphicsItems.append(newtxt);
+    l_glyphsMap.insert(newtxt,g);
     if (p == 0)
     {
         newtxt->setFlag(QGraphicsItem::ItemIsMovable);
         newtxt->setFlag(QGraphicsItem::ItemIsSelectable);
     }else
-        newtxt->setParentItem(GlyphsMap.key(p));
+        newtxt->setParentItem(l_glyphsMap.key(p));
 }
 void WindowQt::drawBox(Glyph * g,Glyph *p,float x,float y,float w,float h)
 {
@@ -47,23 +47,23 @@ void WindowQt::drawBox(Glyph * g,Glyph *p,float x,float y,float w,float h)
         newbox->setFlag(QGraphicsItem::ItemIsMovable);
         newbox->setFlag(QGraphicsItem::ItemIsSelectable);
     }else
-        newbox->setParentItem(GlyphsMap.key(p));
-    GlyphsMap.insert(newbox,g);
+        newbox->setParentItem(l_glyphsMap.key(p));
+    l_glyphsMap.insert(newbox,g);
 }
 void WindowQt::drawLine(Glyph * g,Glyph *p,float x1,float y1,float x2,float y2)
 {
-    QGraphicsItem *newline = this->addLine(qreal(x1),qreal(y1),qreal(x2),qreal(y2),Pen);
-    GlyphsMap.insert(newline,g);
+    QGraphicsItem *newline = this->addLine(qreal(x1),qreal(y1),qreal(x2),qreal(y2),m_pen);
+    l_glyphsMap.insert(newline,g);
 }
 void WindowQt::drawPoint(Glyph * g,Glyph *p,float x,float y)
 {
 }
 void WindowQt::drawCircle(Glyph * g,Glyph *p,float x,float y, float r)
 {
-    QGraphicsItem *newel = this->addEllipse(qreal(x),qreal(y),qreal(r),qreal(r),Pen);
+    QGraphicsItem *newel = this->addEllipse(qreal(x),qreal(y),qreal(r),qreal(r),m_pen);
     newel->setPos(g->position().x,g->position().y);
-    GraphicsItems.append(newel);
-    GlyphsMap.insert(newel,g);
+    l_graphicsItems.append(newel);
+    l_glyphsMap.insert(newel,g);
     //if (p == 0)
     //{
         newel->setFlag(QGraphicsItem::ItemIsMovable);
@@ -73,7 +73,7 @@ void WindowQt::drawCircle(Glyph * g,Glyph *p,float x,float y, float r)
 }
 void WindowQt::setPenColor(float r,float g,float b)
 {
-    Pen.setColor(QColor(r,g,b));
+    m_pen.setColor(QColor(r,g,b));
 }
 void WindowQt::setPenType(int type)
 {
@@ -81,8 +81,8 @@ void WindowQt::setPenType(int type)
 void WindowQt::drawArrow(ArrowQt *a,Glyph *p)
 {
     this->addItem(a);
-    GraphicsItems.append(a);
-    GlyphsMap.insert(a,a);
+    l_graphicsItems.append(a);
+    l_glyphsMap.insert(a,a);
     a->setZValue(a->zValue()-0.1);
 }
 void WindowQt::PositionChanged(QGraphicsItem *item,QPoint &newpos)
@@ -96,56 +96,56 @@ void WindowQt::reDraw()
 
 void WindowQt::Resize()
 {
-    this->setSceneRect(Parent->geometry());
-    GrView->setGeometry(Parent->geometry());
+    this->setSceneRect(m_parent->geometry());
+    m_grView->setGeometry(m_parent->geometry());
 }
 
 void WindowQt::SelectionChanged()
 {
-    LastItem = CurrentItem;
+    m_lastItem = m_currentItem;
     if (this->selectedItems().count() == 0)
     {
         //Ничего не выделено
-        CurrentItem = 0;
+        m_currentItem = 0;
     }else
     {
         //Выделены элементы
-        CurrentItem =  this->selectedItems().first();
+        m_currentItem =  this->selectedItems().first();
     }
-    emit itemSelected(LastItem,CurrentItem);
+    emit itemSelected(m_lastItem,m_currentItem);
 }
 
 void WindowQt::mouseReleaseEvent ( QGraphicsSceneMouseEvent * mouseEvent )
 {
-    if (CurrentItem != 0 )
+    if (m_currentItem != 0 )
     {
         Point newpos;
         newpos.x = (mouseEvent->scenePos().x());
         newpos.y = (mouseEvent->scenePos().y());
-        GlyphsMap[CurrentItem]->setPosition(newpos);
-        GlyphsMap[CurrentItem]->posUpdate(newpos);
+        l_glyphsMap[m_currentItem]->setPosition(newpos);
+        l_glyphsMap[m_currentItem]->posUpdate(newpos);
     }
     QGraphicsScene::mouseReleaseEvent(mouseEvent);
 }
 
 void WindowQt::customContextMenu(QPoint p)
 {
-    if (CurrentItem != 0)
+    if (m_currentItem != 0)
     {
-        emit contextMenuReq(GrView->mapToGlobal(p));
+        emit contextMenuReq(m_grView->mapToGlobal(p));
     }
 }
 
 int WindowQt::setMode(int mode)
 {
-    int lastmode = myMode;
-    myMode = mode;
+    int lastmode = m_mode;
+    m_mode = mode;
     return lastmode;
 }
 
 void WindowQt::setSettings(SettingsManager *sman)
 {
-    Sman = sman;
+    m_sman = sman;
     reDraw();
 }
 

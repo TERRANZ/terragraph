@@ -2,27 +2,26 @@
 
 GraphicManager::GraphicManager(QWidget *parent)
 {
-    wndQt = new WindowQt(parent);
-    Parent = parent;
-    connect(wndQt,SIGNAL(itemSelected(QGraphicsItem*,QGraphicsItem*)),this,SLOT(itemSelected(QGraphicsItem*,QGraphicsItem*)));
-    connect(wndQt,SIGNAL(contextMenuReq(QPoint)),this,SLOT(contextMenuReq(QPoint)));
-    last = NULL;
-    curr = NULL;
-
-    vertMenu = new QMenu(parent);
-    actDelete = new QAction(QIcon(":/icons/delete.png"),trUtf8("&Удалить"),this);
-    actDelete->setShortcuts(QKeySequence::Delete);
-    actDelete->setStatusTip(trUtf8("Удалить этот объект"));
-    connect(actDelete,SIGNAL(triggered()),this,SLOT(actionDelete()));
-    vertMenu->addAction(actDelete);
-    actInfo = new QAction(QIcon(":/icons/icon-info.png"),trUtf8("&Информация..."),this);
-    actInfo->setStatusTip(trUtf8("Информация"));
-    connect(actInfo,SIGNAL(triggered()),this,SLOT(actionInfo()));
-    vertMenu->addAction(actInfo);
-    actText = new QAction(QIcon(":/icons/text.png"),trUtf8("&Редактирование текста..."),this);
-    actText->setStatusTip(trUtf8("Редактирование текста"));
-    connect(actText,SIGNAL(triggered()),this,SLOT(actionText()));
-    vertMenu->addAction(actText);
+    m_wndQt = new WindowQt(parent);
+    m_Parent = parent;
+    connect(m_wndQt,SIGNAL(itemSelected(QGraphicsItem*,QGraphicsItem*)),this,SLOT(itemSelected(QGraphicsItem*,QGraphicsItem*)));
+    connect(m_wndQt,SIGNAL(contextMenuReq(QPoint)),this,SLOT(contextMenuReq(QPoint)));
+    m_last = NULL;
+    m_curr = NULL;
+    m_vertMenu = new QMenu(parent);
+    m_actDelete = new QAction(QIcon(":/icons/delete.png"),trUtf8("&Удалить"),this);
+    m_actDelete->setShortcuts(QKeySequence::Delete);
+    m_actDelete->setStatusTip(trUtf8("Удалить этот объект"));
+    connect(m_actDelete,SIGNAL(triggered()),this,SLOT(actionDelete()));
+    m_vertMenu->addAction(m_actDelete);
+    m_actInfo = new QAction(QIcon(":/icons/icon-info.png"),trUtf8("&Информация..."),this);
+    m_actInfo->setStatusTip(trUtf8("Информация"));
+    connect(m_actInfo,SIGNAL(triggered()),this,SLOT(actionInfo()));
+    m_vertMenu->addAction(m_actInfo);
+    m_actText = new QAction(QIcon(":/icons/text.png"),trUtf8("&Редактирование текста..."),this);
+    m_actText->setStatusTip(trUtf8("Редактирование текста"));
+    connect(m_actText,SIGNAL(triggered()),this,SLOT(actionText()));
+    m_vertMenu->addAction(m_actText);
 }
 
 GraphicManager::~GraphicManager()
@@ -30,38 +29,40 @@ GraphicManager::~GraphicManager()
 
 }
 
-ProcessDiagram *GraphicManager::createProcDiagram()
+int GraphicManager::createProcDiagram()
 {
-    procdiag = new ProcessDiagram(0);
-    return procdiag;
+    ProcessDiagram* procdiag = new ProcessDiagram(0);
+    l_procDiags.append(procdiag);
+    return l_procDiags.indexOf(procdiag);
 }
 
-ChannelDiagram *GraphicManager::createChanDiagram()
+int GraphicManager::createChanDiagram()
 {
-
+    ChannelDiagram* chandiag = new ChannelDiagram(0);
+    l_chanDiags.append(chandiag);
+    return l_chanDiags.indexOf(chandiag);
 }
 
-void GraphicManager::addVertToProcDiag(int pvt/*,ProcessDiagram *pd*/)
+void GraphicManager::addVertToProcDiag(int pvt,ProcessDiagram *pd)
 {
-    Vertex *newver = new Vertex(procdiag);
-    procObjects.push_back(newver);
-    procdiag->insertChild(newver);
-    wndQt->drawCircle(newver->getCircle(),newver->parent(),0,0,30);
+    Vertex *newver = new Vertex(pd);
+    pd->insertChild(newver);
+    m_wndQt->drawCircle(newver->circle(),newver->parent(),0,0,30);
     newver->setText(L"M");
-    wndQt->drawtext(newver->getText(),newver->getCircle(),newver->text());
-    wndQt->drawtext(newver->getComment(),newver->getCircle(),newver->comment());
+    m_wndQt->drawtext(newver->text(),newver->circle(),newver->text()->text());
+    m_wndQt->drawtext(newver->comment(),newver->circle(),newver->comment()->text());
 }
 
 void GraphicManager::addArrowToProcDiag()
 {
-    wndQt->setMode(Window::WModeAddArrowP1);
+    m_wndQt->setMode(Window::WModeAddArrowP1);
 }
 
 void GraphicManager::itemSelected(QGraphicsItem *last,QGraphicsItem *curr)
 {
-    this->last = last;
-    this->curr = curr;
-    switch (wndQt->mode())
+    this->m_last = last;
+    this->m_curr = curr;
+    switch (m_wndQt->mode())
     {
     case Window::WModeNone:
         {
@@ -72,7 +73,7 @@ void GraphicManager::itemSelected(QGraphicsItem *last,QGraphicsItem *curr)
         {
             if (curr != NULL)
             {
-                wndQt->setMode(Window::WModeAddArrowP2);
+                m_wndQt->setMode(Window::WModeAddArrowP2);
                 curr->setZValue(2);
                 curr->setOpacity(0.5);
             }
@@ -82,11 +83,11 @@ void GraphicManager::itemSelected(QGraphicsItem *last,QGraphicsItem *curr)
         {
             if (curr != NULL && last != NULL)
             {
-                wndQt->setMode(Window::WModeNone);
-                ArrowQt *newarr = new ArrowQt(curr,last,curr,wndQt);
-                wndQt->drawArrow(newarr,NULL);
-                wndQt->getGlyphByGraphic(wndQt->lastItem())->insertArrow(newarr);
-                wndQt->getGlyphByGraphic(wndQt->currentItem())->insertArrow(newarr);
+                m_wndQt->setMode(Window::WModeNone);
+                ArrowQt *newarr = new ArrowQt(curr,last,curr,m_wndQt);
+                m_wndQt->drawArrow(newarr,NULL);
+                m_wndQt->getGlyphByGraphic(m_wndQt->lastItem())->insertArrow(newarr);
+                m_wndQt->getGlyphByGraphic(m_wndQt->currentItem())->insertArrow(newarr);
                 curr->setOpacity(1);
                 curr->setZValue(2);
                 last->setOpacity(1);
@@ -116,28 +117,28 @@ void GraphicManager::itemSelected(QGraphicsItem *last,QGraphicsItem *curr)
 
 void GraphicManager::reset()
 {
-    wndQt->setMode(Window::WModeNone);
+    m_wndQt->setMode(Window::WModeNone);
 }
 
 void GraphicManager::actionInfo()
 {
-    QMessageBox::information(Parent,"Info","actionInfo",QMessageBox::Ok);
+    QMessageBox::information(m_Parent,"Info","actionInfo",QMessageBox::Ok);
 }
 void GraphicManager::actionText()
 {
-    QMessageBox::information(Parent,"Info","actionText",QMessageBox::Ok);
+    QMessageBox::information(m_Parent,"Info","actionText",QMessageBox::Ok);
 }
 void GraphicManager::actionDelete()
 {
-    QMessageBox::information(Parent,"Info","actionDelete",QMessageBox::Ok);
+    QMessageBox::information(m_Parent,"Info","actionDelete",QMessageBox::Ok);
 }
 
 void GraphicManager::contextMenuReq(QPoint p)
 {
-    vertMenu->exec(p);
+    m_vertMenu->exec(p);
 }
 
 void GraphicManager::onResize()
 {
-    emit wndQt->Resize();
+    emit m_wndQt->Resize();
 }

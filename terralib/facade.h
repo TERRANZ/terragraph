@@ -11,7 +11,7 @@ class Facade: public QObject
 {
     Q_OBJECT
 private:
-    SettingsManager* smanager;
+    SettingsManager* m_sManager;
 
 public:
     Facade(WindowQt *wnd);
@@ -19,43 +19,43 @@ public:
     QList<Complex*> getAllGlyphs();
 
     float arrow_pensize() const {
-        return smanager->geom()->Arrow_pensize;
+        return m_sManager->geom()->Arrow_pensize;
     }
 
-    void SetArrow_pensize(float Arrow_pensize) {
-        smanager->geom()->Arrow_pensize = Arrow_pensize;
+    void setArrow_pensize(float Arrow_pensize) {
+        m_sManager->geom()->Arrow_pensize = Arrow_pensize;
     }
 
     float circle_fontsize() const {
-        return smanager->geom()->Circle_fontsize;
+        return m_sManager->geom()->Circle_fontsize;
     }
 
-    void SetCircle_fontsize(float Circle_fontsize) {
-        smanager->geom()->Circle_fontsize = Circle_fontsize;
+    void setCircle_fontsize(float Circle_fontsize) {
+        m_sManager->geom()->Circle_fontsize = Circle_fontsize;
     }
 
     float circle_pensize() const {
-        return smanager->geom()->Circle_pensize;
+        return m_sManager->geom()->Circle_pensize;
     }
 
-    void SetCircle_pensize(float Circle_pensize) {
-        smanager->geom()->Circle_pensize = Circle_pensize;
+    void setCircle_pensize(float Circle_pensize) {
+        m_sManager->geom()->Circle_pensize = Circle_pensize;
     }
 
     float note_fontsize() const {
-        return smanager->geom()->Note_fontsize;
+        return m_sManager->geom()->Note_fontsize;
     }
 
-    void SetNote_fontsize(float Note_fontsize) {
-        smanager->geom()->Note_fontsize = Note_fontsize;
+    void setNote_fontsize(float Note_fontsize) {
+        m_sManager->geom()->Note_fontsize = Note_fontsize;
     }
 
     float scale() const {
-        return smanager->geom()->Scale;
+        return m_sManager->geom()->Scale;
     }
 
-    void SetScale(float Scale) {
-        smanager->geom()->Scale = Scale;
+    void setScale(float Scale) {
+        m_sManager->geom()->Scale = Scale;
     }
 
 };

@@ -7,14 +7,14 @@
 class Arrow : public Complex
 {
 private:
-    Point brakepoint;
-    Glyph *Start,*End;
+    Point m_brakepoint;
+    Glyph *m_start,*m_end;
 public:
     int ArrowType;
-    virtual void setStart(Glyph *g) {Start = g;};
-    virtual void setEnd(Glyph *g) {End = g;};
-    virtual Glyph *start() {return Start;};
-    virtual Glyph *end() {return End;};
+    virtual void setStart(Glyph *g) {m_start = g;};
+    virtual void setEnd(Glyph *g) {m_end = g;};
+    virtual Glyph *start() {return m_start;};
+    virtual Glyph *end() {return m_end;};
 };
 
 #endif // ARROW_H

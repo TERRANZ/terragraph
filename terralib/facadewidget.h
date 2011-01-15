@@ -11,16 +11,23 @@ class FacadeWidget : public QWidget
 public:
     FacadeWidget(QWidget *parent);
     ~FacadeWidget();
-    void createProcDiag();
-    void addNewV();
+    int createProcDiag();
+    int createChanDiag();
+    void addNewVertexToProc(int pd);
     void addArrow();
+    int currentProcDiag() {return m_currentProcDiag;};
+    int currentChanDiag() {return m_currentChanDiag;};
+    void setCurrentProcDiag(int cpd) {m_currentProcDiag = cpd;};
+    void setCurrentChanDiag(int ccd) {m_currentChanDiag = ccd;};
 
 public slots:
     void onResize();
 private:
-    Facade *fc;
-    GraphicManager *gm;
-    QWidget *Parent;
+    Facade *m_fc;
+    GraphicManager *m_gm;
+    QWidget *m_parent;
+    int m_currentProcDiag;
+    int m_currentChanDiag;
 };
 
 #endif // FACADEWIDGET_H

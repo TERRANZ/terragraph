@@ -284,8 +284,8 @@ void MainWindow::createWidgets()
     m_SaveDialog = new QFileDialog(this);
     m_TemplateOpenDialog = new QFileDialog(this);
     m_XmlView = new XmlView();
-    m_GraphicView = new FacadeWidget(ui->stackedWidget);
-    m_GraphicView->createProcDiag();
+    m_GraphicFacade = new FacadeWidget(ui->stackedWidget);
+    //m_GraphicFacade->createProcDiag();
 
     m_OpenDialog->setAcceptMode(QFileDialog::AcceptOpen);
     m_OpenDialog->setWindowTitle(tr("Открыть"));
@@ -434,11 +434,11 @@ void MainWindow::showGraphic()
     {
         m_mode = GMGraph;
         ui->stackedWidget->removeWidget(m_XmlView);
-        ui->stackedWidget->addWidget(m_GraphicView);
+        ui->stackedWidget->addWidget(m_GraphicFacade);
     }else
     {
         m_mode = GMText;
-        ui->stackedWidget->removeWidget(m_GraphicView);
+        ui->stackedWidget->removeWidget(m_GraphicFacade);
         ui->stackedWidget->addWidget(m_XmlView);
     }
 }
@@ -456,6 +456,7 @@ void MainWindow::newChannel()
     if(ChannelDialog::addChannel(m_Data->module(), this))
     {
         updateData();
+        m_GraphicFacade->createChanDiag();
     }
 }
 
@@ -464,6 +465,7 @@ void MainWindow::newProcess()
     if(ProcessDialog::addProcess(m_Data->module(), this))
     {
         updateData();
+        m_GraphicFacade->createProcDiag();
     }
 }
 
@@ -503,14 +505,14 @@ void MainWindow::selectToolCreateNode()
 {
     m_CurrentTool = ToolCreateNode;
     m_XmlView->setTool(XmlView::ToolAddNode);
-    m_GraphicView->addNewV();
+    m_GraphicFacade->addNewVertexToProc(m_GraphicFacade->currentProcDiag());
 }
 
 void MainWindow::selectToolCreateArc()
 {
     m_CurrentTool = ToolCreateArc;
     m_XmlView->setTool(XmlView::ToolAddArc);
-    m_GraphicView->addArrow();
+    m_GraphicFacade->addArrow();
 }
 
 void MainWindow::selectToolDeleteObject()
@@ -603,5 +605,5 @@ void MainWindow::updateData()
 
 void MainWindow::resizeEvent(QResizeEvent *e)
 {
-    emit m_GraphicView->onResize();
+    emit m_GraphicFacade->onResize();
 }

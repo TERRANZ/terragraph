@@ -9,12 +9,12 @@ using namespace std;
 class Character: public Glyph
 {
 private:
-    wstring Text;
+    wstring m_text;
 
 public:
     Character(Glyph *parent,wstring txt);
-    void setText(wstring &str) {Text = str;};
-    wstring text() {return Text;};
+    void setText(wstring &str) {m_text = str;};
+    wstring text() {return m_text;};
 };
 
 #endif // CHARACTER_H

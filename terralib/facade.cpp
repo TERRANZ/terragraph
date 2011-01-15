@@ -2,7 +2,7 @@
 
 Facade::Facade(WindowQt *wnd)
 {
-    smanager = wnd->sman();
+    m_sManager = wnd->sman();
 }
 
 Complex* Facade::getRootGlyph()

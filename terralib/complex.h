@@ -9,18 +9,18 @@ using namespace std;
 class Complex : public Glyph
 {
 private:
-    list<Glyph*> ChildGlyphList;
+    list<Glyph*> l_childGlyphList;
 
 public:
     virtual void insertChild(Glyph *g)
     {
-        ChildGlyphList.push_back(g);
+        l_childGlyphList.push_back(g);
         g->setParent(this);
     };
 
     virtual void removeChild(Glyph *g)
     {
-        ChildGlyphList.remove(g);
+        l_childGlyphList.remove(g);
     };
 };
 

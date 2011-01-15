@@ -32,27 +32,27 @@ public:
     void drawCircle(Glyph *g,Glyph *p,float x,float y, float r);
     void drawArrow(ArrowQt *a,Glyph *p);
     void reDraw();
-    QGraphicsItem *currentItem() {return CurrentItem;};
-    QGraphicsItem *lastItem() {return LastItem;};
-    Glyph *getGlyphByGraphic(QGraphicsItem *item) {return GlyphsMap[item];};
+    QGraphicsItem *currentItem() {return m_currentItem;};
+    QGraphicsItem *lastItem() {return m_lastItem;};
+    Glyph *getGlyphByGraphic(QGraphicsItem *item) {return l_glyphsMap[item];};
     int setMode(int mode = 0);
-    int mode() {return myMode;}
-    SettingsManager* sman () {return Sman;};
+    int mode() {return m_mode;}
+    SettingsManager* sman () {return m_sman;};
     void setSettings(SettingsManager *sman);
 
 private:
-    QWidget *Parent;
-    QGraphicsView *GrView;
-    QPen Pen;
-    QList <Complex*> Glyphs;
-    QMap <QGraphicsItem*,Glyph*> GlyphsMap; //Graphic -> Glyph
-    QMap <Glyph*,Glyph*> ParentsMap; //Glyph -> Parent
-    QList <QGraphicsItem*> GraphicsItems;
-    QGraphicsItem *CurrentItem;
-    QGraphicsItem *LastItem;
-    int myMode;
-    int myLastMode;
-    SettingsManager *Sman;
+    QWidget *m_parent;
+    QGraphicsView *m_grView;
+    QPen m_pen;
+    QList <Complex*> l_glyphs;
+    QMap <QGraphicsItem*,Glyph*> l_glyphsMap; //Graphic -> Glyph
+    QMap <Glyph*,Glyph*> l_parentsMap; //Glyph -> Parent
+    QList <QGraphicsItem*> l_graphicsItems;
+    QGraphicsItem *m_currentItem;
+    QGraphicsItem *m_lastItem;
+    int m_mode;
+    int m_lastMode;
+    SettingsManager *m_sman;
 
 protected:
     void mouseReleaseEvent ( QGraphicsSceneMouseEvent * mouseEvent );

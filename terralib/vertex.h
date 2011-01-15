@@ -12,22 +12,22 @@ using namespace std;
 class Vertex : public Complex
 {
 private:
-    int VertexType;
-    Circle *circle;
-    Character *Text,*Comment;
-    int diagType;
-    int vertType;
+    int m_vertexType;
+    Circle *m_circle;
+    Character *m_text,*m_comment;
+    int m_diagType;
+    int m_vertType;
 public:
     Vertex(Glyph *parent);
-    void setText(wstring txt) {Text->setText(txt);};
-    wstring text() {return Text->text();};
-    int type() {return vertType;};
-    void setType(int t) {vertType = t;};
-    Circle *getCircle() {return circle;};
-    Character *getText() {return Text;};
-    void setComment(wstring c) {Comment->setText(c);};
-    Character *getComment() {return Comment;};
-    wstring comment() {return Comment->text();};
+    void setText(wstring txt) {m_text->setText(txt);};
+    //wstring text() {return m_text->text();};
+    int type() {return m_vertType;};
+    void setType(int t) {m_vertType = t;};
+    Circle *circle() {return m_circle;};
+    Character *text() {return m_text;};
+    void setComment(wstring c) {m_comment->setText(c);};
+    Character *comment() {return m_comment;};
+    //wstring comment() {return m_comment->text();};
 };
 
 #endif // VERTEX_H
