@@ -4,7 +4,6 @@
 #include "complex.h"
 #include "character.h"
 #include "circle.h"
-#include <sstream>
 
 class Vertex : public Complex
 {
@@ -14,6 +13,7 @@ private:
     Character *m_text,*m_comment;
     int m_diagType;
     int m_vertType;
+
 public:
     Vertex(Glyph *parent);
     void setText(QString txt) {m_text->setText(txt);};
@@ -23,6 +23,8 @@ public:
     Character *text() {return m_text;};
     void setComment(QString c) {m_comment->setText(c);};
     Character *comment() {return m_comment;};
+    void setRem(QString rem) {m_comment->setText(rem);};
+    void setType(QString type) {m_text->setText(type);};
 };
 
 #endif // VERTEX_H

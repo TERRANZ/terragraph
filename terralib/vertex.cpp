@@ -5,7 +5,7 @@ Vertex::Vertex(Glyph *parent)
     setParent(parent);
     m_circle = new Circle(parent);
     m_text = new Character(m_circle,"");
-    m_comment = new Character(m_circle,"mark");
+    m_comment = new Character(m_circle,"");
     Point textpos,commentpos;
     textpos.x = 5;
     textpos.y = 5;

@@ -88,7 +88,12 @@ void WindowQt::PositionChanged(QGraphicsItem *item,QPoint &newpos)
 }
 void WindowQt::reDraw()
 {
-
+//    foreach(QGraphicsItem *i,l_graphicsItems)
+//    {
+//        this->removeItem(i);
+//        l_graphicsItems.removeOne(i);
+//
+//    }
 }
 
 void WindowQt::Resize()
@@ -150,6 +155,18 @@ void WindowQt::deleteGlyph(Glyph *g)
 {
     QGraphicsItem *item = l_glyphsMap.key(g);
     this->removeItem(item);
+    l_graphicsItems.removeOne(item);
     //l_glyphs.removeOne(Complex((*g)));
     //delete g;
+}
+
+void WindowQt::reDrawGlyph(Glyph *g)
+{
+
+}
+
+void WindowQt::removeGlyph(Glyph *g)
+{
+    //l_glyphs.removeOne(g);
+    l_glyphsMap.remove(l_glyphsMap.key(g));
 }

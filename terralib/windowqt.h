@@ -40,6 +40,8 @@ public:
     int mode() {return m_mode;}
     SettingsManager* sman () {return m_sman;};
     void setSettings(SettingsManager *sman);
+    void reDrawGlyph(Glyph *g);
+    void removeGlyph(Glyph *g);
 
 private:
     QWidget *m_parent;

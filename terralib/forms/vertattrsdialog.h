@@ -2,6 +2,7 @@
 #define VERTATTRSDIALOG_H
 
 #include <QDialog>
+#include "../glyph.h"
 
 namespace Ui {
     class vertattrsdialog;
@@ -12,6 +13,7 @@ class VertAttrsDialog : public QDialog {
 public:
     VertAttrsDialog(QWidget *parent = 0);
     ~VertAttrsDialog();
+    void load(Glyph *g);
 
 protected:
     void changeEvent(QEvent *e);

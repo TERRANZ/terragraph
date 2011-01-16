@@ -13,6 +13,7 @@ private:
     Point m_pos;
     QList<Glyph*> l_arrows;
     QString m_id,m_type,m_rem,m_entry,m_templet,m_channel,m_module;
+    int m_repCount;
 
 public:
     virtual void bounds(Rect&) {} ;
@@ -21,6 +22,8 @@ public:
     virtual Point position() {return m_pos;};
     virtual void setParent(Glyph* g = 0) {m_parent = g;};
     virtual Glyph* parent() {return m_parent;};
+    virtual int repCount() {return m_repCount;};
+    virtual void setRepCount(int count) {m_repCount = count;};
     virtual void insertArrow(Glyph *a)
     {
         l_arrows.append(a);

@@ -47,8 +47,10 @@ void GraphicManager::addVertToProcDiag(int pvt,ProcessDiagram *pd)
 {
     Vertex *newver = new Vertex(pd);
     pd->insertChild(newver);
-    m_wndQt->drawCircle(newver->circle(),newver->parent(),0,0,30);
+    m_wndQt->drawCircle(newver->circle(),newver->parent(),0,0,
+                        m_sManager->geom()->Scale*30);
     newver->setText("M");
+    newver->setRem("rem");
     m_wndQt->drawtext(newver->text(),newver->circle(),newver->text()->text());
     m_wndQt->drawtext(newver->comment(),newver->circle(),newver->comment()->text());
 }
@@ -123,14 +125,16 @@ void GraphicManager::reset()
 void GraphicManager::actionInfo()
 {
     QMessageBox::information(m_parent,"Info","actionInfo",QMessageBox::Ok);
+    vertattrsdlg = new VertAttrsDialog(m_parent);
+    Glyph *curr = m_wndQt->getGlyphByGraphic(m_curr);
+    vertattrsdlg->load(curr);
+    connect(vertattrsdlg,SIGNAL(signalOk(int,QString,QString,int,QString,QString,int)),
+            this,SLOT(vertAttrOk(int,QString,QString,int,QString,QString,int)));
+    vertattrsdlg->show();
 }
 void GraphicManager::actionText()
 {
     //QMessageBox::information(m_Parent,"Info","actionText",QMessageBox::Ok);
-    vertattrsdlg = new VertAttrsDialog(m_parent);
-    connect(vertattrsdlg,SIGNAL(signalOk(int,QString,QString,int,QString,QString,int)),
-            this,SLOT(vertAttrOk(int,QString,QString,int,QString,QString,int)));
-    vertattrsdlg->show();
 }
 void GraphicManager::actionDelete()
 {
@@ -147,14 +151,43 @@ void GraphicManager::onResize()
     emit m_wndQt->Resize();
 }
 
-
 void GraphicManager::vertAttrOk(int ntype,QString id, QString comment, int type,QString chan, QString method, int count)
 {
     Glyph *curr = m_wndQt->getGlyphByGraphic(m_curr);
     if (!curr) {
         QMessageBox::information(m_parent,"Info",tr("Не найден глиф"),QMessageBox::Ok);
     }
-    curr->setId(id);
+    m_wndQt->removeGlyph(curr);
+    ProcessDiagram *pd = ((ProcessDiagram*)curr->parent());
+    pd->removeChild(curr);
+
+    Vertex *newver = new Vertex(pd);
+    pd->insertChild(newver);
+    m_wndQt->drawCircle(newver->circle(),newver->parent(),0,0,
+                        m_sManager->geom()->Scale*30);
+    switch (ntype)
+    {
+    case 1:
+        newver->setText("M");
+        break;
+    case 2:
+        newver->setText("P");
+        break;
+    default:
+        newver->setText("M");
+        break;
+    }
+    newver->setRem(comment);
+    newver->setId(id);
+    newver->setChannel(chan);
+    newver->setModule(curr->module());
+    newver->setPosition(curr->position());
+    newver->setTemplet(curr->templet());
+    newver->setRepCount(count);
+    newver->setType(type);
+    delete curr;
+    m_wndQt->drawtext(newver->text(),newver->circle(),newver->text()->text());
+    m_wndQt->drawtext(newver->comment(),newver->circle(),newver->comment()->text());
 }
 
 void GraphicManager::deleteCurrent()

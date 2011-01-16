@@ -30,3 +30,8 @@ void VertAttrsDialog::on_save_2_clicked()
     emit signalOk(0,ui->leId->text(),ui->leComment->text(),0,ui->leChan->text(),ui->leMethod->text(),
                   ui->counter_2->value());
 }
+
+void VertAttrsDialog::load(Glyph *g)
+{
+
+}
