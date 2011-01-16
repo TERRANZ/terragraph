@@ -2,7 +2,6 @@
 #define FACADEWIDGET_H
 
 #include <QWidget>
-#include "facade.h"
 #include "graphicmanager.h"
 
 class FacadeWidget : public QWidget
@@ -24,7 +23,6 @@ public:
 public slots:
     void onResize();
 private:
-    Facade *m_fc;
     GraphicManager *m_gm;
     QWidget *m_parent;
     int m_currentProcDiag;

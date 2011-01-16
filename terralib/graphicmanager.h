@@ -5,7 +5,6 @@
 #include "character.h"
 #include "vertex.h"
 #include "circle.h"
-#include "arc.h"
 #include "arrowqt.h"
 #include "box.h"
 #include "geometry.h"
@@ -14,6 +13,7 @@
 #include "processdiagram.h"
 #include "channeldiagram.h"
 #include "forms/vertattrsdialog.h"
+#include "settingsmanager.h"
 #include <QGraphicsItem>
 #include <QMenu>
 #include <QAction>
@@ -44,6 +44,46 @@ public:
     QList<ChannelDiagram*> const chanDiags() {return l_chanDiags;};
     void deleteCurrent();
 
+    float arrow_pensize() const {
+        return m_sManager->geom()->Arrow_pensize;
+    }
+
+    void setArrow_pensize(float Arrow_pensize) {
+        m_sManager->geom()->Arrow_pensize = Arrow_pensize;
+    }
+
+    float circle_fontsize() const {
+        return m_sManager->geom()->Circle_fontsize;
+    }
+
+    void setCircle_fontsize(float Circle_fontsize) {
+        m_sManager->geom()->Circle_fontsize = Circle_fontsize;
+    }
+
+    float circle_pensize() const {
+        return m_sManager->geom()->Circle_pensize;
+    }
+
+    void setCircle_pensize(float Circle_pensize) {
+        m_sManager->geom()->Circle_pensize = Circle_pensize;
+    }
+
+    float note_fontsize() const {
+        return m_sManager->geom()->Note_fontsize;
+    }
+
+    void setNote_fontsize(float Note_fontsize) {
+        m_sManager->geom()->Note_fontsize = Note_fontsize;
+    }
+
+    float scale() const {
+        return m_sManager->geom()->Scale;
+    }
+
+    void setScale(float Scale) {
+        m_sManager->geom()->Scale = Scale;
+    }
+
 private:
     WindowQt *m_wndQt;
     QWidget *m_parent;
@@ -53,6 +93,7 @@ private:
     QMenu *m_vertMenu;
     QAction *m_actInfo, *m_actDelete, *m_actText;
     VertAttrsDialog *vertattrsdlg;
+    SettingsManager* m_sManager;
 
 private slots:
     void itemSelected(QGraphicsItem *last,QGraphicsItem *curr);

@@ -65,13 +65,10 @@ SOURCES += dom/domnode.cpp \
     data/commands/addelementcommand.cpp \
     ../terralib/facadewidget.cpp \
     ../terralib/windowqt.cpp \
-    ../terralib/visitor.cpp \
     ../terralib/vertex.cpp \
     ../terralib/settingsmanager.cpp \
     ../terralib/processdiagram.cpp \
     ../terralib/graphicmanager.cpp \
-    ../terralib/facade.cpp \
-    ../terralib/command.cpp \
     ../terralib/circle.cpp \
     ../terralib/character.cpp \
     ../terralib/channeldiagram.cpp \
@@ -137,7 +134,6 @@ HEADERS += dom/domnode.h \
     ../terralib/facadewidget.h \
     ../terralib/windowqt.h \
     ../terralib/window.h \
-    ../terralib/visitor.h \
     ../terralib/vertex.h \
     ../terralib/settingsmanager.h \
     ../terralib/rect.h \
@@ -146,16 +142,13 @@ HEADERS += dom/domnode.h \
     ../terralib/graphicmanager.h \
     ../terralib/glyph.h \
     ../terralib/geometry.h \
-    ../terralib/facade.h \
     ../terralib/complex.h \
-    ../terralib/command.h \
     ../terralib/circle.h \
     ../terralib/character.h \
     ../terralib/channeldiagram.h \
     ../terralib/box.h \
     ../terralib/arrowqt.h \
     ../terralib/arrow.h \
-    ../terralib/arc.h \
     ../terralib/forms/vertattrsdialog.h
 FORMS += editforms/moduledialog.ui \
     editforms/objectdialog.ui \
