@@ -5,7 +5,6 @@ WindowQt::WindowQt(QWidget *parent)
     m_pen.setColor(QColor("black"));
     m_parent = parent;
     this->setParent(parent);
-    this->setSceneRect(parent->geometry());
     m_grView = new QGraphicsView(this,parent);
     m_grView->setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
     m_grView->setContextMenuPolicy(Qt::CustomContextMenu);

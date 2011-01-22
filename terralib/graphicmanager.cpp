@@ -8,6 +8,7 @@ GraphicManager::GraphicManager(QWidget *parent)
     connect(m_wndQt,SIGNAL(contextMenuReq(QPoint)),this,SLOT(contextMenuReq(QPoint)));
     m_last = NULL;
     m_curr = NULL;
+    m_sManager = new SettingsManager();
     m_vertMenu = new QMenu(parent);
     m_actDelete = new QAction(QIcon(":/icons/delete.png"),trUtf8("&Удалить"),this);
     m_actDelete->setShortcuts(QKeySequence::Delete);
@@ -33,6 +34,14 @@ int GraphicManager::createProcDiagram()
 {
     ProcessDiagram* procdiag = new ProcessDiagram(0);
     l_procDiags.append(procdiag);
+    Box *newbox = new Box(procdiag);
+    m_wndQt->drawBox(newbox,0,15,15,165,20);
+    Character *text = new Character(newbox,"Это диаграмма процессов");
+    Point pos;
+    pos.x = 11;
+    pos.y = 10;
+    text->setPosition(pos);
+    m_wndQt->drawtext(text,newbox,text->text());
     return l_procDiags.indexOf(procdiag);
 }
 
@@ -154,40 +163,41 @@ void GraphicManager::onResize()
 void GraphicManager::vertAttrOk(int ntype,QString id, QString comment, int type,QString chan, QString method, int count)
 {
     Glyph *curr = m_wndQt->getGlyphByGraphic(m_curr);
-    if (!curr) {
-        QMessageBox::information(m_parent,"Info",tr("Не найден глиф"),QMessageBox::Ok);
-    }
-    m_wndQt->removeGlyph(curr);
-    ProcessDiagram *pd = ((ProcessDiagram*)curr->parent());
-    pd->removeChild(curr);
+    if (curr) {
 
-    Vertex *newver = new Vertex(pd);
-    pd->insertChild(newver);
-    m_wndQt->drawCircle(newver->circle(),newver->parent(),0,0,
-                        m_sManager->geom()->Scale*30);
-    switch (ntype)
-    {
-    case 1:
-        newver->setText("M");
-        break;
-    case 2:
-        newver->setText("P");
-        break;
-    default:
-        newver->setText("M");
-        break;
-    }
-    newver->setRem(comment);
-    newver->setId(id);
-    newver->setChannel(chan);
-    newver->setModule(curr->module());
-    newver->setPosition(curr->position());
-    newver->setTemplet(curr->templet());
-    newver->setRepCount(count);
-    newver->setType(type);
-    delete curr;
-    m_wndQt->drawtext(newver->text(),newver->circle(),newver->text()->text());
-    m_wndQt->drawtext(newver->comment(),newver->circle(),newver->comment()->text());
+        m_wndQt->removeGlyph(curr);
+        ProcessDiagram *pd = ((ProcessDiagram*)curr->parent());
+        pd->removeChild(curr);
+
+        Vertex *newver = new Vertex(pd);
+        pd->insertChild(newver);
+        m_wndQt->drawCircle(newver->circle(),newver->parent(),0,0,
+                            m_sManager->geom()->Scale*30);
+        switch (ntype)
+        {
+        case 1:
+            newver->setText("M");
+            break;
+        case 2:
+            newver->setText("P");
+            break;
+        default:
+            newver->setText("M");
+            break;
+        }
+        newver->setRem(comment);
+        newver->setId(id);
+        newver->setChannel(chan);
+        newver->setModule(curr->module());
+        newver->setPosition(curr->position());
+        newver->setTemplet(curr->templet());
+        newver->setRepCount(count);
+        newver->setType(type);
+        delete curr;
+        m_wndQt->drawtext(newver->text(),newver->circle(),newver->text()->text());
+        m_wndQt->drawtext(newver->comment(),newver->circle(),newver->comment()->text());
+    }else
+        QMessageBox::information(m_parent,"Info",tr("Не найден глиф"),QMessageBox::Ok);
 }
 
 void GraphicManager::deleteCurrent()

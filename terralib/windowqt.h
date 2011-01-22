@@ -13,6 +13,7 @@
 #include <QGraphicsItem>
 #include <QGraphicsSceneMouseEvent>
 #include <QMessageBox>
+#include <QLayout>
 #include <cmath>
 #include <string>
 using namespace std;

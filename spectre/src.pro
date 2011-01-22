@@ -74,7 +74,6 @@ SOURCES += dom/domnode.cpp \
     ../terralib/channeldiagram.cpp \
     ../terralib/box.cpp \
     ../terralib/arrowqt.cpp \
-    ../terralib/arc.cpp \
     ../terralib/forms/vertattrsdialog.cpp
 HEADERS += dom/domnode.h \
     dom/domdocument.h \
