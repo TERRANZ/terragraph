@@ -6,6 +6,7 @@ GraphicManager::GraphicManager(QWidget *parent)
     m_parent = parent;
     connect(m_wndQt,SIGNAL(itemSelected(QGraphicsItem*,QGraphicsItem*)),this,SLOT(itemSelected(QGraphicsItem*,QGraphicsItem*)));
     connect(m_wndQt,SIGNAL(contextMenuReq(QPoint)),this,SLOT(contextMenuReq(QPoint)));
+    connect(m_wndQt,SIGNAL(wndMousePressed(QPointF)),this,SLOT(wndMousePressed(QPointF)));
     m_last = NULL;
     m_curr = NULL;
     m_sManager = new SettingsManager();
@@ -23,6 +24,8 @@ GraphicManager::GraphicManager(QWidget *parent)
     m_actText->setStatusTip(trUtf8("Редактирование текста"));
     connect(m_actText,SIGNAL(triggered()),this,SLOT(actionText()));
     m_vertMenu->addAction(m_actText);
+    m_currDiag = 0;
+    m_currDiagType = 0;
 }
 
 GraphicManager::~GraphicManager()
@@ -56,7 +59,7 @@ void GraphicManager::addVertToProcDiag(int pvt,ProcessDiagram *pd)
 {
     Vertex *newver = new Vertex(pd);
     pd->insertChild(newver);
-    m_wndQt->drawCircle(newver->circle(),newver->parent(),0,0,
+    m_wndQt->drawCircle(newver->circle(),newver->parent(),m_currMouseCoord.x(),m_currMouseCoord.y(),
                         m_sManager->geom()->Scale*30);
     newver->setText("M");
     newver->setRem("rem");
@@ -67,6 +70,26 @@ void GraphicManager::addVertToProcDiag(int pvt,ProcessDiagram *pd)
 void GraphicManager::addArrowToProcDiag()
 {
     m_wndQt->setMode(Window::WModeAddArrowP1);
+}
+
+void GraphicManager::addVertToChanDiag(int cvt,ChannelDiagram *cd)
+{
+
+}
+
+void GraphicManager::wndMousePressed(QPointF coords)
+{
+    m_currMouseCoord = coords;
+    if (m_wndQt->mode() == Window::WModeAddVer)
+    {
+        if (m_currDiagType = 1) //Proc
+        {
+            addVertToProcDiag(0,procDiags().at(m_currDiag));
+        }else//Chan
+        {
+            addVertToChanDiag(0,chanDiags().at(m_currDiag));
+        }
+    }
 }
 
 void GraphicManager::itemSelected(QGraphicsItem *last,QGraphicsItem *curr)
@@ -94,7 +117,7 @@ void GraphicManager::itemSelected(QGraphicsItem *last,QGraphicsItem *curr)
         {
             if (curr != NULL && last != NULL)
             {
-                m_wndQt->setMode(Window::WModeNone);
+                //m_wndQt->setMode(Window::WModeNone);
                 ArrowQt *newarr = new ArrowQt(curr,last,curr,m_wndQt);
                 m_wndQt->drawArrow(newarr,NULL);
                 m_wndQt->getGlyphByGraphic(m_wndQt->lastItem())->insertArrow(newarr);

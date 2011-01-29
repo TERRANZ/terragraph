@@ -505,14 +505,14 @@ void MainWindow::selectToolCreateNode()
 {
     m_CurrentTool = ToolCreateNode;
     m_XmlView->setTool(XmlView::ToolAddNode);
-    m_GraphicFacade->addNewVertexToProc(m_GraphicFacade->currentProcDiag());
+    m_GraphicFacade->setAddingVertex();
 }
 
 void MainWindow::selectToolCreateArc()
 {
     m_CurrentTool = ToolCreateArc;
     m_XmlView->setTool(XmlView::ToolAddArc);
-    m_GraphicFacade->addArrow();
+    m_GraphicFacade->setAddArc();
 }
 
 void MainWindow::selectToolDeleteObject()
@@ -525,6 +525,7 @@ void MainWindow::selectToolSelectMove()
 {
     m_CurrentTool = ToolSelectMove;
     m_XmlView->setTool(XmlView::ToolProperties);
+    m_GraphicFacade->setMoving();
 }
 
 void MainWindow::showProperties()

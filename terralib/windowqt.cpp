@@ -127,6 +127,7 @@ void WindowQt::mouseReleaseEvent ( QGraphicsSceneMouseEvent * mouseEvent )
         l_glyphsMap[m_currentItem]->posUpdate(newpos);
     }
     QGraphicsScene::mouseReleaseEvent(mouseEvent);
+    emit wndMousePressed(mouseEvent->pos());
 }
 
 void WindowQt::customContextMenu(QPoint p)

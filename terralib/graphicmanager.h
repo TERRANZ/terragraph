@@ -28,7 +28,7 @@ public:
     ~GraphicManager();
 
     int createChanDiagram();
-    void addVertToChanDiag(int cvt);
+    void addVertToChanDiag(int cvt,ChannelDiagram *cd);
     void addArrowToChanDiag();
     void addBoxToChanDiag();
 
@@ -43,6 +43,8 @@ public:
     QList<ProcessDiagram*> const procDiags() {return l_procDiags;};
     QList<ChannelDiagram*> const chanDiags() {return l_chanDiags;};
     void deleteCurrent();
+    void setMode(int mode) {m_wndQt->setMode(mode);};
+    void setCurrDiag(int d,int t) {m_currDiag = d;m_currDiagType = t;};
 
     float arrow_pensize() const {
         return m_sManager->geom()->Arrow_pensize;
@@ -94,6 +96,8 @@ private:
     QAction *m_actInfo, *m_actDelete, *m_actText;
     VertAttrsDialog *vertattrsdlg;
     SettingsManager* m_sManager;
+    int m_currDiag,m_currDiagType;
+    QPointF m_currMouseCoord;
 
 private slots:
     void itemSelected(QGraphicsItem *last,QGraphicsItem *curr);
@@ -102,6 +106,7 @@ private slots:
     void actionText();
     void contextMenuReq(QPoint p);
     void vertAttrOk(int ntype,QString id, QString comment, int type,QString chan, QString method, int count);
+    void wndMousePressed(QPointF coords);
 public slots:
     void onResize();
 };

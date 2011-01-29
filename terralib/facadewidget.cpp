@@ -14,9 +14,16 @@ FacadeWidget::~FacadeWidget()
     delete m_gm;
 }
 
+void FacadeWidget::setAddingVertex()
+{
+    m_gm->setCurrDiag(m_currentProcDiag,1);
+    m_gm->setMode(Window::WModeAddVer);    
+}
+
 void FacadeWidget::addNewVertexToProc(int pd)
 {
-    m_gm->addVertToProcDiag(0,m_gm->procDiags().at(m_currentProcDiag));
+    //m_gm->addVertToProcDiag(0,m_gm->procDiags().at(m_currentProcDiag));
+
 }
 
 void FacadeWidget::addArrow()

@@ -2,6 +2,7 @@
 #define FACADEWIDGET_H
 
 #include <QWidget>
+#include "window.h"
 #include "graphicmanager.h"
 
 class FacadeWidget : public QWidget
@@ -19,6 +20,9 @@ public:
     void setCurrentProcDiag(int cpd) {m_currentProcDiag = cpd;};
     void setCurrentChanDiag(int ccd) {m_currentChanDiag = ccd;};
     void deleteCurrentSelected();
+    void setAddingVertex();
+    void setMoving() {m_gm->setMode(Window::WModeNone);};
+    void setAddArc() {m_gm->setMode(Window::WModeAddArrowP1);};
 
 public slots:
     void onResize();

@@ -16,6 +16,7 @@
 #include <QLayout>
 #include <cmath>
 #include <string>
+#include <QMouseEvent>
 using namespace std;
 
 class WindowQt :public QGraphicsScene,public Window
@@ -61,7 +62,6 @@ private:
 protected:
     void mouseReleaseEvent ( QGraphicsSceneMouseEvent * mouseEvent );
 
-
 public slots:
     void PositionChanged(QGraphicsItem *item,QPoint &newpos);
     void Resize();
@@ -71,6 +71,7 @@ public slots:
 signals:
     void itemSelected(QGraphicsItem *last,QGraphicsItem *curr);
     void contextMenuReq(QPoint p);
+    void wndMousePressed(QPointF coord);
 };
 
 #endif // WINDOWQT_H
